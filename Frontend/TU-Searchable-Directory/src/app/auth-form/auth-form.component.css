@@ -1,33 +1,6 @@
 /* auth-form.component.css */
 
-.container {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  font-weight: bold;
-}
-
-/* Adjusted width for input fields */
-input.form-control {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  /* Increase the width to make the input fields longer */
-  width: 100%;
-  max-width: 350px; /* You can adjust this value as needed */
-}
+/* ... (previous styles) ... */
 
 /* Style for login and signup buttons */
 .login-btn,
@@ -39,6 +12,8 @@ input.form-control {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s; /* Add a smooth transition effect */
 }
 
 .login-btn {
@@ -57,13 +32,23 @@ input.form-control {
   color: #fff;
 }
 
-/* Style for horizontal rule */
-hr {
-  border-top: 1px solid #ccc;
-  margin: 20px 0;
+/* Hover styles for buttons */
+.login-btn:hover,
+.signup-btn:hover,
+.create-account-btn:hover,
+.login-to-account-btn:hover {
+  opacity: 0.9; /* Slightly reduce opacity on hover for a subtle effect */
 }
 
-/* Style for error text */
-.error-text {
-  color: red;
+/* Adjusted width for buttons */
+.login-btn,
+.signup-btn {
+  width: 100%; /* Buttons will now take full width of the container */
+  max-width: 200px; /* Limit the maximum width of the buttons */
+}
+
+.create-account-btn,
+.login-to-account-btn {
+  width: 100%;
+  max-width: 250px;
 }

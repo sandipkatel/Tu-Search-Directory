@@ -21,6 +21,8 @@ import { DropdownDirective } from './directives/app-dropdown.directive';
 import { AuthGuard } from './services/auth-guard.service';
 import { DisplayCardComponent } from './display-card/display-card.component';
 import { TestComponent } from './test/test.component';
+import { HomePageComponent } from './home-page/home-page.component';
+// import { DirectAuthenticationComponent } from './direct-authentication/direct-authentication.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { TestComponent } from './test/test.component';
     ButtonComponent,
     DropdownDirective,
     DisplayCardComponent,
-    TestComponent
+    TestComponent,
+    HomePageComponent
+    // DirectAuthenticationComponent
   ],
   imports: [
     BrowserModule,
