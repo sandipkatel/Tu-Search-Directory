@@ -1,9 +1,9 @@
 /* .body,.container,.row,.justify-content-center,.col{
     all: unset;
 } */
-::ng-deep .container {
+/* ::ng-deep .container {
     all:unset;
-}
+} */
 
 .homePage-image {
     background: url(https://cdn.gurubaa.com/wp-content/uploads/2022/06/26160022/Tribhuvan-University-2-2.jpg) 

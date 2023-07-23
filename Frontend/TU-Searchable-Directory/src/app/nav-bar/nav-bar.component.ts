@@ -13,10 +13,12 @@ export class NavBarComponent implements OnInit {
   headerTag: string;
   name: string;
   admin: boolean;
+  isLogged:boolean;
 
   constructor(private authService: AuthService, private router: Router) { 
     this.headerTag = 'LogIn';
     this.admin = false;
+    this.isLogged=false;
     this.authService.statusUpdate.subscribe((isLoggedIn: boolean) => {
       this.setStatus(isLoggedIn);
     })
@@ -28,10 +30,12 @@ export class NavBarComponent implements OnInit {
 
   setStatus(isLoggedIn: boolean) {
     if(isLoggedIn) {
+      this.isLogged=true;
       this.headerTag = 'Sign Out';
       this.name = this.authService.name;
       this.admin = this.authService.admin;
     } else {
+      this.isLogged=false;
       this.headerTag = 'Log In';
       this.admin = false;
       this.name = '';

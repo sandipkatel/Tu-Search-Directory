@@ -16,10 +16,11 @@
                 <hr>
                 <div class="row" *ngFor="let personnel of node.data.personnel">
                     <div class="col-5">
-                        <form >
+                        <form>
                             <input type = "text" id = "name" class="form-control" ngModel name="name" [placeholder]="personnel.name">
                             <input type = "text" id = "title" class="form-control" ngModel name="title" [placeholder]="personnel.title">
                             <input type = "text" id = "imageUrl" class="form-control" ngModel name="imageUrl" [placeholder]="personnel.imageUrl">
+                            <button *ngIf="this.isadmin" class="editNode-button">Submit</button>
                         </form>
                         <hr>
             
@@ -38,7 +39,7 @@
                         <form *ngFor="let program of node.data.programmes">
                             <input type = "text" id = "name" class="form-control" ngModel name="name" [placeholder]="program.name">
                             <textarea id = "desc" class="form-control" ngModel name="desc" [placeholder]="program.description"></textarea>
-                        <hr>
+                            <hr>
                         </form>
                     </div>
                 </div>

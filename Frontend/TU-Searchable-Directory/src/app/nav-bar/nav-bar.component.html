@@ -5,8 +5,8 @@
     </a>
     <div class="collapse navbar-collapse">
         <ul class = 'navbar-nav'>
-            <li class = "nav-item"  *ngIf = "this.admin">
-                <a class = "nav-link option" [routerLink]="['/edit']" routerLinkActive="active"> EDIT </a>
+            <li class = "nav-item"  *ngIf = "this.isLogged">
+                <a class = "nav-link option" [routerLink]="['/edit']" routerLinkActive="active"> View Tree </a>
             </li>
             <li>
                 <a class = "nav-link option" [routerLink]="['/search']" routerLinkActive="active" > SEARCH </a>

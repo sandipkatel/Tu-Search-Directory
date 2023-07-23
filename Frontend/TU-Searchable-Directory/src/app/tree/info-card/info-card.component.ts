@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { TreeNode } from 'primeng/api'
+import { AuthService } from '../../services/auth.service'
 
 @Component({
   selector: 'app-info-card',
@@ -9,7 +10,10 @@ import { TreeNode } from 'primeng/api'
 })
 export class InfoCardComponent implements OnInit {
 
-  constructor() { }
+  isadmin:boolean;
+  constructor(private authService: AuthService) {
+    this.isadmin=this.authService.admin;
+   }
 
   @Input() node: TreeNode;
 
