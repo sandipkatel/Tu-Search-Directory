@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { TreeNode } from 'primeng/api'
 import { AuthService } from '../../services/auth.service'
+import { NgForm } from '@angular/forms';
+import { NONE_TYPE } from '@angular/compiler';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-info-card',
@@ -11,7 +14,7 @@ import { AuthService } from '../../services/auth.service'
 export class InfoCardComponent implements OnInit {
 
   isadmin:boolean;
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,private dataService:DataService) {
     this.isadmin=this.authService.admin;
    }
 
@@ -21,5 +24,28 @@ export class InfoCardComponent implements OnInit {
     console.log(this.node);
   }
 
+  onChangeDetails(form :NgForm){
+    let personName=form.value['name'];
+    let personTitle=form.value['title'];
+    let imageUrl:string;
 
+    imageUrl=form.value['imageUrl'];
+
+    this.dataService.editDetails(personName,personTitle,imageUrl).subscribe((response)=>{
+      console.log(response)
+    })
+  }
+
+  onAddPersonnel(form :NgForm,label?:string){
+    let personName=form.value['name'];
+    let personTitle=form.value['title'];
+    let imageUrl:string;
+    let organization=label;
+    organization=JSON.stringify(organization);
+    organization=organization.replace(/^"(.*)"$/, '$1');
+    imageUrl=form.value['imageUrl'];
+    this.dataService.addPersonnel(personName,personTitle,imageUrl,organization).subscribe((response)=>{
+      console.log(response)
+    })
+  }
 }

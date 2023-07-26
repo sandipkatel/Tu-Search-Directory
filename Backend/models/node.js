@@ -167,6 +167,67 @@ class Node {
         .catch(err => console.log(err))
     }
 
+    static async addIdToParent(childName, parentName) {
+        const db = getDb();
+      
+        try {
+          console.log("ParentName", parentName);
+      
+          const nodesCollection = db.collection('Nodes');
+          const newChild = await nodesCollection.findOne({ name: childName });
+          const parent = await nodesCollection.findOne({ name: parentName });
+      
+          console.log(newChild._id);
+          console.log("parent=", parent._id);
+      
+          if (parent) {
+            const parentId = parent._id;
+            let childIdString=JSON.stringify(newChild._id)
+            childIdString=childIdString.replace(/^"(.*)"$/, '$1');
+            parent.children.push(childIdString);
+      
+            await nodesCollection.updateOne(
+              { _id: ObjectId(parentId) },
+              { $set: { children: parent.children } }
+            );
+      
+            console.log("Child ID successfully appended to the parent document.");
+          } else {
+            console.log("Parent not found.");
+          }
+        } catch (error) {
+          console.error("Error occurred:", error);
+        }
+    }
+
+    static async addPersonnel(personnel, orgarizationName){
+        const db = getDb();
+        const nodesCollection = db.collection('Nodes');
+        try{
+
+            const newOrganization = await nodesCollection.findOne({ name: orgarizationName });
+            console.log(newOrganization)
+            if(newOrganization){
+                if(!newOrganization.info.personnel){
+                    newOrganization.info.personnel=[];
+                }
+                newOrganization.info.personnel.push(personnel);
+
+                await nodesCollection.updateOne(
+                    { _id: newOrganization._id },
+                    { $set: { 'info.personnel': newOrganization.info.personnel } }
+                  );
+                  
+                console.log("Personnel Successfully added");
+            }
+            else{
+                console.log("Organization not found");
+            }
+        }catch(err){
+            console.log(err);
+        }
+    }
+      
 }
 
 module.exports = Node

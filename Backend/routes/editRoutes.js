@@ -7,5 +7,6 @@ const editHandler = require('../handlers/editHandler');
 router.post('/add/', editHandler.addNode);
 router.post('/edit/', editHandler.editNode);
 router.post('/delete/', editHandler.deleteNode);
+router.post('/addPersonnel/', editHandler.addPersonnel);
 
 module.exports = router;

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpParams } from '@angular/common/http'; 
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'; 
 import { Organization } from "../models/organization.model";
 
 
@@ -36,4 +36,54 @@ export class DataService {
         });
     }
 
+    editDetails(personName:string,personTitle:string,imageUrl:string){
+        let url=this.url+'edit/'
+        const body = {
+            personName: personName,
+            personTitle: personTitle,
+            imageUrl: imageUrl,
+          };
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+            }),
+        };
+        return this.http.post(url,body,httpOptions)
+    }
+
+    addPersonnel(personName:string,personTitle:string,imageUrl:string,organization:string){
+        let url=this.url+'addPersonnel/'
+        const body = {
+            personName: personName,
+            personTitle: personTitle,
+            imageUrl: imageUrl,
+            organization:organization
+          };
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+            }),
+        };
+        return this.http.post(url,body,httpOptions)
+    }
+
+    addNode(instituteName:string,parentName:string){
+        let url=this.url+'add/'
+        const body={
+            instituteName:instituteName,
+            info:{
+                personnel:[],
+                programmes:[]
+            },
+            children:[],
+            root:false,
+            parentName:parentName
+        }
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+            }),
+        };
+        return this.http.post(url,body,httpOptions)
+    }
 }

@@ -1,16 +1,30 @@
-
 <div class="body">
     <div class="container" style="margin-top: 20px;">
         <div class="row justify-content-center">
             <div class="col">
                 <div class="container" *ngIf="!this.select">
-                    <p-tree [value]="files" selectionMode="single" [(selection)]="selectedFile" (onNodeSelect)="onNodeSelect($event)"></p-tree>
+                    <p-tree [value]="files" selectionMode="single" [(selection)]="selectedFile"
+                        (onNodeSelect)="onNodeSelect($event)"></p-tree>
                 </div>
                 <div class="container" *ngIf="this.select">
                     <app-info-card [node]="this.selectedFile"></app-info-card>
                 </div>
                 <!-- <button *ngIf="this.admin">Submit</button> -->
+            </div>
         </div>
-      </div>
+    </div>
+    <hr>
+    <div class="addNode-section" *ngIf="this.isadmin">
+        <h2 class="addNode-header">
+            Add New Node
+        </h2>
+        <hr>
+        <form #addNewNode="ngForm">
+            <h4>Parent Node</h4>
+            <input type = "text" id = "parent-name" class="form-control addNode-name" ngModel name="parent-name" placeholder="New Institute" ngModel required>
+            <h4>Node name</h4>
+            <input type = "text" id = "name" class="form-control addNode-name" ngModel name="name" placeholder="New Institute" ngModel required>
+        </form>
+        <button  class="addNode-button" (click)="onAddDetails(addNewNode)">Add</button>
     </div>
 </div>

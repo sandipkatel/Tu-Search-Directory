@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TreeNode } from 'primeng/api';
 import { DataService } from '../services/data.service';
+import { AuthService } from '../services/auth.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-tree',
@@ -13,8 +15,11 @@ export class TreeComponent implements OnInit {
 
   selectedFile: TreeNode;
   select: boolean;
+  isadmin:boolean;
 
-  constructor(private dataService: DataService) { }
+  constructor(private authService: AuthService,private dataService: DataService) {
+    this.isadmin=this.authService.admin;
+   }
 
   ngOnInit(): void {
     this.select = false;
@@ -32,6 +37,15 @@ export class TreeComponent implements OnInit {
     if(this.selectedFile.data.personnel || this.selectedFile.data.programmes) {
       this.select = true;
     }
+  }
+
+  onAddDetails(form :NgForm){
+    let instituteName=form.value['name'];
+    let parentName=form.value['parent-name']
+
+    this.dataService.addNode(instituteName,parentName).subscribe((response)=>{
+      console.log(response)
+    })
   }
 
 }
