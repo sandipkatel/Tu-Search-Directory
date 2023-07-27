@@ -24,14 +24,17 @@ export class InfoCardComponent implements OnInit {
     console.log(this.node);
   }
 
-  onChangeDetails(form :NgForm){
+  onChangeDetails(form :NgForm,label?:string,personnel?:string){
     let personName=form.value['name'];
     let personTitle=form.value['title'];
     let imageUrl:string;
-
+    let organization=label;
+    organization=JSON.stringify(organization);
+    organization=organization.replace(/^"(.*)"$/, '$1');
+    let previousName=personnel;
     imageUrl=form.value['imageUrl'];
 
-    this.dataService.editDetails(personName,personTitle,imageUrl).subscribe((response)=>{
+    this.dataService.editPersonnelDetails(personName,personTitle,imageUrl,organization,previousName).subscribe((response)=>{
       console.log(response)
     })
   }
@@ -45,6 +48,13 @@ export class InfoCardComponent implements OnInit {
     organization=organization.replace(/^"(.*)"$/, '$1');
     imageUrl=form.value['imageUrl'];
     this.dataService.addPersonnel(personName,personTitle,imageUrl,organization).subscribe((response)=>{
+      console.log(response)
+    })
+  }
+
+  onDeleteDetails(personnel?:string){
+    let previousName=personnel;
+    this.dataService.deletePersonnel(previousName).subscribe((response)=>{
       console.log(response)
     })
   }

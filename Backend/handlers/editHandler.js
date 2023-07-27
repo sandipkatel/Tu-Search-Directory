@@ -34,3 +34,25 @@ exports.addPersonnel = (req, res, next) => {
     Node.addPersonnel(personnel,req.body.organization)
     next();
 }
+
+exports.editPersonnel = (req, res, next) => {
+    // let node = new Node(req.body._id, req.body.name, req.body.info, req.body.children, req.body.root);
+    // Node.editById(req.body._id, node);
+    let personnel={
+        name:req.body.personName,
+        imageUrl:req.body.imageUrl,
+        title:req.body.personTitle
+    }
+    Node.editPersonnel(personnel,req.body.previousName)
+    next();
+}
+
+exports.deletePersonnel = (req, res, next) => {
+    // let personnel={
+    //     name:req.body.personName,
+    //     imageUrl:req.body.imageUrl,
+    //     title:req.body.personTitle
+    // }
+    Node.deletePersonnel(req.body.previousName)
+    next();
+}

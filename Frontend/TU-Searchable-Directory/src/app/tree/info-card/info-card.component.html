@@ -25,8 +25,11 @@
                                     [placeholder]="personnel.imageUrl" ngModel imageUrl>
                             </form>
                             <button *ngIf="this.isadmin" class="editNode-button"
-                                (click)="onChangeDetails(editDetails)">Submit</button>
-                            <hr>
+                                (click)="onChangeDetails(editDetails,node.label,personnel.name)">Submit</button>
+                            
+                                <button *ngIf="this.isadmin" class="delete-button"
+                                (click)="onDeleteDetails(personnel.name)">Delete</button>
+                                <hr>
 
                         </div>
                         <div class="col-auto">

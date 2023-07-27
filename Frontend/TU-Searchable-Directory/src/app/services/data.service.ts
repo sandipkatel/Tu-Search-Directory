@@ -36,12 +36,14 @@ export class DataService {
         });
     }
 
-    editDetails(personName:string,personTitle:string,imageUrl:string){
-        let url=this.url+'edit/'
+    editPersonnelDetails(personName:string,personTitle:string,imageUrl:string,organization?:string,previousName?:string){
+        let url=this.url+'editPersonnel/'
         const body = {
             personName: personName,
             personTitle: personTitle,
             imageUrl: imageUrl,
+            organization:organization,
+            previousName:previousName
           };
         const httpOptions = {
             headers: new HttpHeaders({
@@ -58,6 +60,19 @@ export class DataService {
             personTitle: personTitle,
             imageUrl: imageUrl,
             organization:organization
+          };
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+            }),
+        };
+        return this.http.post(url,body,httpOptions)
+    }
+
+    deletePersonnel(previousName?:string){
+        let url=this.url+'deletePersonnel/'
+        const body = {
+            previousName:previousName
           };
         const httpOptions = {
             headers: new HttpHeaders({

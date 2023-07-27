@@ -23,3 +23,31 @@
     height: 42px;
     border-radius: 5px;
 }
+
+.addPersonnel-name{
+    width: 50vw;
+    height: 43px;
+    margin: 5px;
+}
+
+.addPersonnel-button{
+    margin: 8px;
+    background-color: #14a37f;
+    border: 1px solid white;
+    width: 100px;
+    height: 42px;
+    border-radius: 5px;
+}
+    
+.delete-button{
+    margin: 8px;
+    background-color: #e85d3e;
+    border: 1px solid white;
+    width: 100px;
+    height: 42px;
+    border-radius: 5px;
+}
+
+.addPersonnel-section{
+    margin-top: 10px;
+}
