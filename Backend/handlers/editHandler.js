@@ -1,10 +1,21 @@
 const { Collection } = require('mongodb');
+const getDb = require('../utils/database').getDb;
 const Node = require('../models/node');
 
 exports.addNode = async(req, res, next) => {
-    let node = new Node(null, req.body.instituteName, req.body.info, req.body.children, req.body.root);
-    node.save();
-    Node.addIdToParent(req.body.instituteName,req.body.parentName);
+    const db = getDb();
+    const nodesCollection = db.collection('Nodes');
+    const parent = await nodesCollection.findOne({ name: req.body.parentName });
+
+    if(parent && parent._id){
+        let node = new Node(null, req.body.instituteName, req.body.info, req.body.children, req.body.root);
+        node.save();
+        Node.addIdToParent(req.body.instituteName,req.body.parentName);
+        res.status(200).json({message: "Information added successfully"});
+    }
+    else{
+        res.status(400).json({message: "Wrong Information"});
+    }
     // console.log(req.body)
     next();
 }
@@ -43,7 +54,10 @@ exports.editPersonnel = (req, res, next) => {
         imageUrl:req.body.imageUrl,
         title:req.body.personTitle
     }
-    Node.editPersonnel(personnel,req.body.previousName)
+    let isedited=Node.editPersonnel(personnel,req.body.previousName)
+    if(!isedited){
+        res.status(400).json("Wrong Information")
+    }
     next();
 }
 

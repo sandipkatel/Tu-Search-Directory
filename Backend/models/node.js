@@ -173,14 +173,10 @@ class Node {
         const db = getDb();
 
         try {
-            console.log("ParentName", parentName);
 
             const nodesCollection = db.collection('Nodes');
             const newChild = await nodesCollection.findOne({ name: childName });
             const parent = await nodesCollection.findOne({ name: parentName });
-
-            console.log(newChild._id);
-            console.log("parent=", parent._id);
 
             if (parent) {
                 const parentId = parent._id;
@@ -244,11 +240,14 @@ class Node {
                     );
 
                     console.log("Personnel Successfully updated");
+                    return true
                 } else {
                     console.log("Personnel not found");
+                    return false
                 }
             } else {
                 console.log("Organization not found");
+                return false
             }
         } catch (err) {
             console.log(err);

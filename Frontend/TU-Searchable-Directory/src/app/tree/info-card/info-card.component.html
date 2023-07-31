@@ -25,10 +25,10 @@
                                     [placeholder]="personnel.imageUrl" ngModel imageUrl>
                             </form>
                             <button *ngIf="this.isadmin" class="editNode-button"
-                                (click)="onChangeDetails(editDetails,node.label,personnel.name)">Submit</button>
+                                (click)="onChangeDetails(editDetails,node.label,personnel.name)" [routerLink]="['/search']">Submit</button>
                             
                                 <button *ngIf="this.isadmin" class="delete-button"
-                                (click)="onDeleteDetails(personnel.name)">Delete</button>
+                                (click)="onDeleteDetails(personnel.name)" [routerLink]="['/search']">Delete</button>
                                 <hr>
 
                         </div>
@@ -68,7 +68,7 @@
                 <h4>Url</h4>
                 <input type = "text" id = "imageUrl" class="form-control addPersonnel-name" ngModel name="imageUrl" placeholder="imageUrl" ngModel >
             </form>
-            <button  class="addPersonnel-button" (click)="onAddPersonnel(addNewPersonnel,node.label)">Add</button>
+            <button  class="addPersonnel-button" (click)="onAddPersonnel(addNewPersonnel,node.label)" [routerLink]="['/search']">Add</button>
         </div>
     </div>
 </div>

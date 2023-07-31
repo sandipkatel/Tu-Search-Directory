@@ -21,10 +21,17 @@
         <hr>
         <form #addNewNode="ngForm">
             <h4>Parent Node</h4>
-            <input type = "text" id = "parent-name" class="form-control addNode-name" ngModel name="parent-name" placeholder="New Institute" ngModel required>
+            <input type="text" id="parent-name" class="form-control addNode-name" ngModel name="parent-name"
+                placeholder="New Institute" ngModel required>
             <h4>Node name</h4>
-            <input type = "text" id = "name" class="form-control addNode-name" ngModel name="name" placeholder="New Institute" ngModel required>
+            <input type="text" id="name" class="form-control addNode-name" ngModel name="name"
+                placeholder="New Institute" ngModel required>
         </form>
-        <button  class="addNode-button" (click)="onAddDetails(addNewNode)">Add</button>
+        <button class="addNode-button" (click)="onAddDetails(addNewNode)">Add</button>
+    </div>
+    <div class="row justify-content-center" *ngIf="this.hasError">
+        <div class="col-3 error">
+            <p class="error-text" style="margin-bottom: 0;">{{ this.errorText }}</p>
+        </div>
     </div>
 </div>
