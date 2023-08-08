@@ -13,7 +13,13 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class InfoCardComponent implements OnInit {
 
+  titleOptions: ['Dean', 'Chancellor', 'Professor', 'Assistant Professor', 'Campus Chief'];
+
   isadmin:boolean;
+  hasError:boolean;
+  errorText:string; 
+  select: boolean;
+
   constructor(private authService: AuthService,private dataService:DataService) {
     this.isadmin=this.authService.admin;
    }
@@ -24,9 +30,16 @@ export class InfoCardComponent implements OnInit {
     console.log(this.node);
   }
 
-  onChangeDetails(form :NgForm,label?:string,personnel?:string){
+  onChangeDetails(form :NgForm,label?:string,personnel?:string,previousTitle?:string,previousUrl?:string){
     let personName=form.value['name'];
     let personTitle=form.value['title'];
+    if(personName==null){
+      personName=personnel
+    }
+    if(personTitle==""){
+      personTitle=previousTitle;
+    }
+
     let imageUrl:string;
     let organization=label;
     organization=JSON.stringify(organization);
@@ -58,4 +71,43 @@ export class InfoCardComponent implements OnInit {
       console.log(response)
     })
   }
+
+  onAddNode(form :NgForm,parentNode?:string){
+    let instituteName=form.value['name'];
+    let parentName=parentNode
+    if(parentName==""){
+      parentName="Tribhuvan University";
+    }
+
+    this.dataService.addNode(instituteName,parentName).subscribe(async (response)=>{
+      console.log(response)
+    },(errorResponse) => {
+      console.log(errorResponse);
+      this.hasError = true;
+      this.errorText = errorResponse.error.message;
+    })
+  }
+
+  onAddProgram(form:NgForm,label?:string){
+    let programTitle=form.value['title'];
+    let programDesc=form.value['desc'];
+    let organization=label
+    organization=JSON.stringify(organization);
+    organization=organization.replace(/^"(.*)"$/, '$1');
+
+    this.dataService.addProgram(programTitle,programDesc,organization).subscribe((response)=>{
+      console.log(response)
+    }) 
+  }
+
+  onDeleteProgram(program?:string,label?:string){
+    let previousName=program;
+    let organization=label
+    organization=JSON.stringify(organization);
+    organization=organization.replace(/^"(.*)"$/, '$1');
+    this.dataService.deleteProgram(previousName,organization).subscribe((response)=>{
+      console.log(response)
+    })
+  }
+
 }

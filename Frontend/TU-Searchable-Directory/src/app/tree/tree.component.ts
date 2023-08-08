@@ -41,23 +41,6 @@ export class TreeComponent implements OnInit {
     }
   }
 
-  onAddDetails(form :NgForm){
-    let instituteName=form.value['name'];
-    let parentName=form.value['parent-name']
-    if(parentName==""){
-      parentName="Tribhuvan University";
-    }
-
-    this.dataService.addNode(instituteName,parentName).subscribe(async (response)=>{
-      console.log(response)
-      this.reload();
-    },(errorResponse) => {
-      console.log(errorResponse);
-      this.hasError = true;
-      this.errorText = errorResponse.error.message;
-    })
-  }
-
   reload(){
     this.select = false;
     this.dataService.getNodes().subscribe(

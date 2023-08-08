@@ -10,4 +10,6 @@ router.post('/editPersonnel/', editHandler.editPersonnel);
 router.post('/delete/', editHandler.deleteNode);
 router.post('/addPersonnel/', editHandler.addPersonnel);
 router.post('/deletePersonnel/', editHandler.deletePersonnel);
+router.post('/addProgram/', editHandler.addProgram);
+router.post('/deleteProgram/', editHandler.deleteProgram);
 module.exports = router;

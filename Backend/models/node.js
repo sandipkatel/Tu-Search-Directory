@@ -224,6 +224,32 @@ class Node {
         }
     }
 
+    static async addProgram(programmes, orgarizationName) {
+        const db = getDb();
+        const nodesCollection = db.collection('Nodes');
+        try {
+            const newOrganization = await nodesCollection.findOne({ name: orgarizationName });
+            if (newOrganization) {
+                if (!newOrganization.info.programmes) {
+                    newOrganization.info.programmes = [];
+                }
+                newOrganization.info.programmes.push(programmes);
+
+                await nodesCollection.updateOne(
+                    { _id: newOrganization._id },
+                    { $set: { 'info.programmes': newOrganization.info.programmes } }
+                );
+
+                console.log("program Successfully added");
+            }
+            else {
+                console.log("Organization not found");
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     static async editPersonnel(personnel, previousName) {
         const db = getDb();
         const nodesCollection = db.collection('Nodes');
@@ -257,24 +283,44 @@ class Node {
     static async deletePersonnel(previousName) {
         const db = getDb();
         const nodesCollection = db.collection('Nodes');
-        console.log(previousName);
         try {
-          const organization = await nodesCollection.findOne({ 'info.personnel.name': previousName });
-      
-          if (organization) {
-            await nodesCollection.updateOne(
-              { 'info.personnel.name': previousName },
-              { $pull: { 'info.personnel': { name: previousName } } }
-            );
-      
-            console.log("Person info deleted from the database.");
-          } else {
-            console.log("Organization not found");
-          }
+            const organization = await nodesCollection.findOne({ 'info.personnel.name': previousName });
+
+            if (organization) {
+                await nodesCollection.updateOne(
+                    { 'info.personnel.name': previousName },
+                    { $pull: { 'info.personnel': { name: previousName } } }
+                );
+
+                console.log("Person info deleted from the database.");
+            } else {
+                console.log("Organization not found");
+            }
         } catch (err) {
-          console.log(err);
+            console.log(err);
         }
-      }
+    }
+
+    static async deleteProgram(previousName, organizationName) {
+        const db = getDb();
+        const nodesCollection = db.collection('Nodes');
+        try {
+            const organization = await nodesCollection.findOne({ 'info.programmes.name': previousName, 'name': organizationName });
+            if (organization) {
+                await nodesCollection.updateOne(
+                    { 'info.programmes.name': previousName, 'name': organizationName },
+                    { $pull: { 'info.programmes': { name: previousName } } }
+                );
+    
+                console.log("Program info deleted from the database.");
+            } else {
+                console.log("Organization not found or program not found within the organization");
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
+    
 
 }
 

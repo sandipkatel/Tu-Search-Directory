@@ -19,13 +19,14 @@
                             <form #editDetails="ngForm">
                                 <input type="text" id="name" class="form-control" ngModel name="name"
                                     [placeholder]="personnel.name" ngModel required>
-                                <input type="text" id="title" class="form-control" ngModel name="title"
-                                    [placeholder]="personnel.title" ngModel title required>
+                                    <input type="text" id="title" class="form-control" ngModel name="title"
+                                        [placeholder]="personnel.title" ngModel title required>
+
                                 <input type="text" id="imageUrl" class="form-control" ngModel name="imageUrl"
                                     [placeholder]="personnel.imageUrl" ngModel imageUrl>
                             </form>
                             <button *ngIf="this.isadmin" class="editNode-button"
-                                (click)="onChangeDetails(editDetails,node.label,personnel.name)" [routerLink]="['/search']">Submit</button>
+                                (click)="onChangeDetails(editDetails,node.label,personnel.name,personnel.title,personnel.Url)" [routerLink]="['/search']">Submit</button>
                             
                                 <button *ngIf="this.isadmin" class="delete-button"
                                 (click)="onDeleteDetails(personnel.name)" [routerLink]="['/search']">Delete</button>
@@ -48,8 +49,11 @@
                                     [placeholder]="program.name">
                                 <textarea id="desc" class="form-control" ngModel name="desc"
                                     [placeholder]="program.description"></textarea>
+                                    <button *ngIf="this.isadmin" class="delete-button"
+                                    (click)="onDeleteProgram(program.name,node.label)" [routerLink]="['/search']">Delete</button>
                                 <hr>
                             </form>
+
                         </div>
                     </div>
                 </div>
@@ -64,11 +68,54 @@
                 <h4>Name</h4>
                 <input type = "text" id = "name" class="form-control addPersonnel-name" ngModel name="name" placeholder="Name" ngModel required>
                 <h4>Title</h4>
-                <input type = "text" id = "title" class="form-control addPersonnel-name" ngModel name="title" placeholder="title" ngModel required>
+                <!-- <input type = "text" id = "title" class="form-control addPersonnel-name" ngModel name="title" placeholder="title" ngModel required> -->
+                <select name="titleSelect" id="titleSelect" ngModel title>
+                    <option value="Dean" selected>Dean</option>
+                    <option value="Chancellor">Chancellor</option>
+                    <option value="Vice Chancellor">Vice-Chancellor</option>
+                    <option value="Professor">Professor</option>
+                    <option value="Assistant Professor">Assistant Professor</option>
+                    <option value="Associate Professor">Associate Professor</option>
+                    <option value="Campus Chief">Campus Chief</option>
+                    <option value="Rector">Rector</option>
+                    <option value="Vice Campus Chief">Vice Campus Chief</option>
+                    <option value="Department Head">Department Head</option>
+                </select>
                 <h4>Url</h4>
                 <input type = "text" id = "imageUrl" class="form-control addPersonnel-name" ngModel name="imageUrl" placeholder="imageUrl" ngModel >
             </form>
             <button  class="addPersonnel-button" (click)="onAddPersonnel(addNewPersonnel,node.label)" [routerLink]="['/search']">Add</button>
+        </div>
+        <div class="addProgram-section" *ngIf="this.isadmin">
+            <h2 class="addProgram-header">
+                Add Program
+            </h2>
+            <hr>
+            <form #addNewProgram="ngForm">
+                <h4>Title</h4>
+                <input type = "text" id = "title" class="form-control addPersonnel-name" ngModel name="title" placeholder="Title" ngModel required>
+                <h4>Descripition</h4>
+                <textarea type = "text" id = "desc" class="form-control addPersonnel-name" ngModel name="desc" placeholder="Description" ngModel required></textarea>
+            </form>
+            <button  class="addPersonnel-button" (click)="onAddProgram(addNewProgram,node.label)" [routerLink]="['/search']">Add</button>
+        </div>
+    </div>
+
+    <div class="addNode-section" *ngIf="this.isadmin">
+        <h2 class="addNode-header">
+            Add New Children
+        </h2>
+        <hr>
+        <form #addNewNode="ngForm">
+            <h4>Node name</h4>
+            <input type="text" id="name" class="form-control addNode-name" ngModel name="name"
+                placeholder="New Institute" ngModel required>
+        </form>
+        <button class="addNode-button" (click)="onAddNode(addNewNode,node.label)" [routerLink]="['/search']">Add</button>
+    </div>
+    <div class="row justify-content-center" *ngIf="this.hasError">
+        <div class="col-3 error">
+            <p class="error-text" style="margin-bottom: 0;">{{ this.errorText }}</p>
         </div>
     </div>
 </div>

@@ -82,7 +82,8 @@ export class DataService {
         return this.http.post(url,body,httpOptions)
     }
 
-    addNode(instituteName:string,parentName:string){
+
+    addNode(instituteName:string,parentName?:string){
         let url=this.url+'add/'
         const body={
             instituteName:instituteName,
@@ -94,6 +95,35 @@ export class DataService {
             root:false,
             parentName:parentName
         }
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+            }),
+        };
+        return this.http.post(url,body,httpOptions)
+    }
+
+    addProgram(programTitle:string,programDesc:string,organization:string){
+        let url=this.url+'addProgram/'
+        const body = {
+            programTitle:programTitle,
+            programDesc:programDesc,
+            organization:organization
+          };
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+            }),
+        };
+        return this.http.post(url,body,httpOptions)
+    }
+
+    deleteProgram(previousName?:string,organization?:string){
+        let url=this.url+'deleteProgram/'
+        const body = {
+            previousName:previousName,
+            organization:organization
+          };
         const httpOptions = {
             headers: new HttpHeaders({
               'Content-Type': 'application/json',
