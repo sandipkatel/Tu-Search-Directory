@@ -10,4 +10,5 @@ router.post('/login', auth.loginHandler);
 
 router.post('/signup', auth.signupHandler);
 
+router.post('/adminsignup', auth.adminsignupHandler);
 module.exports = router;

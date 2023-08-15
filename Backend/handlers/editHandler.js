@@ -27,12 +27,14 @@ exports.editNode = (req, res, next) => {
     console.log(req.body.personName)
 }
 
-exports.deleteNode = (req, res, next) => {
+exports.deleteNodebyId = (req, res, next) => {
     let id = req.body.id;
     Node.deleteSubTree(id);
     Node.removeIdFromParent(id);
     next();
 }
+
+
 
 exports.addPersonnel = (req, res, next) => {
     // console.log(req.body.organization)
@@ -40,7 +42,8 @@ exports.addPersonnel = (req, res, next) => {
     let personnel={
         name:req.body.personName,
         imageUrl:req.body.imageUrl,
-        title:req.body.personTitle
+        title:req.body.personTitle,
+        email:req.body.personEmail
     }
     Node.addPersonnel(personnel,req.body.organization)
     next();
@@ -64,7 +67,8 @@ exports.editPersonnel = (req, res, next) => {
     let personnel={
         name:req.body.personName,
         imageUrl:req.body.imageUrl,
-        title:req.body.personTitle
+        title:req.body.personTitle,
+        email:req.body.personEmail
     }
     let isedited=Node.editPersonnel(personnel,req.body.previousName)
     if(!isedited){

@@ -24,6 +24,11 @@
 
                                 <input type="text" id="imageUrl" class="form-control" ngModel name="imageUrl"
                                     [placeholder]="personnel.imageUrl" ngModel imageUrl>
+
+                                <input type="email" id="email" class="form-control" ngModel name="email"
+                                [placeholder]="personnel.email" ngModel email *ngIf="personnel.email">
+                                <input type="email" id="email" class="form-control" ngModel name="email"
+                                placeholder="Email" ngModel email *ngIf="!personnel.email">
                             </form>
                             <button *ngIf="this.isadmin" class="editNode-button"
                                 (click)="onChangeDetails(editDetails,node.label,personnel.name,personnel.title,personnel.Url)" [routerLink]="['/search']">Submit</button>
@@ -83,6 +88,8 @@
                 </select>
                 <h4>Url</h4>
                 <input type = "text" id = "imageUrl" class="form-control addPersonnel-name" ngModel name="imageUrl" placeholder="imageUrl" ngModel >
+                <h4>Email</h4>
+                <input type = "email" id = "email" class="form-control addPersonnel-name" ngModel name="email" placeholder="Email" ngModel >
             </form>
             <button  class="addPersonnel-button" (click)="onAddPersonnel(addNewPersonnel,node.label)" [routerLink]="['/search']">Add</button>
         </div>
@@ -107,7 +114,7 @@
         </h2>
         <hr>
         <form #addNewNode="ngForm">
-            <h4>Node name</h4>
+            <h4 >Node name</h4>
             <input type="text" id="name" class="form-control addNode-name" ngModel name="name"
                 placeholder="New Institute" ngModel required>
         </form>
@@ -119,3 +126,5 @@
         </div>
     </div>
 </div>
+
+<!-- <button class="deleteNode-button" (click)="onDeleteNode(node.label)" [routerLink]="['/search']">Delete</button> -->

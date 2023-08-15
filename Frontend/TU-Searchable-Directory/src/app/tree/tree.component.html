@@ -12,6 +12,34 @@
                 <!-- <button *ngIf="this.admin">Submit</button> -->
             </div>
         </div>
+        <hr>
     </div>
     <hr>
 </div>
+
+<div class="container" *ngIf="this.showAddSubCampus">
+    <div class="addNode-section" *ngIf="this.isadmin ">
+        <h4 class="addNode-header">
+            Add New Institutes/ Faculties/ Central Departments/ Central Offices
+        </h4>
+        <hr>
+        <form #addNewNode="ngForm">
+            <input type="text" id="name" class="form-control addNode-name" ngModel name="name"
+                placeholder="New College" ngModel required>
+            <h4 id="nodeNameSelect">Where you want to add</h4>
+            <select name="typeSelect" id="typeSelect" ngModel typeSelect>
+                    <option value="Institutes" selected>Institutes</option>
+                    <option value="Faculties">Faculties</option>
+                    <option value="Central Departments">Central Departments</option>
+                    <option value="Central Offices">Central Offices</option>
+            </select>
+        </form>
+        <button class="addNode-button" (click)="onAddNode(addNewNode)" [routerLink]="['/search']">Add</button>
+    </div>
+    <div class="row justify-content-center" *ngIf="this.hasError">
+        <div class="col-3 error">
+            <p class="error-text" style="margin-bottom: 0;">{{ this.errorText }}</p>
+        </div>
+    </div>
+</div>
+

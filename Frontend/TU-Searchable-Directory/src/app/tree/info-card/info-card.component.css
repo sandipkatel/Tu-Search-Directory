@@ -80,4 +80,12 @@
     height: 42px;
     border-radius: 5px;
 }
-    
+
+.deleteNode-button{
+    width: 85%;
+    background-color: #e85d3e;
+    height: 45px;
+    color: black;
+    border: none;
+    border-radius: 12px;
+}

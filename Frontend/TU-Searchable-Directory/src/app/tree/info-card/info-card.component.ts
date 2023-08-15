@@ -33,6 +33,7 @@ export class InfoCardComponent implements OnInit {
   onChangeDetails(form :NgForm,label?:string,personnel?:string,previousTitle?:string,previousUrl?:string){
     let personName=form.value['name'];
     let personTitle=form.value['title'];
+    let personEmail=form.value['email'];
     if(personName==null){
       personName=personnel
     }
@@ -47,7 +48,7 @@ export class InfoCardComponent implements OnInit {
     let previousName=personnel;
     imageUrl=form.value['imageUrl'];
 
-    this.dataService.editPersonnelDetails(personName,personTitle,imageUrl,organization,previousName).subscribe((response)=>{
+    this.dataService.editPersonnelDetails(personName,personTitle,imageUrl,personEmail,organization,previousName).subscribe((response)=>{
       console.log(response)
     })
   }
@@ -55,12 +56,13 @@ export class InfoCardComponent implements OnInit {
   onAddPersonnel(form :NgForm,label?:string){
     let personName=form.value['name'];
     let personTitle=form.value['title'];
+    let personEmail=form.value['email'];
     let imageUrl:string;
     let organization=label;
     organization=JSON.stringify(organization);
     organization=organization.replace(/^"(.*)"$/, '$1');
     imageUrl=form.value['imageUrl'];
-    this.dataService.addPersonnel(personName,personTitle,imageUrl,organization).subscribe((response)=>{
+    this.dataService.addPersonnel(personName,personTitle,imageUrl,personEmail,organization).subscribe((response)=>{
       console.log(response)
     })
   }
@@ -110,4 +112,10 @@ export class InfoCardComponent implements OnInit {
     })
   }
 
+  // onDeleteNode(node?:string){
+  //   let Node=node;
+  //   this.dataService.deleteNode(node).subscribe((response)=>{
+  //     console.log(response)
+  //   })
+  // }
 }

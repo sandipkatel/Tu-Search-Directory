@@ -42,6 +42,17 @@ export class AuthService {
         });
     }
 
+    adminsignUp(name:string,email:string, password: string) {
+        const url = 'http://localhost:7000/adminsignup/';
+        password = bcryptjs.hashSync(password, environment.SALT)
+        
+        return this.http.post<{message: string, isAuth: boolean}>(url, {
+            name: name,
+            email: email,
+            password: password
+        });
+    }
+
     signOut() {
         this.name = '';
         this.email = '';

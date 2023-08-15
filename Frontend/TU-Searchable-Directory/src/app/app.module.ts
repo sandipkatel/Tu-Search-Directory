@@ -22,6 +22,7 @@ import { AuthGuard } from './services/auth-guard.service';
 import { DisplayCardComponent } from './display-card/display-card.component';
 import { TestComponent } from './test/test.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { AdminSignupComponent } from './admin-signup/admin-signup.component';
 // import { DirectAuthenticationComponent } from './direct-authentication/direct-authentication.component';
 
 @NgModule({
@@ -38,7 +39,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     DropdownDirective,
     DisplayCardComponent,
     TestComponent,
-    HomePageComponent
+    HomePageComponent,
+    AdminSignupComponent
     // DirectAuthenticationComponent
   ],
   imports: [

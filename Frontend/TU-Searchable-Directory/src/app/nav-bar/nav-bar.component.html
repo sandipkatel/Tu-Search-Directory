@@ -11,9 +11,9 @@
             <li>
                 <a class = "nav-link option" [routerLink]="['/search']" routerLinkActive="active" > SEARCH </a>
             </li>
-            <!-- <li>
-                <a class = "nav-link"> Favorites </a>
-            </li> -->
+            <li *ngIf="this.admin">
+                <a class = "nav-link option" [routerLink]="['/adminSignUp']" routerLinkActive="active" > Admin Sign-Up </a>
+            </li>
         </ul>
     
         <ul class = 'navbar-nav ml-auto' *ngIf = "this.headerTag === 'Log In'">

@@ -7,13 +7,15 @@ import { AuthGuard } from './services/auth-guard.service';
 import { InfoCardComponent } from './tree/info-card/info-card.component';
 import { TreeComponent } from './tree/tree.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { AdminSignupComponent } from './admin-signup/admin-signup.component';
 
 const routes: Routes = [
   {path: '',component: HomePageComponent},
   {path: 'edit', canActivate: [AuthGuard],component: TreeComponent},
   {path: 'edit/:label', canActivate: [AuthGuard],component: InfoCardComponent},
   {path: 'auth', component: AuthFormComponent},
-  {path: 'search', component: SearchComponent}
+  {path: 'search', component: SearchComponent},
+  {path: 'adminSignUp', canActivate: [AuthGuard],component: AdminSignupComponent}
 ];
 
 @NgModule({

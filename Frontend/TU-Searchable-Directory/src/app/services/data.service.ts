@@ -36,12 +36,13 @@ export class DataService {
         });
     }
 
-    editPersonnelDetails(personName:string,personTitle:string,imageUrl:string,organization?:string,previousName?:string){
+    editPersonnelDetails(personName:string,personTitle:string,imageUrl:string,personEmail:string,organization?:string,previousName?:string){
         let url=this.url+'editPersonnel/'
         const body = {
             personName: personName,
             personTitle: personTitle,
             imageUrl: imageUrl,
+            personEmail:personEmail,
             organization:organization,
             previousName:previousName
           };
@@ -53,12 +54,13 @@ export class DataService {
         return this.http.post(url,body,httpOptions)
     }
 
-    addPersonnel(personName:string,personTitle:string,imageUrl:string,organization:string){
+    addPersonnel(personName:string,personTitle:string,imageUrl:string,personEmail:string,organization:string){
         let url=this.url+'addPersonnel/'
         const body = {
             personName: personName,
             personTitle: personTitle,
             imageUrl: imageUrl,
+            personEmail:personEmail,
             organization:organization
           };
         const httpOptions = {
@@ -82,6 +84,18 @@ export class DataService {
         return this.http.post(url,body,httpOptions)
     }
 
+    deleteNode(Node?:string){
+        let url=this.url+'deleteNode/'
+        const body = {
+            Node:Node
+          };
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+            }),
+        };
+        return this.http.post(url,body,httpOptions)
+    }
 
     addNode(instituteName:string,parentName?:string){
         let url=this.url+'add/'
