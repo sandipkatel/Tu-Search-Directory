@@ -114,7 +114,7 @@ export class InfoCardComponent implements OnInit {
 
   // onDeleteNode(node?:string){
   //   let Node=node;
-  //   this.dataService.deleteNode(node).subscribe((response)=>{
+  //   this.dataService.deleteNode(Node).subscribe((response)=>{
   //     console.log(response)
   //   })
   // }

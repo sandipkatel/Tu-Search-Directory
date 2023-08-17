@@ -84,18 +84,18 @@ export class DataService {
         return this.http.post(url,body,httpOptions)
     }
 
-    deleteNode(Node?:string){
-        let url=this.url+'deleteNode/'
-        const body = {
-            Node:Node
-          };
-        const httpOptions = {
-            headers: new HttpHeaders({
-              'Content-Type': 'application/json',
-            }),
-        };
-        return this.http.post(url,body,httpOptions)
-    }
+    // deleteNode(Node?:string){
+    //     let url=this.url+'deleteNode/'
+    //     const body = {
+    //         Node:Node
+    //       };
+    //     const httpOptions = {
+    //         headers: new HttpHeaders({
+    //           'Content-Type': 'application/json',
+    //         }),
+    //     };
+    //     return this.http.post(url,body,httpOptions)
+    // }
 
     addNode(instituteName:string,parentName?:string){
         let url=this.url+'add/'

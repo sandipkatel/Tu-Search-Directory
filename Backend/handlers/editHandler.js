@@ -29,11 +29,62 @@ exports.editNode = (req, res, next) => {
 
 exports.deleteNodebyId = (req, res, next) => {
     let id = req.body.id;
+    
     Node.deleteSubTree(id);
     Node.removeIdFromParent(id);
     next();
 }
 
+// exports.deleteNode = async (req, res, next) => {
+//     let nodeName = req.body.Node;
+//     const db = getDb();
+//     // const nodesCollection = db.collection('Nodes');
+//     // const parent = await nodesCollection.findOne({ name: nodeName });
+//     // id=parent._id
+//     // Node.deleteSubTree(id);
+//     // Node.removeIdFromParent(id);
+//     try {
+//  // Update with your database name
+//         const nodesCollection = db.collection('Nodes');
+
+//         // Find the node to delete
+//         const nodeToDelete = await nodesCollection.findOne({ name: nodeName });
+
+//         if (nodeToDelete) {
+//             let nodeToDeleteId=nodeToDelete._id
+//             nodeToDeleteId=JSON.stringify(nodeToDeleteId);
+//             nodeToDeleteId=nodeToDeleteId.replace(/^"(.*)"$/, '$1');
+//             // console.log(nodeToDeleteId)
+//             // console.log(typeof(nodeToDeleteId))
+//             const parentNode = await nodesCollection.findOne({ children: { $in: [nodeToDeleteId]} });
+//             console.log("Parent node=",parentNode._id)
+//             if (parentNode) {
+//                 await nodesCollection.updateOne(
+//                     { _id: parentNode._id },
+//                     { $pull: { children: nodeToDeleteId } }
+//                 );
+//             }
+//             // Delete the entire subtree rooted at nodeToDelete
+//             await deleteSubTree(nodesCollection, nodeToDeleteId);
+
+//             console.log('Node and its subtree deleted successfully.');
+//         } else {
+//             console.log('Node not found.');
+//         }
+//     } catch (error) {
+//         console.error('An error occurred:', error);
+//     }
+// }
+
+// async function deleteSubTree(collection, nodeId) {
+//     const node = await collection.findOne({ _id: nodeId });
+//     if (node) {
+//         for (const childId of node.children) {
+//             await deleteSubTree(collection, childId);
+//         }
+//         await collection.deleteOne({ _id: nodeId });
+//     }
+// }
 
 
 exports.addPersonnel = (req, res, next) => {

@@ -10,6 +10,12 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavBarComponent implements OnInit {
 
+  isMenuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
   headerTag: string;
   name: string;
   admin: boolean;

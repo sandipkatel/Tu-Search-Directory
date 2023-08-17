@@ -6,3 +6,37 @@
     font-size: x-large;
 }
 
+/* Add your existing styles here */
+
+/* Style the hamburger button icon with dark green color */
+.navbar-toggler-icon {
+    background-color: #035534; /* Dark green color */
+  }
+  
+  /* Adjustments for mobile view */
+  @media screen and (max-width: 768px) {
+    .navbar-nav {
+      flex-direction: column; /* Stack navigation items vertically */
+    }
+    
+    .navbar-collapse {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: #14a37f; /* Change to your desired green color */
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+    
+    .navbar-toggler {
+      display: block; /* Show the hamburger button on mobile */
+      background-color: #14a37f; /* Same as the navbar background color */
+      border: none;
+    }
+    
+    .show {
+      display: block !important;
+    }
+  }
+  

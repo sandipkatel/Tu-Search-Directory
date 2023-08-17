@@ -153,3 +153,24 @@
 .footer-faculties h3{
     text-align: center;
 }
+
+@media screen and (max-width:600px) {
+    .university-info{
+        display: flex;
+        flex-direction: column;
+    }
+    .home-title{
+        font-size: large;
+        width: 100%;
+    }
+    .background-info,.background-button,.footer-basic-info{
+        display: flex;
+        flex-direction: column;
+    }
+    .footer-basic-info{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+  }

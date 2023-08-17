@@ -23,6 +23,7 @@ export class AuthFormComponent implements OnInit {
   }
 
   onLogIn(form: NgForm) {
+    console.log("ahksjdfasaaaaaaaaaaaaa")
     let email = form.value['email'];
     let password = form.value['password'];
     this.isAuthenticating = true;
