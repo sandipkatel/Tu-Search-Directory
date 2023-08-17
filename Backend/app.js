@@ -1,6 +1,7 @@
 const express  = require('express');
 const mongoConnect = require('./utils/database').mongoConnect;
 const bodyParser = require('body-parser');
+const cors=require('cors')
 require('dotenv').config();
 const bcryptjs = require('bcryptjs');
 
@@ -10,6 +11,12 @@ const searchRoutes = require('./routes/searchRoutes');
 const loginRoutes = require('./routes/loginRoutes.js');
 
 app = express();
+
+app.use(cors({
+    origin: ["https://re-tu-searchable-dir-frontend.vercel.app"],
+    methods: ["POST", "GET"],
+    credentials: true
+}));
 
  
 const PORT = 7000;
