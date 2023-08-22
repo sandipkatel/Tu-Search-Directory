@@ -7,8 +7,8 @@ const User = require('../models/user');
 
 exports.loginHandler = (req, res, next) => {
     let email = req.body.email;
-    let hashedPassword=req.body.password;
-    // let hashedPassword = bcryptjs.hashSync(req.body.password, process.env.SALT);
+    // let hashedPassword=req.body.password;
+    let hashedPassword = bcryptjs.hashSync(req.body.password, process.env.SALT);
 
     User.findbyMail(
         email, ([result]) => {
@@ -43,8 +43,8 @@ exports.loginHandler = (req, res, next) => {
 exports.signupHandler = (req, res, next) => {
     let name = req.body.name;
     let email = req.body.email;
-    let hashedPassword=req.body.password;
-    // let hashedPassword = bcryptjs.hashSync(req.body.password, process.env.SALT);
+    // let hashedPassword=req.body.password;
+    let hashedPassword = bcryptjs.hashSync(req.body.password, process.env.SALT);
 
     User.findbyMail(email, (searchResult) => {
         console.log('search:', searchResult);
@@ -69,8 +69,8 @@ exports.signupHandler = (req, res, next) => {
 exports.adminsignupHandler = (req, res, next) => {
     let name = req.body.name;
     let email = req.body.email;
-    let hashedPassword=req.body.password;
-    // let hashedPassword = bcryptjs.hashSync(req.body.password, process.env.SALT);
+    // let hashedPassword=req.body.password;
+    let hashedPassword = bcryptjs.hashSync(req.body.password, process.env.SALT);
 
     User.findbyMail(email, (searchResult) => {
         console.log('search:', searchResult);

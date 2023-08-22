@@ -1,8 +1,8 @@
 import { Injectable, EventEmitter } from "@angular/core";
 import { HttpClient, HttpParams } from '@angular/common/http'; 
 
-import * as bcryptjs from 'bcryptjs';
-import { environment } from "src/environments/environment";
+// import * as bcryptjs from 'bcryptjs';
+// import { environment } from "src/environments/environment";
 
 
 @Injectable()
@@ -23,7 +23,8 @@ export class AuthService {
 
     logIn(email:string, password: string) {
         const url = 'http://localhost:7000/login/';
-        password = bcryptjs.hashSync(password, environment.SALT)
+        // let SALT = '$2a$10$mLmYXYIw9FLvW7d4rXdple';
+        // password = bcryptjs.hashSync(password, SALT)
         
         return this.http.post<{message:string, token:string, name:string, email:string, admin: boolean}>(url, {
             email: email,
@@ -33,7 +34,8 @@ export class AuthService {
 
     signUp(name:string,email:string, password: string) {
         const url = 'http://localhost:7000/signup/';
-        password = bcryptjs.hashSync(password, environment.SALT)
+        // let SALT = '$2a$10$mLmYXYIw9FLvW7d4rXdple';
+        // password = bcryptjs.hashSync(password, SALT)
         
         return this.http.post<{message: string, isAuth: boolean}>(url, {
             name: name,
@@ -44,7 +46,8 @@ export class AuthService {
 
     adminsignUp(name:string,email:string, password: string) {
         const url = 'http://localhost:7000/adminsignup/';
-        password = bcryptjs.hashSync(password, environment.SALT)
+        // let SALT = '$2a$10$mLmYXYIw9FLvW7d4rXdple';
+        // password = bcryptjs.hashSync(password, SALT)
         
         return this.http.post<{message: string, isAuth: boolean}>(url, {
             name: name,
