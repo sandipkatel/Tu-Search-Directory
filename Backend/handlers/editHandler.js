@@ -9,8 +9,8 @@ exports.addNode = async(req, res, next) => {
 
     if(parent && parent._id){
         let node = new Node(null, req.body.instituteName, req.body.info, req.body.children, req.body.root);
-        node.save();
-        Node.addIdToParent(req.body.instituteName,req.body.parentName);
+        await node.save();
+        Node.addIdToParent(node._id,req.body.parentName);
         res.status(200).json({message: "Information added successfully"});
     }
     else{

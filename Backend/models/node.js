@@ -169,18 +169,18 @@ class Node {
             .catch(err => console.log(err))
     }
 
-    static async addIdToParent(childName, parentName) {
+    static async addIdToParent(childId, parentName) {
         const db = getDb();
 
         try {
 
             const nodesCollection = db.collection('Nodes');
-            const newChild = await nodesCollection.findOne({ name: childName });
+            // const newChild = await nodesCollection.findOne({ name: childName });
             const parent = await nodesCollection.findOne({ name: parentName });
 
             if (parent) {
                 const parentId = parent._id;
-                let childIdString = JSON.stringify(newChild._id)
+                let childIdString = JSON.stringify(childId)
                 childIdString = childIdString.replace(/^"(.*)"$/, '$1');
                 parent.children.push(childIdString);
 
