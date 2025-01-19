@@ -1,32 +1,32 @@
-/* .body,.container,.row,.justify-content-center,.col{
-    all: unset;
-} */
-/* ::ng-deep .container {
-    all:unset;
-} */
-
 .homePage-image {
   background: url(https://portal.tu.edu.np/medias/registraroffice_2023_05_04_08_14_47.png)
     center center/cover no-repeat;
-  height: 80vh;
+  height: 90vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
   object-fit: contain;
   padding: 0 auto;
 }
+
 .homePage-image .background-info {
   color: white;
+  text-align: center;
 }
+
 .home-title {
-  font-size: 3rem;
+  font-size: 3.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2rem;
 }
+
 .background-button {
   display: flex;
   justify-content: center;
+  gap: 20px;
 }
 
 .home-Search,
@@ -37,142 +37,209 @@
   color: white;
   border: 2px solid white;
   font-size: 1.5rem;
-  margin: 0px 10px;
+  transition: all 0.3s ease;
+  border-radius: 25px;
 }
 
 .home-Search:hover,
 .home-SignIn:hover {
-  /* background: transparent; */
-  height: 50px;
-  width: 200px;
+  background-color: #2c57f6;
+  border-color: #092eb3;
   color: white;
-  background-color: rgb(67, 219, 80);
-  border: 2px solid rgb(67, 219, 80);
-  font-size: 1.5rem;
-  margin: 0px 10px;
-  cursor: pointer;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(76, 94, 175, 0.3);
 }
 
 .university-info {
   display: grid;
   grid-template-columns: 0.6fr 1.4fr;
-  margin-top: 50px;
-  border: 1px solid black;
-  padding: 20px;
-  width: 90vw;
-  align-self: center;
-  margin-left: 30px;
-
-  box-shadow: 13px 19px 31px -10px rgba(0, 0, 0, 0.63);
-  -webkit-box-shadow: 13px 19px 31px -10px rgba(0, 0, 0, 0.63);
-  -moz-box-shadow: 13px 19px 31px -10px rgba(0, 0, 0, 0.63);
-
-  border-radius: 10px;
+  margin: 50px auto;
+  border: none;
+  padding: 30px;
+  width: 90%;
+  max-width: 1200px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  background: white;
+  gap: 10px;
 }
 
 .university-info-image {
-  object-fit: contain;
-  height: auto;
-  /* width: 200px; */
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .uni-info-img {
-  width: 250px;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px 0 0 10px;
+  transition: transform 0.3s ease;
+}
+
+.uni-info-img:hover {
+  transform: scale(1.05);
 }
 
 .university-members {
   text-align: center;
-  margin-top: 75px;
+  margin: 75px auto;
+  padding: 0 20px;
+}
+
+.university-members h1 {
+  margin-bottom: 2rem;
+  color: #333;
 }
 
 .person-grid {
-  /* margin-top: 100px; */
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 10px;
-  justify-items: center;
-  padding: 20px;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  gap: 20px; 
+  padding: 20px 0;
 }
 
+.person-grid > .person-container:nth-child(2) {
+  transform: scale(1.2);
+}
+
+/* .person-grid > .person-container:nth-child(3) {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+} */
+
 .person-container {
-  width: 300px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  overflow: hidden;
+  min-width: 300px;
+  scroll-snap-align: start;
+  background: white;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.person-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .person-info {
   text-align: center;
-  padding: 20px;
+  padding: 25px;
 }
+
 .person-info-image {
   height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .person-info img {
-  max-width: 200px;
-  max-height: 150px;
-  border-radius: 20%;
-  margin-bottom: 10px;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #3760f6;
+  transition: transform 0.3s ease;
+}
+
+.person-info img:hover {
+  transform: scale(1.05);
 }
 
 .person-info h2 {
-  margin: 0;
+  margin: 15px 0 5px;
   font-size: 24px;
   color: #333;
 }
 
 .person-info p {
   margin: 5px 0;
-  color: #555;
+  color: #666;
+}
+
+.designation {
+  color: #3760f6;
+  font-style: italic;
 }
 
 .home-footer {
-  background-color: #14a37f;
+  background-color: #3760f6;
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 50px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  width: 100vw;
 }
 
 .footer-basic-info {
   display: flex;
-  justify-content: space-between;
-  width: 800px;
-  margin: 15px auto;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
 }
 
-.footer-contact,
+/* .footer-contact,
 .footer-faculties {
-  margin: 0;
-}
+  display: flex;
+  justify-content: center;
+  flex: 1;
+} */
+
 .footer-contact h3,
 .footer-faculties h3 {
   text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 10px;
 }
 
-@media screen and (max-width: 600px) {
-  .university-info {
-    display: flex;
-    flex-direction: column;
-  }
+.footer-contact-list,
+.footer-faculties ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-contact-list li,
+.footer-faculties li {
+  margin: 10px 0;
+}
+
+.footer-copyright {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media screen and (max-width: 768px) {
   .home-title {
-    font-size: large;
-    width: 100%;
+    font-size: 2rem;
   }
-  .background-info,
-  .background-button,
-  .footer-basic-info {
-    display: flex;
-    flex-direction: column;
+
+  .university-info {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
-  .footer-basic-info {
-    display: flex;
+
+  .background-button {
     flex-direction: column;
-    width: 100%;
+    gap: 10px;
+  }
+
+  .footer-basic-info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-Search,
+  .home-SignIn {
+    width: 180px;
+    font-size: 1.2rem;
   }
 }

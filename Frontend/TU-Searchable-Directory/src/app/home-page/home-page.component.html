@@ -1,70 +1,90 @@
+<app-language-switcher></app-language-switcher>
 <div class="component">
   <div class="homePage-image">
     <div class="background-info">
-      <h1 class="home-title">TU SEARCHABLE DIRECTORY</h1>
+      <h1 class="home-title">{{ "title" | translate }}</h1>
       <div class="background-button">
         <a
           class="nav-link option"
           [routerLink]="['/search']"
           routerLinkActive="active"
-          ><button class="home-Search">Search</button></a
+          ><button class="home-Search">
+            {{ "searchButton" | translate }}
+          </button></a
         >
         <a
           class="nav-link option"
           [routerLink]="['/auth']"
           routerLinkActive="active"
-          ><button class="home-SignIn">Sign In</button></a
+          ><button class="home-SignIn">
+            {{ "signInButton" | translate }}
+          </button></a
         >
       </div>
     </div>
   </div>
+
   <div class="university-info">
     <div class="university-info-image">
       <img
         class="uni-info-img"
-        src="https://portal.tu.edu.np/medias/saroj_2024_04_01_13_55_36.jpg"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Tribhuvan_University_of_Nepal-IMG_9530.JPG/2560px-Tribhuvan_University_of_Nepal-IMG_9530.JPG"
+        alt="Tribhuvan University Campus"
       />
     </div>
     <div class="university-info-summary">
-      <h3>Tribhuvan University</h3>
+      <h3>{{ "aboutTitle" | translate }}</h3>
       <p>
-        Tribhuvan University is a public university located in Kirtipur,
-        Kathmandu. Established in 1959, TU is the oldest and the largest
-        university in Nepal with approximately 3.5 lakh students. The college
-        offers 1000 undergraduate and 500 postgraduate programs across a wide
-        range of disciplines......
+        {{ "aboutText" | translate }}
       </p>
     </div>
   </div>
 
   <div class="university-members">
-    <h1>Members</h1>
+    <h1>{{ "leadershipTitle" | translate }}</h1>
     <div class="person-grid">
+      
+      <div class="person-container">
+        <div class="person-info">
+          <div class="person-info-image">
+            <img
+            class="person-image"
+            src="https://giwmscdnone.gov.np/media/minister_photo/bidhyaBhattarai.jpeg"
+            alt="Pro-Chancellor"
+            />
+          </div>
+          <h2>{{ "positions.proChancellor.title" | translate }}</h2>
+          <p>
+            <span class="honorific">{{
+              "positions.proChancellor.honorific" | translate
+            }}</span>
+            {{ "positions.proChancellor.name" | translate }}
+          </p>
+          <p class="designation">
+            {{ "positions.proChancellor.position" | translate }}
+          </p>
+        </div>
+      </div>
+      
       <div class="person-container">
         <div class="person-info">
           <div class="person-info-image">
             <img
               class="person-image"
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/KP_Sharma_Oli_in_New_York_%2828_September_2024%29_crop.png/330px-KP_Sharma_Oli_in_New_York_%2828_September_2024%29_crop.png"
-              alt="Person 1"
+              alt="'positions.chancellor.name' | translate"
             />
           </div>
-          <h2>Chancellor</h2>
-          <p>KP Sharma OLi (Prime Minister)</p>
-        </div>
-      </div>
-
-      <div class="person-container">
-        <div class="person-info">
-          <div class="person-info-image">
-            <img
-              class="person-image"
-              src="https://giwmscdnone.gov.np/media/minister_photo/bidhyaBhattarai.jpeg"
-              alt="Person 2"
-            />
-          </div>
-          <h2>Pro-Chancellor</h2>
-          <p>Biddha Bhattarai(Minister of Education))</p>
+          <h2>{{ "positions.chancellor.title" | translate }}</h2>
+          <p>
+            <span class="honorific">{{
+              "positions.chancellor.honorific" | translate
+            }}</span>
+            {{ "positions.chancellor.name" | translate }}
+          </p>
+          <p class="designation">
+            {{ "positions.chancellor.position" | translate }}
+          </p>
         </div>
       </div>
 
@@ -74,49 +94,55 @@
             <img
               class="person-image"
               src="https://portal.tu.edu.np/medias/Authorities_2024_08_05_20_51_35.jpg"
-              alt="Person 3"
+              alt="Vice Chancellor"
             />
           </div>
-          <h2>Vice Chancellor</h2>
-          <p>Prof .Dr. Keshar Jung Baral</p>
-        </div>
-      </div>
-
-      <div class="person-container">
-        <div class="person-info">
-          <div class="person-info-image">
-            <img
-              class="person-image"
-              src="https://msessd.ioe.edu.np/wp-content/uploads/2016/09/asda-242x300.jpg"
-              alt="Person 3"
-            />
-          </div>
-          <h2>Dean(IOE)</h2>
-          <p>Prof. Dr. Sushil B. Bajracharya</p>
+          <h2>{{ "positions.viceChancellor.title" | translate }}</h2>
+          <p>
+            <span class="honorific">{{
+              "positions.viceChancellor.honorific" | translate
+            }}</span>
+            {{ "positions.viceChancellor.name" | translate }}
+          </p>
+          <p class="designation">
+            {{ "positions.viceChancellor.position" | translate }}
+          </p>
         </div>
       </div>
     </div>
   </div>
+
   <div class="home-footer">
     <div class="footer-basic-info">
       <div class="footer-faculties">
-        <h3>INSTITUTES/FACULTIES</h3>
+        <h3>{{ "institutesTitle" | translate }}</h3>
         <ul>
-          <li>Institute of Engineering</li>
-          <li>Institute of Medicine</li>
+          <li>Institute of Engineering (IOE)</li>
+          <li>Institute of Medicine (IOM)</li>
+          <li>Institute of Agriculture and Animal Science</li>
+          <li>Institute of Forestry</li>
+          <li>Institute of Science and Technology</li>
+          <li>Faculty of Humanities and Social Sciences</li>
+          <li>Faculty of Management</li>
+          <li>Faculty of Education</li>
+          <li>Faculty of Law</li>
         </ul>
       </div>
 
       <div class="footer-contact">
-        <h3>CONTACT US</h3>
+        <h3>{{ "contactTitle" | translate }}</h3>
         <ul class="footer-contact-list">
-          <li>Kirtipur, Kathmandu</li>
-          <li>Phone: 4330346</li>
-          <li>Emain: info@tu.edu.np</li>
-          <li>Website: https://tu.edu.np</li>
+          <li>Tribhuvan University</li>
+          <li>{{ "address" | translate }}</li>
+          <li>{{ "phone" | translate }}</li>
+          <li>{{ "email" | translate }}</li>
+          <li>
+            <a href="https://tu.edu.np" target="_blank">www.tu.edu.np</a>
+          </li>
         </ul>
       </div>
     </div>
-    <div class="footer-copyright">&#169; 2023 Tribhuvan University</div>
+    <div class="footer-copyright">{{ "copyright" | translate }}</div>
   </div>
 </div>
+<!-- </div> -->

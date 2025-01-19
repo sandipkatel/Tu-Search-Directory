@@ -1,5 +1,5 @@
 .custom {
-    background-color:#14a37f ;
+    background-color:#3760f6  ;
 }
 
 .option {
@@ -24,14 +24,14 @@
       top: 60px;
       left: 0;
       width: 100%;
-      background-color: #14a37f; /* Change to your desired green color */
+      background-color: #3760f6 ; /* Change to your desired green color */
       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
       z-index: 1;
     }
     
     .navbar-toggler {
       display: block; /* Show the hamburger button on mobile */
-      background-color: #14a37f; /* Same as the navbar background color */
+      background-color: #3760f6 ; /* Same as the navbar background color */
       border: none;
     }
     

@@ -24,6 +24,9 @@ import { TestComponent } from './test/test.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AdminSignupComponent } from './admin-signup/admin-signup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
+import { TranslatePipe } from './pipes/translate.pipe';
+import { LanguageService } from './services/language.service';
 // import { DirectAuthenticationComponent } from './direct-authentication/direct-authentication.component';
 
 @NgModule({
@@ -41,7 +44,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DisplayCardComponent,
     TestComponent,
     HomePageComponent,
-    AdminSignupComponent
+    AdminSignupComponent,
+    LanguageSwitcherComponent,
+    TranslatePipe,
     // DirectAuthenticationComponent
   ],
   imports: [
@@ -50,9 +55,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
-  providers: [DataService, AuthService, AuthGuard],
-  bootstrap: [AppComponent]
+  providers: [DataService, AuthService, AuthGuard, LanguageService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
