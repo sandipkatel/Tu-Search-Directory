@@ -1,0 +1,324 @@
+[{
+  "_id": {
+    "$oid": "62e612ef6efaa243d22ce0ad"
+  },
+  "name": "Institutes",
+  "info": {
+    "personnel": null,
+    "programmes": null
+  },
+  "children": [
+    "62e74415f9618d588110e2f4",
+    "62e7464bf9618d588110e2f5"
+  ],
+  "root": false
+},
+{
+  "_id": {
+    "$oid": "62e74938f9618d588110e2f7"
+  },
+  "name": "Faculty of Education",
+  "info": {
+    "personnel": [
+      {
+        "name": "Prof.Dr. Chitra Bahadur Budhathoki",
+        "imageUrl": "https://www.tufoe.edu.np/images/Prof._Chitra.jpg",
+        "title": "Dean"
+      }
+    ],
+    "programmes": [
+      {
+        "name": "Bachelor of Education(B.Ed)",
+        "description": "Since 1996 Tribhuvan University (TU) has been implementing three-year Bachelor programs with an annual examination system in Faculties of Education, Management and Humanities and Social Sciences and Institute of Science and Technology. Recently, the duration of Bachelor's programs in those faculties and institutes has been made four years by adding one more year. In conformity with this, the Faculty of Education (FoE) is going to introduce a four-year Bachelor of Education (B.Ed.) with two specialization subject areas (specialization major and specialization minor subject) in 2072 BS instead of offering a single specialization area like in a three-year B.Ed."
+      },
+      {
+        "name": "Master of Education(M.Ed)",
+        "description": "Master of Education is a two-year programme offered in constitutional and affiliated campuses under FoE scattered in different parts of the country. This programme consists of professional/pedagogical core courses and specialization courses. Specialization courses include Curriculum and Evaluation, Educational Planning and Management, English Education, Nepali Education, Science Education, Mathematics Education, Health Education, Physical Education, Economics Education, Geography Education, History Education and Political Science Education. Students can specialize in any one of these courses. Both professional and specialization courses have been revised and implemented since 2009."
+      },
+      {
+        "name": "LL.B (Bachelor of Laws)",
+        "description": "LL.B is a three years programme for having bachelor’s degree in any discipline. This programme is offered in all six constituent campuses and one affiliated campus named Hari Khetan College. Currently, more than 6000 students in three years have got admission. The largest number of students has been getting admission in Nepal Law Campus, Kathmandu."
+      }
+    ]
+  },
+  "children": [],
+  "root": false
+},
+{
+  "_id": {
+    "$oid": "62e73f28f9618d588110e2f0"
+  },
+  "name": "Central Offices",
+  "info": {
+    "personnel": [],
+    "programmes": []
+  },
+  "children": [
+    "62e74022f9618d588110e2f1",
+    "62e74066f9618d588110e2f2",
+    "62e740fcf9618d588110e2f3"
+  ],
+  "root": false
+},
+{
+  "_id": {
+    "$oid": "62e74415f9618d588110e2f4"
+  },
+  "name": "Institute of Engineering",
+  "info": {
+    "personnel": [
+      {
+        "name": "Prof.Dr. Shashidhar Ram Joshi",
+        "imageUrl": "https://ioe.edu.np/media/1532/profdrdrjoshi.jpg",
+        "title": "Dean"
+      },
+      {
+        "name": "Prof.Dr. Sushil Bahadur Bajracharya",
+        "title": "Assistant Dean(Planning)",
+        "imageUrl": "http://msessd.ioe.edu.np/wp-content/uploads/2016/09/asda-242x300.jpg"
+      }
+    ],
+    "programmes": [
+      {
+        "name": "BE in Computer Engineering",
+        "description": "Computer engineering is a discipline that integrates several fields of electrical engineering and computer science required to develop computer hardware and software. Computer engineers usually have training in electronic engineering (or electrical engineering), software design, and hardware–software integration instead of only software engineering or electronic engineering. Computer engineers are involved in many hardware and software aspects of computing, from the design of individual microcontrollers, microprocessors, personal computers, and supercomputers, to circuit design. This field of engineering not only focuses on how computer systems themselves work, but also how they integrate into the larger picture."
+      },
+      {
+        "name": "BE in Electrical Engineering",
+        "description": "Electrical engineering is a field of engineering that generally deals with the study and application of electricity, electronics, and electromagnetism. This field first became an identifiable occupation in the later half of the 19th century after commercialization of the electric telegraph, the telephone, and electric power distribution and use. Subsequently, broadcasting and recording media made electronics part of daily life. The invention of the transistor, and later the integrated circuit, brought down the cost of electronics to the point they can be used in almost any household object."
+      },
+      {
+        "name": "BE in Civil Engineering",
+        "description": "Civil Engineering is a professional engineering discipline that deals with the design, construction, and maintenance of the physical and naturally built environment, including works like roads, bridges, canals, dams, and buildings. Civil engineering is traditionally broken into a number of sub-disciplines. It is the second-oldest engineering discipline after military engineering, and it is defined to distinguish non-military engineering from military engineering. Civil engineering takes place in the public sector from municipal through to national governments, and in the private sector from individual homeowners through to international companies."
+      }
+    ]
+  },
+  "children": [],
+  "root": false
+},
+{
+  "_id": {
+    "$oid": "62e7464bf9618d588110e2f5"
+  },
+  "name": "Institute of Medicine",
+  "info": {
+    "personnel": [
+      {
+        "name": "Prof.Dr. Dibya Singh Shah",
+        "imageUrl": "http://iom.edu.np/wp-content/uploads/2021/09/iom-dean-Dibya-Singh.jpg",
+        "title": "Dean"
+      },
+      {
+        "name": "Prof.Dr. Pradeep Vaidya",
+        "title": "Assistant Dean(Examination)",
+        "imageUrl": "https://norvichospital.com/uploads/doctor/thumbs-medium/5acde4a497698.jpg"
+      }
+    ],
+    "programmes": [
+      {
+        "name": "Bachelor of Medicine, Bachelor of Surgery(MBBS)",
+        "description": "The Bachelor of Medicine, Bachelor of Surgery program aims to produce socially responsible and competent medical doctors who are able to meet the existing and emerging challenges of national and international healthcare system. The course is unique in that it is a community oriented and partly community based program. It focuses on early exposure to community medicine and clinical subjects, follows an integrated approach in learning, includes problem based learning, and promotes self-directed learning. The course also focuses on medical ethics and information management. The graduates of MBBS program will be able to take medical history; perform clinical examinations, diagnose various diseases and treat them, manage life-threatening medical emergencies; communicate with patients and their families; plan and manage preventive, promotive and rehabilitative health services and conduct research in health sector."
+      },
+      {
+        "name": "Bachelor of Dental Surgery(BDS)",
+        "description": "The Bachelor of Dental Surgery program aims to produce knowledgeable, competent, skillful and socially committed caring dental surgeons who are able to meet the professional and social requirements in dental health care. The graduates of BDS program will be able to recognize, investigate, treat and prevent dental health problems; organize preventive, curative and promotive dental health care programs in hospital, and community settings; communicate effective with patients and their families; and perform the highest possible standard of procedures which are within the area of his/her competence."
+      },
+      {
+        "name": "Bachelor of Audiology, Speech and Language Pathology (BASLP)",
+        "description": "The Bachelor of Audiology, Speech and Language Pathology program aims to produce competent and compassionate service oriented audiologists and speech-language pathologists who are capable of identifying, evaluating, treating and rehabilitating the sufferers of speech-language and hearing disorders. The graduates of BASLP program will be able to identify the presenting speech-language and auditory complaints, evaluate the hearing status; assess the aural health and recognize aural signs of common systemic diseases; evaluate for proper hearing aid, prescribe and fit appropriate hearing aids; refer patients for medical and ENT consultation when necessary; plan and implement community based rehabilitation services; support cochlear implantee in audiological issues and provide auditory-verbal therapy to cochlear implantee children"
+      }
+    ]
+  },
+  "children": [],
+  "root": false
+},
+{
+  "_id": {
+    "$oid": "62e612386efaa243d22ce0ac"
+  },
+  "name": "Tribhuvan University",
+  "info": {
+    "personnel": [
+      {
+        "name": "Prof. Dr. Dharma Kant Baskota",
+        "title": "Vice-Chancellor",
+        "imageUrl": null
+      }
+    ]
+  },
+  "children": [
+    "62e612ef6efaa243d22ce0ad",
+    "62e613126efaa243d22ce0ae",
+    "62e6131b6efaa243d22ce0af",
+    "62e73f28f9618d588110e2f0"
+  ],
+  "root": true
+},
+{
+  "_id": {
+    "$oid": "62e74abdf9618d588110e2f8"
+  },
+  "name": "Central Department in Physics",
+  "info": {
+    "personnel": [
+      {
+        "name": "Dr. Binil Aryal",
+        "imageUrl": "https://tucdp.edu.np/wp-content/uploads/2015/12/1111.jpg",
+        "title": "Head Of Department"
+      }
+    ],
+    "programmes": [
+      {
+        "name": "M.Sc. Program",
+        "description": "The Central Department of Physics (CDP) has been offering M.Sc. (Physics) program since last 50 years. About 3,500 graduates have passed out from our department. Most of the physics graduate are working in the colleges. About 1,000 graduates are doing physics in abroad (mostly in USA), mostly in the Universities and research centers. The CDP offers 7 elective majors for 120 students. These are Solid State Physics, Astrophysics, Plasma Physics, Bio-medical Physics, Gravitation & Cosmology, Atmospheric Physics and Micro and Opto-electronics.  In addition, all M.Sc. (Physics) program as well as B.Sc. (Physics) program of Tribhuvan University is academically regulated by the Physics Subject Committee."
+      },
+      {
+        "name": "PH.D. PROGRAM",
+        "description": "The Central Department of Physics (CDP) also offers a PHD program in physics."
+      }
+    ]
+  },
+  "children": [],
+  "root": false
+},
+{
+  "_id": {
+    "$oid": "62e74066f9618d588110e2f2"
+  },
+  "name": "Information Technology Innovation Center",
+  "info": {
+    "personnel": [
+      {
+        "name": "Prof.Dr. Subarna Shakya",
+        "title": "Director",
+        "imageUrl": "http://pcampus.edu.np/wp-content/uploads/2015/10/unnamed-150x150.jpg"
+      }
+    ],
+    "programmes": []
+  },
+  "children": [],
+  "root": false
+},
+{
+  "_id": {
+    "$oid": "62e74c34f9618d588110e2fa"
+  },
+  "name": "Central Department of English",
+  "info": {
+    "personnel": [
+      {
+        "name": "Jib Lal Sapkota, PHd",
+        "imageUrl": "http://cdetu.edu.np/wp-content/uploads/2021/02/jiblal.png",
+        "title": "Chair and Professor of English"
+      }
+    ],
+    "programmes": [
+      {
+        "name": "MA Program",
+        "description": "The courses on the M.A. English Programme offer the students insight into literature, language, culture, and history, including rhetoric, communication studies, theatre studies, media studies and visual arts. There are two types of courses: core courses and elective courses. The students have to study the core courses, which are mandatory and have select elective courses in order to fulfill the requirements for the degree."
+      },
+      {
+        "name": "PH.D. PROGRAM",
+        "description": "The Central Department of English (CDE) also offers a PHD program in English."
+      }
+    ]
+  },
+  "children": [],
+  "root": false
+},
+{
+  "_id": {
+    "$oid": "62e613126efaa243d22ce0ae"
+  },
+  "name": "Faculties",
+  "info": null,
+  "children": [
+    "62e747cdf9618d588110e2f6",
+    "62e74938f9618d588110e2f7"
+  ],
+  "root": false
+},
+{
+  "_id": {
+    "$oid": "62e740fcf9618d588110e2f3"
+  },
+  "name": "Curriculum Development Center",
+  "info": {
+    "personnel": [
+      {
+        "name": "Prof.Dr. Paras Nath Yadav",
+        "imageUrl": "https://tribhuvan-university.edu.np/upload_file/images/staff/1573643873_1661129939_Prof.Dr.Paras%20Nath%20Yadav.jpg",
+        "title": "Executive Director"
+      }
+    ],
+    "programmes": []
+  },
+  "children": [],
+  "root": false
+},
+{
+  "_id": {
+    "$oid": "62e6131b6efaa243d22ce0af"
+  },
+  "name": "Central Departments",
+  "info": null,
+  "children": [
+    "62e74c34f9618d588110e2fa",
+    "62e74abdf9618d588110e2f8"
+  ],
+  "root": false
+},
+{
+  "_id": {
+    "$oid": "62e74022f9618d588110e2f1"
+  },
+  "name": "Office of the Planning Directorate",
+  "info": {
+    "personnel": [
+      {
+        "name": "Prof.Dr. Dhurba Kumar Gautam",
+        "title": "Director",
+        "imageUrl": "https://media-exp1.licdn.com/dms/image/C5603AQG502lSb3a2Qg/profile-displayphoto-shrink_800_800/0/1516491653350?e=1666828800&v=beta&t=YQuPohXu5J0DyUJfsYUCLxut6ZXvLbGqwaOUeBDLDsc"
+      }
+    ],
+    "programmes": []
+  },
+  "children": [],
+  "root": false
+},
+{
+  "_id": {
+    "$oid": "62e747cdf9618d588110e2f6"
+  },
+  "name": "Faculty of Law",
+  "info": {
+    "personnel": [
+      {
+        "name": "Prof.Dr. Bijay Singh Sijapati",
+        "imageUrl": "https://www.fol.edu.np/uploads/faculty/BJ.jpg",
+        "title": "Dean"
+      },
+      {
+        "name": "Prof.Dr. Gyaneshwor Parajuli",
+        "imageUrl": "https://www.fol.edu.np/uploads/faculty/Document%2061.jpg",
+        "title": "Assistant Dean"
+      }
+    ],
+    "programmes": [
+      {
+        "name": "Bachelor of Arts, Bachelor of Law(MBBS)",
+        "description": "Ten plus two graduates are qualified for admission in this programme after passing entrance exam. The total 280 students get admission each year. Only two constituent campuses--Nepal Law Campus located at Kathmandu offers admission for 105 students and the Prithivi Narayan Multiple Campus located at Pokhara offers admission for 35 students each year on the merit basis. The National Law College, an affiliated offers admission for 105 students on the merit basis."
+      },
+      {
+        "name": "LL.M(Master of Laws)",
+        "description": "The person who has Bachelor’s Degree in law is qualified to get admission in this programme through passing entrance exam. The Total number of seats for Nepal Law Campus is fifty and National Law College is fifty. Among these seats, 11/11 seats are reserved for each campus i.e. Women-2, Indigenous nationalities-2, Madhesi-1, Dalit-1, People with disabilities-1, People from backward areas-1, Muslim – 1, Tharu-1 and Others- 1."
+      },
+      {
+        "name": "LL.B (Bachelor of Laws)",
+        "description": "LL.B is a three years programme for having bachelor’s degree in any discipline. This programme is offered in all six constituent campuses and one affiliated campus named Hari Khetan College. Currently, more than 6000 students in three years have got admission. The largest number of students has been getting admission in Nepal Law Campus, Kathmandu."
+      }
+    ]
+  },
+  "children": [],
+  "root": false
+}]
