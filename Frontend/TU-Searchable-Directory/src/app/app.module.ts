@@ -23,6 +23,7 @@ import { DisplayCardComponent } from './display-card/display-card.component';
 import { TestComponent } from './test/test.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AdminSignupComponent } from './admin-signup/admin-signup.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { DirectAuthenticationComponent } from './direct-authentication/direct-authentication.component';
 
 @NgModule({
@@ -48,7 +49,8 @@ import { AdminSignupComponent } from './admin-signup/admin-signup.component';
     TreeModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [DataService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
