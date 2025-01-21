@@ -210,6 +210,15 @@
   margin: 10px 0;
 }
 
+.web-link {
+  text-decoration: none;
+  color: #ffffff; 
+}
+
+.web-link:hover {
+  text-decoration: underline;
+}
+
 .footer-copyright {
   text-align: center;
   margin-top: 30px;

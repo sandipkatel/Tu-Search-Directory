@@ -12,6 +12,7 @@ export class LanguageService {
   private translations: { [key: string]: { [key: string]: any } } = {
     en: {
       // Header
+      name: 'Tribhuvan University (TU)',
       title: 'TRIBHUVAN UNIVERSITY DIRECTORY',
       searchButton: 'Search Directory',
       signInButton: 'Admin Login',
@@ -60,6 +61,7 @@ export class LanguageService {
     },
     np: {
       // Header
+      name: 'त्रिभुवन विश्वविद्यालय (त्रि.वि.)',
       title: 'त्रिभुवन विश्वविद्यालय निर्देशिका',
       searchButton: 'निर्देशिका खोज्नुहोस्',
       signInButton: 'एडमिन लगइन',
