@@ -32,9 +32,9 @@ git clone https://github.com/Sujan-Koirala021/Re-TU-Searchable-Dir
 
 ## Authors
 
- - [@Sujan Koirala](https://github.com/Sujan-Koirala021)
+ - [@Sandip Katel](https://github.com/sandipkatel)
 
- - [@Samundra Subedi](https://github.com/Samundra-Subedi)
- - [@Subash Lamichhane](https://github.com/Subash-Lamichhane)
+ - [@Saphal Rimal](https://github.com/saphalr)
+ - [@Sijan Joshi](https://github.com/sijanj)
 
- - [@Swikar Gautam](https://github.com/SwikarGautam)
+ - [@Sharad Pokharel](https://github.com/sharadpokharel108)
