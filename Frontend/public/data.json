@@ -1,0 +1,107 @@
+{
+    "CarouselImages": [
+        {
+            "ImageLink": "/images/tu_bg1.png"
+        },
+        {
+            "ImageLink": "/images/tu_bg2.png"
+        },
+        {
+            "ImageLink": "/images/tu_bg3.png"
+        },
+        {
+            "ImageLink": "/images/tu_bg4.png"
+        }
+    ],
+    "NoticeLineData": [
+        {
+            "Title": "Around 14,000 students are expected to attend this year's 50th TU Convocation. 😮",
+            "Link": "/"
+        },
+        {
+            "Title": "Congratulation Prof. Dr. Sushil Bajrachatrya, New Dean of IOE",
+            "Link": "/"
+        },
+        {
+            "Title": "Now our new Chancellor is KP Sharma Oli",
+            "Link": "/"
+        },
+        {
+            "Title": "Prof. Dr. Keshar Jung Baral elicted as vice chancellor of TU",
+            "Link": "/"
+        }
+    ],
+    
+    "HighlightsData": [
+        {
+            "Title": "Bike Ambulance",
+            "Description": "In rural areas, inadequate transport links hinder sustainable development by limiting access to essential services and goods. Our project focused on enhancing mountain bikes and cargo bicycles with simple electrification kits, extending ride time and towing capabilities. Additionally, we've designed a motorbike ambulance for the Dhorpatan valley, providing vital emergency transportation to the nearest town of Burtibag. This initiative aims to bridge the mobility gap for rural communities.",
+            "PageLink": "/",
+            "BannerPic": "https://lh5.googleusercontent.com/8HKf8iXb6szUs_U30zWMmw-_npvz8nwu8vH_GZmHvsnXdUZa7BwAKzzRbJtaDJ0NyQ1s9Thk8X6P6czJvFdjgX9wdOXnJIeX-Be4fhf1t96oiY2hKOVix8IxoTwFfJmIag=w1280"
+        },
+        {
+            "Title": "InnoCraft - Where Innovation Meets Craftsmanship and Entrepreneurship",
+            "Description": "This project was awarded by the Nepal Academy of Science and Technology as part of its COVID-19 Combat and Innovation Program. The initiative aimed to address the rapid spread of the COVID-19 disease by devising a strategy to minimize human exposure through the deployment of robots for disinfection procedures within hospital settings in Kathmandu. The study also anticipated that this approach would prove instrumental in reducing the likelihood of secondary infections among COVID-19 patients, thanks to the effective removal of bacterial and fungal pathogens responsible for nosocomial infections. ",
+            "PageLink": "/",
+            "BannerPic": "https://lh5.googleusercontent.com/tZgZGezr7vONtKsvBhqeOSE2JR-oGiLadndC5gYu9agGdTFQVNymkJxshwd9JyqWzxFSMs2t37-2hIFezfNF8g=w1280"
+        },
+        {
+            "Title": "InnoCraft - Where Innovation Meets Craftsmanship and Entrepreneurship",
+            "Description": "Here student develop there innovative solutions to real world problems and showcase them to the world. The event is a platform for students to demonstrate their creativity, technical skills, and entrepreneurial spirit. It features project exhibitions, competitions, workshops, and talks by industry experts. Participants can network with professionals, gain valuable insights, and explore career opportunities in the field of innovation and entrepreneurship.",
+            "PageLink": "/",
+            "BannerPic": "https://colido.wordpress.com/wp-content/uploads/2015/06/sample01.png"
+        }
+    ],
+    "EventsData": [
+        {
+            "Title": "InnoCraft - Where Innovation Meets Craftsmanship and Entrepreneurship",
+            "Description": "Here student develop there innovative solutions to real world problems and showcase them to the world. The event is a platform for students to demonstrate their creativity, technical skills, and entrepreneurial spirit. It features project exhibitions, competitions, workshops, and talks by industry experts. Participants can network with professionals, gain valuable insights, and explore career opportunities in the field of innovation and entrepreneurship.",
+            "PageLink": "/",
+            "BannerPic": "https://colido.wordpress.com/wp-content/uploads/2015/06/sample01.png"
+        },
+        {
+            "Title": "InnoCraft - Where Innovation Meets Craftsmanship and Entrepreneurship",
+            "Description": "Here student develop there innovative solutions to real world problems and showcase them to the world. The event is a platform for students to demonstrate their creativity, technical skills, and entrepreneurial spirit. It features project exhibitions, competitions, workshops, and talks by industry experts. Participants can network with professionals, gain valuable insights, and explore career opportunities in the field of innovation and entrepreneurship.",
+            "PageLink": "/",
+            "BannerPic": "https://colido.wordpress.com/wp-content/uploads/2015/06/sample01.png"
+        },
+        {
+            "Title": "InnoCraft - Where Innovation Meets Craftsmanship and Entrepreneurship",
+            "Description": "Here student develop there innovative solutions to real world problems and showcase them to the world. The event is a platform for students to demonstrate their creativity, technical skills, and entrepreneurial spirit. It features project exhibitions, competitions, workshops, and talks by industry experts. Participants can network with professionals, gain valuable insights, and explore career opportunities in the field of innovation and entrepreneurship.",
+            "PageLink": "/",
+            "BannerPic": "https://colido.wordpress.com/wp-content/uploads/2015/06/sample01.png"
+        }
+    ],
+    "ContactData": [
+        {
+            "Title": "IIEC Office: ",
+            "Tel": " +977-98xxxxxxxx",
+            "Email": "iiec@pcampus.edu.np"
+        },
+        {
+            "Title": "Director/ IIEC Office:",
+            "Tel": " +977-98xxxxxxxx",
+            "Email": "darlami.kd@gmail.com"
+        },
+        {
+            "Title": "SEDS Pulchowk",
+            "Tel": "+977-98xxxxxxxx",
+            "Email": "seds@pcampus.edu.np"
+        },
+        {
+            "Title": "President/ SRB",
+            "Tel": "+977-98xxxxxxxx",
+            "Email": "president@pcampus.edu.np"
+        },
+        {
+            "Title": "President/ Flying Club",
+            "Tel": " +977-98xxxxxxxx",
+            "Email": "president@pcampus.edu.np"
+        },
+        {
+            "Title": "IT Community",
+            "Tel": " +977-98xxxxxxxx",
+            "Email": "it@pcampus.edu.np"
+        }
+    ]
+}

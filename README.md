@@ -13,8 +13,13 @@ this website and find all the info you need.
 ## Setting up your project
 ### 1. Clone the repository:
 ```
-git clone https://github.com/Sujan-Koirala021/Re-TU-Searchable-Dir
+git clone https://github.com/sandipkatel/Tu-Search-Directory
 
+```
+#### If already cloned run
+```
+git fetch --all --prune
+git checkout main
 ```
 
 ### 2. Open the project directory.
