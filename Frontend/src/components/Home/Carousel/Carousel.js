@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import FetchCarouselImages from "@/Helper/FetchCarouselImages";
-import "./Carousel.css";
 
 export function CarouselCompo() {
   const [CarouselImages, setCarouselImages] = useState(null);
@@ -36,10 +35,7 @@ export function CarouselCompo() {
           axis="vertical"
         >
           {CarouselImages.map((image, index) => (
-            <div
-              key={index}
-              className="relative h-[calc(100vh*0.9)] w-full"
-            >
+            <div key={index} className="relative h-[calc(100vh*0.9)] w-full">
               <img
                 src={image.ImageLink}
                 alt="image"
@@ -50,7 +46,10 @@ export function CarouselCompo() {
           ))}
         </Carousel>
       )}
-      <div className="absolute left-1/2 top-1/2 w-80 -translate-x-1/2 -translate-y-1/2">
+      <div className="absolute inset-0 flex flex-col justify-center items-center">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+          Welcome to Tribhuvan University Search Directory
+        </h1>
         <div className="relative">
           <input
             type="text"

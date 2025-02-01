@@ -1,11 +1,8 @@
 "use client";
 import React, { useEffect } from "react";
 import { CarouselCompo } from "@/components/Home/Carousel/Carousel";
-import AboutCard from "@/components/About/AboutCard";
 import NoticeLine from "@/components/Home/NoticeLine/NoticeLine";
-import Message from "@/components/Home/Message/Message";
-import EventCardSection from "@/components/EventCard/EventCardSection";
-import HighlightsSection from "@/components/Highlights/HighlightsSection";
+import IntroToTU from "@/components/Home/Intro/intro";
 
 // ==================== Home Page ====================
 export default function page() {
@@ -23,10 +20,7 @@ export default function page() {
     <div>
       <CarouselCompo />
       <NoticeLine />
-      <Message />
-      <AboutCard />
-      <EventCardSection />
-      <HighlightsSection />
+      <IntroToTU />
     </div>
   );
 }

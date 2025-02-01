@@ -108,36 +108,15 @@ const SignInForm = () => {
 							<label htmlFor="Password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
 							<input type="password" name="Password" id="Password" placeholder="••••••••" className={InputFieldClass} required="" onChange={(e) => setPassword(e.target.value)} value={Password} />
 
-							{/* {LogSign && <>
-								<label htmlFor="ConfirmPassword" className="block my-2 text-sm font-medium text-gray-900 dark:text-white">Confirm Password</label>
-								<input type="password" name="ConfirmPassword" id="ConfirmPassword" placeholder="••••••••" className={InputFieldClass} required="" onChange={(e) => setConfirmPassword(e.target.value)} value={ConfirmPassword} />
-							</>
-							} */}
 						</div>
 
-
-						{/* <div className="flex items-center justify-between">
-							<div className="flex items-start">
-								<div className="flex items-center h-5">
-									<input id="remember" aria-describedby="remember" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" checked={PassRememberMe} onChange={handleCheckboxChange} />
-								</div>
-								<div className="ml-3 text-sm">
-									<label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Remember me</label>
-								</div>
-							</div>
-							{Email && <>
-								{PassResetLoading ? <ColorRingLoader /> :
-									<button type="submit" className="font-bold underline  hover:text-green-700 dark:text-purple-500 text-purple-900">Reset Password</button>
-								}
-							</>}
-						</div> */}
 						<p className="font-bold text-red-600">{ShowMessage}</p>
 
 						{RingLoad ? <ColorRingLoader /> : <>
 							{Password && Email && <>
 								{LogSign ?
-									<button type="submit" className="block w-full rounded-md text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300  shadow-lg shadow-purple-500/50  font-medium text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={SignUpBtnHandel}>Sign Up</button> :
-									<button type="submit" className="block w-full rounded-md text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300  shadow-lg shadow-purple-500/50  font-medium text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={LogInBtnHandel}>Log in</button>
+									<button type="submit" className="block w-full rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300  shadow-lg shadow-blue-500/50  font-medium text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={SignUpBtnHandel}>Sign Up</button> :
+									<button type="submit" className="block w-full rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300  shadow-lg shadow-blue-500/50  font-medium text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={LogInBtnHandel}>Log in</button>
 								}
 							</>}
 						</>}
@@ -147,7 +126,7 @@ const SignInForm = () => {
 							{LogSign ?
 								'Already have an account? ' : 'Dont have an account? '
 							}
-							<button className="font-bold underline hover:text-green-700 dark:text-purple-500 text-purple-900" onClick={() => { setLogSign((prev) => !prev) }}>
+							<button className="font-bold underline hover:text-green-700 dark:text-blue-500 text-blue-800" onClick={() => { setLogSign((prev) => !prev) }}>
 								{LogSign ?
 									'Log In' : 'Sign Up (create account)'
 								}
