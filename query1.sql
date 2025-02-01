@@ -1,0 +1,1 @@
+create database ti_search_directory;
