@@ -40,6 +40,7 @@
     "@types/mysql": "^2.15.26",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.31",
-    "tailwindcss": "^3.3.5"
+    "tailwindcss": "^3.3.5",
+    "typescript": "5.7.3"
   }
 }

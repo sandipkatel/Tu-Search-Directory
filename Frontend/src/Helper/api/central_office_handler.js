@@ -4,11 +4,8 @@ import dotenv from "dotenv";
 
 dotenv.config(); // Load environment variables
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  let db: mysql.Connection | null = null;
+export default async function handler(req, res) {
+  let db = null;
 
   try {
     db = await mysql.createConnection({
@@ -35,17 +32,15 @@ export default async function handler(
         INSERT INTO CENTRAL_OFFICE (NAME, ADDRESS)
         VALUES (?, ?)
       `;
-      const [result]: any = await db.execute(sql, [
+      const [result] = await db.execute(sql, [
         OFFICE_NAME,
         ADDRESS,
         CONTACT_INFO,
       ]);
-      res
-        .status(201)
-        .json({
-          message: "Central Office added successfully",
-          officeId: result.insertId,
-        });
+      res.status(201).json({
+        message: "Central Office added successfully",
+        officeId: result.insertId,
+      });
     } else if (req.method === "PUT") {
       // Update an existing CENTRAL_OFFICE record
       const { OFFICE_ID, OFFICE_NAME, ADDRESS, CONTACT_INFO } = req.body;
@@ -58,7 +53,7 @@ export default async function handler(
         SET NAME = ?, ADDRESS = ?
         WHERE ORG_ID = ?
       `;
-      const [result]: any = await db.execute(sql, [
+      const [result] = await db.execute(sql, [
         OFFICE_NAME,
         ADDRESS,
         CONTACT_INFO,
@@ -80,7 +75,7 @@ export default async function handler(
       }
 
       const sql = "DELETE FROM CENTRAL_OFFICE WHERE OFFICE_ID = ?";
-      const [result]: any = await db.execute(sql, [OFFICE_ID]);
+      const [result] = await db.execute(sql, [OFFICE_ID]);
 
       if (result.affectedRows > 0) {
         res

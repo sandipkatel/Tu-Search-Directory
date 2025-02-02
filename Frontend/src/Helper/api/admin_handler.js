@@ -4,11 +4,8 @@ import dotenv from "dotenv";
 
 dotenv.config(); // Load environment variables
 
-export default async function admin_handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  let db: mysql.Connection | null = null;
+export default async function admin_handler(req, res) {
+  let db = null;
 
   try {
     db = await mysql.createConnection({
@@ -33,7 +30,7 @@ export default async function admin_handler(
         INSERT INTO USER_DATA (USER_NAME, USER_EMAIL, USER_PASSWORD, USER_DOB, ISADMIN)
         VALUES (?, ?, ?, ?, false)
       `;
-      const [result]: any = await db.execute(sql, [name, email, password, dob]);
+      const [result] = await db.execute(sql, [name, email, password, dob]);
       res.status(201).json({
         message: "User added successfully",
         userId: result.insertId,
@@ -47,7 +44,7 @@ export default async function admin_handler(
       }
 
       const sql = "DELETE FROM USER_DATA WHERE ID = ?";
-      const [result]: any = await db.execute(sql, [id]);
+      const [result] = await db.execute(sql, [id]);
       if (result.affectedRows > 0) {
         res.status(200).json({ message: "User deleted successfully" });
       } else {
