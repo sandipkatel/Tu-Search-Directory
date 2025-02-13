@@ -6,7 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import FetchCarouselImages from "@/Helper/FetchCarouselImages";
 
-export function CarouselCompo() {
+export default function CarouselCompo() {
   const [CarouselImages, setCarouselImages] = useState(null);
 
   useEffect(() => {

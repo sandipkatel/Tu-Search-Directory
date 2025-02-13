@@ -13,88 +13,152 @@ const AdminDashboard = () => {
   // Form fields configuration for each entity
   const entityFields = {
     "central-office": [
-      { name: "org_id", type: "text", label: "Organization ID" },
+      { name: "org_id", type: "number", label: "Organization ID" },
       { name: "name", type: "text", label: "Name" },
-      { name: "address", type: "text", label: "Address" },
+      { name: "address", type: "text", label: "Address" }
     ],
-    department: [
-      { name: "dept_id", type: "text", label: "Department ID" },
+    "institute-faculties": [
+      { name: "id", type: "number", label: "ID" },
+      { name: "org_id", type: "number", label: "Organization ID" },
+      { name: "name", type: "text", label: "Name" }
+    ],
+    "central-department": [
+      { name: "id", type: "number", label: "ID" },
+      { name: "org_id", type: "number", label: "Organization ID" },
       { name: "name", type: "text", label: "Name" },
       { name: "contact", type: "text", label: "Contact" },
-      { name: "isCentral", type: "checkbox", label: "Is Central Department" },
-    ],
-    institute: [
-      { name: "id", type: "text", label: "ID" },
-      { name: "org_id", type: "text", label: "Organization ID" },
-      { name: "name", type: "text", label: "Name" },
-      { name: "ho_id", type: "text", label: "Head Office ID" },
+      { name: "location", type: "text", label: "Location" },
+      { name: "website", type: "text", label: "Website" },
+      { name: "isActive", type: "checkbox", label: "Is Active" }
     ],
     campus: [
-      { name: "id", type: "text", label: "ID" },
-      { name: "ho_id", type: "text", label: "Head Office ID" },
+      { name: "id", type: "number", label: "ID" },
+      { name: "ho_id", type: "number", label: "Head Office ID" },
       { name: "name", type: "text", label: "Name" },
       { name: "location", type: "text", label: "Location" },
+      { name: "website", type: "text", label: "Website" }
     ],
-    program: [
-      { name: "id", type: "text", label: "ID" },
+    department: [
+      { name: "id", type: "number", label: "ID" },
+      { name: "c_id", type: "number", label: "Campus ID" },
       { name: "name", type: "text", label: "Name" },
-      { name: "about", type: "textarea", label: "About" },
-      { name: "director_id", type: "text", label: "Director ID" },
+      { name: "contact", type: "text", label: "Contact" }
     ],
     personnel: [
-      { name: "id", type: "text", label: "ID" },
-      { name: "dept_id", type: "text", label: "Department ID" },
+      { name: "id", type: "number", label: "ID" },
       { name: "name", type: "text", label: "Name" },
       { name: "email", type: "email", label: "Email" },
       { name: "position", type: "text", label: "Position" },
+      { name: "imageUrl", type: "text", label: "Image URL" },
+      { name: "org_id", type: "number", label: "Organization ID" },
+      { name: "faculty_id", type: "number", label: "Faculty ID" },
+      { name: "campus_id", type: "number", label: "Campus ID" },
+      { name: "dept_id", type: "number", label: "Department ID" },
+      { name: "c_dept_id", type: "number", label: "Central Department ID" }
     ],
+    program: [
+      { name: "id", type: "number", label: "ID" },
+      { name: "name", type: "text", label: "Name" },
+      { name: "about", type: "textarea", label: "About" },
+      { name: "director_id", type: "number", label: "Director ID" }
+    ]
   };
 
-  // Sample data structure
+  // Updated data structure based on SQL inserts
   const [data, setData] = useState({
     "central-office": [
-      { org_id: "1", name: "Main Office", address: "123 Main St" },
+      { org_id: 1, name: "Tribhuvan University", address: "Kirtipur, Kathmandu, Nepal" }
+    ],
+    "institute-faculties": [
+      { id: 101, org_id: 1, name: "Institute of Medicine" },
+      { id: 102, org_id: 1, name: "Institute of Engineering" },
+      { id: 103, org_id: 1, name: "Institute of forestry" },
+      { id: 104, org_id: 1, name: "Institute of Agriculture and Animal Sciences" },
+      { id: 105, org_id: 1, name: "Faculty of Management" },
+      { id: 106, org_id: 1, name: "Faculty of Humanities and Social Sciences" },
+      { id: 107, org_id: 1, name: "Faculty of Education" },
+      { id: 108, org_id: 1, name: "Faculty of Law" },
+      { id: 109, org_id: 1, name: "Institute of Science and Technology" }
+    ],
+    "central-department": [
+      {
+        id: 201,
+        org_id: 1,
+        name: "Central Department of Computer Science and Information Technology",
+        contact: "info@cdcsit.edu.np",
+        location: "Kirtipur, Kathmandu",
+        website: "https://cdcsit.tu.edu.np/",
+        isActive: true
+      }
+    ],
+    campus: [
+      {
+        id: 1001,
+        ho_id: 102,
+        name: "Pulchowk Engineering Campus",
+        location: "Pulchowk, Lalitpur",
+        website: "https://pcampus.edu.np/"
+      },
+      {
+        id: 1002,
+        ho_id: 102,
+        name: "Thapathali Engineering Campus",
+        location: "Thapathali, Kathmandu",
+        website: "https://tcioe.edu.np/"
+      }
     ],
     department: [
       {
-        dept_id: "1",
-        name: "Computer Science",
-        contact: "555-0123",
-        isCentral: true,
+        id: 101,
+        c_id: 1001,
+        name: "Department of Computer and Electronic Engineering",
+        contact: "ece@ioe.edu.np"
       },
-    ],
-    institute: [
-      { id: "1", org_id: "1", name: "School of Engineering", ho_id: "HOD1" },
-    ],
-    campus: [
-      { id: "1", ho_id: "HOD1", name: "Main Campus", location: "Downtown" },
-    ],
-    program: [
       {
-        id: "1",
-        name: "Computer Science",
-        about: "BS Program",
-        director_id: "DIR1",
-      },
+        id: 102,
+        c_id: 1001,
+        name: "Department of Civil Engineering",
+        contact: "civil@ioe.edu.np"
+      }
     ],
     personnel: [
       {
-        id: "1",
-        dept_id: "CS1",
-        name: "John Doe",
-        email: "john@example.com",
-        position: "Professor",
-      },
+        id: 1000001,
+        name: "Prof. Keshar Jung Baral",
+        email: "vcoffice@tu.edu.n",
+        position: "Vice-Chancellor",
+        imageUrl: "https://portal.tu.edu.np/medias/Authorities_2024_08_05_20_51_35.jpg",
+        org_id: 1,
+        faculty_id: null,
+        campus_id: null,
+        dept_id: null,
+        c_dept_id: null
+      }
     ],
+    program: [
+      {
+        id: 301,
+        name: "Bachelor of Education (B.Ed)",
+        about: "Since 1996 Tribhuvan University (TU) has been implementing three-year Bachelor programs with an annual examination system...",
+        director_id: null
+      },
+      {
+        id: 302,
+        name: "Master of Education (M.Ed)",
+        about: "Master of Education is a two-year programme offered in constitutional and affiliated campuses under FoE scattered in different parts of the country...",
+        director_id: null
+      }
+    ]
   });
 
   const entityLabels = {
     "central-office": "Central Office",
-    department: "Departments",
-    institute: "Institutes/Faculties",
+    "institute-faculties": "Institutes/Faculties",
+    "central-department": "Central Departments",
     campus: "Campuses",
-    program: "Programs",
+    department: "Departments",
     personnel: "Personnel",
+    program: "Programs"
   };
 
   const handleSubmit = (event) => {
@@ -141,8 +205,8 @@ const AdminDashboard = () => {
   };
 
   const Modal = () => (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg w-full max-w-md">
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-10 overflow-y-scroll flex items-center justify-center  p-4">
+      <div className="mt-[250px] bg-white rounded-lg w-full max-w-md">
         <div className="flex justify-between items-center p-4 border-b">
           <h2 className="text-xl font-semibold">
             {modalMode === "create" ? "Create New" : "Edit"}{" "}
@@ -221,7 +285,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
-      <div className="max-w-6xl mx-auto bg-white rounded-lg shadow">
+      <div className="max-w-8xl mx-auto bg-white rounded-lg shadow">
         {/* Header */}
         <div className="p-6 border-b">
           <h1 className="text-2xl font-bold">Administrative Dashboard</h1>
@@ -278,7 +342,7 @@ const AdminDashboard = () => {
             </div>
 
             {/* Data Table */}
-            <div className="border rounded-lg overflow-hidden">
+            <div className="border rounded-lg overflow-scroll">
               <table className="w-full">
                 <thead className="bg-gray-50">
                   <tr>
@@ -334,3 +398,80 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+
+// "use client";
+// import React, { useState, useEffect } from "react";
+// import CentralOfficeData from "@/Helper/FetchCentralOfficeData";
+
+// export default function CentralCampus() {
+//   const [offices, setOffices] = useState([]);
+//   const [isLoading, setIsLoading] = useState(true);
+//   const [error, setError] = useState(null);
+
+//   // Fetch all offices
+//   const fetchOffices = async () => {
+//     setIsLoading(true);
+//     const response = await CentralOfficeData("GET");
+//     if (response.success) {
+//       setOffices(response.data);
+//     } else {
+//       setError(response.error);
+//     }
+//     setIsLoading(false);
+//   };
+
+//   // Add new office
+//   const addOffice = async (officeData) => {
+//     const response = await CentralOfficeData("POST", {
+//       NAME: officeData.name,
+//       ADDRESS: officeData.address,
+//     });
+//     if (response.success) {
+//       fetchOffices(); // Refresh the list
+//     }
+//     return response;
+//   };
+
+//   // Update office
+//   const updateOffice = async (officeData) => {
+//     const response = await CentralOfficeData("PUT", {
+//       ID: officeData.id,
+//       NAME: officeData.name,
+//       ADDRESS: officeData.address,
+//     });
+//     if (response.success) {
+//       fetchOffices(); // Refresh the list
+//     }
+//     return response;
+//   };
+
+//   // Delete office
+//   const deleteOffice = async (officeId) => {
+//     const response = await CentralOfficeData("DELETE", { ID: officeId });
+//     if (response.success) {
+//       fetchOffices(); // Refresh the list
+//     }
+//     return response;
+//   };
+
+//   useEffect(() => {
+//     fetchOffices();
+//   }, []);
+
+//   if (isLoading) return <div>Loading...</div>;
+//   if (error) return <div>Error: {error}</div>;
+
+//   return (
+//     <div>
+//       {offices.map((office) => (
+//         <div key={office.OFFICE_ID}>
+//           <h3>{office.NAME}</h3>
+//           <p>{office.ADDRESS}</p>
+//           <button onClick={() => deleteOffice(office.OFFICE_ID)}>Delete</button>
+//           {/* Add your update UI here */}
+//         </div>
+//       ))}
+//       {/* Add your create new office form here */}
+//     </div>
+//   );
+// }

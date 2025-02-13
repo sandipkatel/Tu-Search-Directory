@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { CarouselCompo } from "@/components/Home/Carousel/Carousel";
+import CarouselCompo from "@/components/Home/Carousel/Carousel";
 import NoticeLine from "@/components/Home/NoticeLine/NoticeLine";
 import IntroToTU from "@/components/Home/Intro/intro";
 

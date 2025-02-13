@@ -1,4 +1,3 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import mysql from "mysql2/promise";
 import dotenv from "dotenv";
 
@@ -23,8 +22,8 @@ export default async function handler(req, res) {
       res.status(200).json(rows);
     } else if (req.method === "POST") {
       // Create a new CENTRAL_OFFICE record
-      const { OFFICE_NAME, ADDRESS, CONTACT_INFO } = req.body;
-      if (!OFFICE_NAME || !ADDRESS || !CONTACT_INFO) {
+      const { NAME, ADDRESS } = req.body;
+      if (!NAME || !ADDRESS) {
         return res.status(400).json({ error: "All fields are required" });
       }
 
@@ -32,19 +31,15 @@ export default async function handler(req, res) {
         INSERT INTO CENTRAL_OFFICE (NAME, ADDRESS)
         VALUES (?, ?)
       `;
-      const [result] = await db.execute(sql, [
-        OFFICE_NAME,
-        ADDRESS,
-        CONTACT_INFO,
-      ]);
+      const [result] = await db.execute(sql, [NAME, ADDRESS]);
       res.status(201).json({
         message: "Central Office added successfully",
         officeId: result.insertId,
       });
     } else if (req.method === "PUT") {
       // Update an existing CENTRAL_OFFICE record
-      const { OFFICE_ID, OFFICE_NAME, ADDRESS, CONTACT_INFO } = req.body;
-      if (!OFFICE_ID || !OFFICE_NAME || !ADDRESS || !CONTACT_INFO) {
+      const { ID, NAME, ADDRESS } = req.body;
+      if (!ID || !NAME || !ADDRESS) {
         return res.status(400).json({ error: "All fields are required" });
       }
 
@@ -53,12 +48,7 @@ export default async function handler(req, res) {
         SET NAME = ?, ADDRESS = ?
         WHERE ORG_ID = ?
       `;
-      const [result] = await db.execute(sql, [
-        OFFICE_NAME,
-        ADDRESS,
-        CONTACT_INFO,
-        OFFICE_ID,
-      ]);
+      const [result] = await db.execute(sql, [NAME, ADDRESS, ID]);
 
       if (result.affectedRows > 0) {
         res
@@ -69,13 +59,13 @@ export default async function handler(req, res) {
       }
     } else if (req.method === "DELETE") {
       // Delete a CENTRAL_OFFICE record
-      const { OFFICE_ID } = req.query;
-      if (!OFFICE_ID || isNaN(Number(OFFICE_ID))) {
+      const { ID } = req.query;
+      if (!ID || isNaN(Number(ID))) {
         return res.status(400).json({ error: "Valid OFFICE_ID is required" });
       }
 
       const sql = "DELETE FROM CENTRAL_OFFICE WHERE OFFICE_ID = ?";
-      const [result] = await db.execute(sql, [OFFICE_ID]);
+      const [result] = await db.execute(sql, [ID]);
 
       if (result.affectedRows > 0) {
         res
