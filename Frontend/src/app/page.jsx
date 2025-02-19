@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect } from "react";
-import CarouselCompo from "@/components/Home/Carousel/Carousel";
-import NoticeLine from "@/components/Home/NoticeLine/NoticeLine";
-import IntroToTU from "@/components/Home/Intro/intro";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "@/components/pages/HomePage";
+import SearchPage from "@/components/pages/SearchPage";
 
 // ==================== Home Page ====================
 export default function page() {
@@ -17,10 +17,22 @@ export default function page() {
   }, []);
 
   return (
-    <div>
-      <CarouselCompo />
-      <NoticeLine />
-      <IntroToTU />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/search" element={<HomePage />} />
+        {/* <Route
+          path="/personnel/:id"
+          element={<div>Personnel Detail Page</div>}
+        />
+        <Route
+          path="/department/:id"
+          element={<div>Department Detail Page</div>}
+        />
+        <Route path="/campus/:id" element={<div>Campus Detail Page</div>} />
+        <Route path="/faculty/:id" element={<div>Faculty Detail Page</div>} />
+        <Route path="/program/:id" element={<div>Program Detail Page</div>} /> */}
+      </Routes>
+    </Router>
   );
 }
