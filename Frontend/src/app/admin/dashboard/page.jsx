@@ -1,51 +1,66 @@
 "use client";
-
-import React, { useState } from "react";
 import { Plus, Edit, Trash2, Search, X } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { navigateTo } from "@/services/navigation";
+
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+
+const api = {
+  get: (endpoint) => axios.get(`${BASE_URL}/${endpoint}`),
+  post: (endpoint, data) => axios.post(`${BASE_URL}/${endpoint}`, data),
+  put: (endpoint, data) => axios.put(`${BASE_URL}/${endpoint}`, data),
+  delete: (endpoint) => axios.delete(`${BASE_URL}/${endpoint}`),
+};
 
 const AdminDashboard = () => {
   const [activeEntity, setActiveEntity] = useState("central-office");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalMode, setModalMode] = useState("create"); // 'create' or 'edit'
+  const [modalMode, setModalMode] = useState("create");
   const [editingItem, setEditingItem] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [data, setData] = useState({
+    "central-office": [],
+    "institute-faculties": [],
+    "central-department": [],
+    campus: [],
+    department: [],
+    personnel: [],
+    program: [],
+  });
 
   // Form fields configuration for each entity
   const entityFields = {
     "central-office": [
-      { name: "org_id", type: "number", label: "Organization ID" },
       { name: "name", type: "text", label: "Name" },
-      { name: "address", type: "text", label: "Address" }
+      { name: "address", type: "text", label: "Address" },
     ],
     "institute-faculties": [
-      { name: "id", type: "number", label: "ID" },
       { name: "org_id", type: "number", label: "Organization ID" },
-      { name: "name", type: "text", label: "Name" }
+      { name: "name", type: "text", label: "Name" },
     ],
     "central-department": [
-      { name: "id", type: "number", label: "ID" },
       { name: "org_id", type: "number", label: "Organization ID" },
       { name: "name", type: "text", label: "Name" },
       { name: "contact", type: "text", label: "Contact" },
       { name: "location", type: "text", label: "Location" },
       { name: "website", type: "text", label: "Website" },
-      { name: "isActive", type: "checkbox", label: "Is Active" }
+      { name: "isActive", type: "checkbox", label: "Is Active" },
     ],
     campus: [
-      { name: "id", type: "number", label: "ID" },
       { name: "ho_id", type: "number", label: "Head Office ID" },
       { name: "name", type: "text", label: "Name" },
       { name: "location", type: "text", label: "Location" },
-      { name: "website", type: "text", label: "Website" }
+      { name: "website", type: "text", label: "Website" },
     ],
     department: [
-      { name: "id", type: "number", label: "ID" },
       { name: "c_id", type: "number", label: "Campus ID" },
       { name: "name", type: "text", label: "Name" },
-      { name: "contact", type: "text", label: "Contact" }
+      { name: "contact", type: "text", label: "Contact" },
     ],
     personnel: [
-      { name: "id", type: "number", label: "ID" },
       { name: "name", type: "text", label: "Name" },
       { name: "email", type: "email", label: "Email" },
       { name: "position", type: "text", label: "Position" },
@@ -54,102 +69,14 @@ const AdminDashboard = () => {
       { name: "faculty_id", type: "number", label: "Faculty ID" },
       { name: "campus_id", type: "number", label: "Campus ID" },
       { name: "dept_id", type: "number", label: "Department ID" },
-      { name: "c_dept_id", type: "number", label: "Central Department ID" }
+      { name: "c_dept_id", type: "number", label: "Central Department ID" },
     ],
     program: [
-      { name: "id", type: "number", label: "ID" },
       { name: "name", type: "text", label: "Name" },
       { name: "about", type: "textarea", label: "About" },
-      { name: "director_id", type: "number", label: "Director ID" }
-    ]
+      { name: "director_id", type: "number", label: "Director ID" },
+    ],
   };
-
-  // Updated data structure based on SQL inserts
-  const [data, setData] = useState({
-    "central-office": [
-      { org_id: 1, name: "Tribhuvan University", address: "Kirtipur, Kathmandu, Nepal" }
-    ],
-    "institute-faculties": [
-      { id: 101, org_id: 1, name: "Institute of Medicine" },
-      { id: 102, org_id: 1, name: "Institute of Engineering" },
-      { id: 103, org_id: 1, name: "Institute of forestry" },
-      { id: 104, org_id: 1, name: "Institute of Agriculture and Animal Sciences" },
-      { id: 105, org_id: 1, name: "Faculty of Management" },
-      { id: 106, org_id: 1, name: "Faculty of Humanities and Social Sciences" },
-      { id: 107, org_id: 1, name: "Faculty of Education" },
-      { id: 108, org_id: 1, name: "Faculty of Law" },
-      { id: 109, org_id: 1, name: "Institute of Science and Technology" }
-    ],
-    "central-department": [
-      {
-        id: 201,
-        org_id: 1,
-        name: "Central Department of Computer Science and Information Technology",
-        contact: "info@cdcsit.edu.np",
-        location: "Kirtipur, Kathmandu",
-        website: "https://cdcsit.tu.edu.np/",
-        isActive: true
-      }
-    ],
-    campus: [
-      {
-        id: 1001,
-        ho_id: 102,
-        name: "Pulchowk Engineering Campus",
-        location: "Pulchowk, Lalitpur",
-        website: "https://pcampus.edu.np/"
-      },
-      {
-        id: 1002,
-        ho_id: 102,
-        name: "Thapathali Engineering Campus",
-        location: "Thapathali, Kathmandu",
-        website: "https://tcioe.edu.np/"
-      }
-    ],
-    department: [
-      {
-        id: 101,
-        c_id: 1001,
-        name: "Department of Computer and Electronic Engineering",
-        contact: "ece@ioe.edu.np"
-      },
-      {
-        id: 102,
-        c_id: 1001,
-        name: "Department of Civil Engineering",
-        contact: "civil@ioe.edu.np"
-      }
-    ],
-    personnel: [
-      {
-        id: 1000001,
-        name: "Prof. Keshar Jung Baral",
-        email: "vcoffice@tu.edu.n",
-        position: "Vice-Chancellor",
-        imageUrl: "https://portal.tu.edu.np/medias/Authorities_2024_08_05_20_51_35.jpg",
-        org_id: 1,
-        faculty_id: null,
-        campus_id: null,
-        dept_id: null,
-        c_dept_id: null
-      }
-    ],
-    program: [
-      {
-        id: 301,
-        name: "Bachelor of Education (B.Ed)",
-        about: "Since 1996 Tribhuvan University (TU) has been implementing three-year Bachelor programs with an annual examination system...",
-        director_id: null
-      },
-      {
-        id: 302,
-        name: "Master of Education (M.Ed)",
-        about: "Master of Education is a two-year programme offered in constitutional and affiliated campuses under FoE scattered in different parts of the country...",
-        director_id: null
-      }
-    ]
-  });
 
   const entityLabels = {
     "central-office": "Central Office",
@@ -158,37 +85,71 @@ const AdminDashboard = () => {
     campus: "Campuses",
     department: "Departments",
     personnel: "Personnel",
-    program: "Programs"
+    program: "Programs",
   };
 
-  const handleSubmit = (event) => {
+  // Fetch data for the active entity
+  const fetchData = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigateTo("/login");
+      return;
+    }
+    setIsLoading(true);
+    setError(null);
+    try {
+      const response = await api.get(activeEntity);
+      console.log(response);
+      setData((prev) => ({
+        ...prev,
+        [activeEntity]: response.data,
+      }));
+    } catch (err) {
+      setError(`Error fetching data: ${err.message}`);
+      console.error("Error fetching data:", err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Effect to fetch data when active entity changes
+  useEffect(() => {
+    fetchData();
+  }, [activeEntity]);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setError(null);
+
     const formData = new FormData(event.target);
     const newData = {};
     entityFields[activeEntity].forEach((field) => {
       if (field.type === "checkbox") {
         newData[field.name] = formData.get(field.name) === "on";
       } else {
-        newData[field.name] = formData.get(field.name);
+        const value = formData.get(field.name);
+        if (field.type === "number" && value) {
+          newData[field.name] = Number(value);
+        } else {
+          newData[field.name] = value;
+        }
       }
     });
 
-    if (modalMode === "create") {
-      setData((prev) => ({
-        ...prev,
-        [activeEntity]: [...prev[activeEntity], newData],
-      }));
-    } else {
-      setData((prev) => ({
-        ...prev,
-        [activeEntity]: prev[activeEntity].map((item) =>
-          item.id === editingItem.id ? { ...item, ...newData } : item
-        ),
-      }));
-    }
+    try {
+      if (modalMode === "create") {
+        await api.post(activeEntity, newData);
+      } else {
+        await api.put(`${activeEntity}/${editingItem.id}`, newData);
+      }
 
-    setIsModalOpen(false);
-    setEditingItem(null);
+      await fetchData(); // Refresh data after successful operation
+      setIsModalOpen(false);
+      setEditingItem(null);
+    } catch (err) {
+      setError(`Error saving data: ${err.message}`);
+      console.error("Error submitting data:", err);
+    }
   };
 
   const handleEdit = (item) => {
@@ -197,15 +158,29 @@ const AdminDashboard = () => {
     setIsModalOpen(true);
   };
 
-  const handleDelete = (id) => {
-    setData((prev) => ({
-      ...prev,
-      [activeEntity]: prev[activeEntity].filter((item) => item.id !== id),
-    }));
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this item?")) {
+      return;
+    }
+
+    try {
+      await api.delete(`${activeEntity}/${id}`);
+      await fetchData(); // Refresh data after successful deletion
+    } catch (err) {
+      setError(`Error deleting item: ${err.message}`);
+      console.error("Error deleting item:", err);
+    }
   };
 
+  // Filter data based on search term
+  const filteredData = data[activeEntity].filter((item) =>
+    Object.values(item).some((value) =>
+      String(value).toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
+
   const Modal = () => (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-10 overflow-y-scroll flex items-center justify-center  p-4">
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-10 overflow-y-scroll flex items-center justify-center p-4">
       <div className="mt-[250px] bg-white rounded-lg w-full max-w-md">
         <div className="flex justify-between items-center p-4 border-b">
           <h2 className="text-xl font-semibold">
@@ -255,6 +230,7 @@ const AdminDashboard = () => {
                   name={field.name}
                   defaultValue={editingItem?.[field.name] || ""}
                   className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
+                  required={field.type !== "number"}
                 />
               )}
             </div>
@@ -285,6 +261,12 @@ const AdminDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
+      {error && (
+        <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+          {error}
+        </div>
+      )}
+
       <div className="max-w-8xl mx-auto bg-white rounded-lg shadow">
         {/* Header */}
         <div className="p-6 border-b">
@@ -342,51 +324,65 @@ const AdminDashboard = () => {
             </div>
 
             {/* Data Table */}
-            <div className="border rounded-lg overflow-scroll">
-              <table className="w-full">
-                <thead className="bg-gray-50">
-                  <tr>
-                    {Object.keys(data[activeEntity][0] || {}).map((key) => (
-                      <th
-                        key={key}
-                        className="px-4 py-2 text-left text-sm font-medium text-gray-500"
-                      >
-                        {key.replace("_", " ").toUpperCase()}
-                      </th>
-                    ))}
-                    <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">
-                      Actions
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y">
-                  {data[activeEntity].map((item, index) => (
-                    <tr key={index} className="hover:bg-gray-50">
-                      {Object.values(item).map((value, i) => (
-                        <td key={i} className="px-4 py-2">
-                          {String(value)}
-                        </td>
+            <div className="border rounded-lg overflow-x-auto">
+              {isLoading ? (
+                <div className="p-4 text-center">Loading...</div>
+              ) : filteredData.length === 0 ? (
+                <div className="p-4 text-center text-gray-500">
+                  {searchTerm ? "No results found" : "No data available"}
+                </div>
+              ) : (
+                <table className="w-full">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      {Object.keys(data[activeEntity][0] || {}).map((key) => (
+                        <th
+                          key={key}
+                          className="px-4 py-2 text-left text-sm font-medium text-gray-500"
+                        >
+                          {key.replace(/_/g, " ").toUpperCase()}
+                        </th>
                       ))}
-                      <td className="px-4 py-2">
-                        <div className="flex gap-2">
-                          <button
-                            onClick={() => handleEdit(item)}
-                            className="p-1 text-blue-600 hover:text-blue-800"
-                          >
-                            <Edit className="h-4 w-4" />
-                          </button>
-                          <button
-                            onClick={() => handleDelete(item.id)}
-                            className="p-1 text-red-600 hover:text-red-800"
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </button>
-                        </div>
-                      </td>
+                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">
+                        Actions
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y">
+                    {filteredData.map((item, index) => (
+                      <tr key={index} className="hover:bg-gray-50">
+                        {Object.values(item).map((value, i) => (
+                          <td key={i} className="px-4 py-2">
+                            {typeof value === "boolean"
+                              ? value
+                                ? "Yes"
+                                : "No"
+                              : String(value)}
+                          </td>
+                        ))}
+                        <td className="px-4 py-2">
+                          <div className="flex gap-2">
+                            <button
+                              onClick={() => handleEdit(item)}
+                              className="p-1 text-blue-600 hover:text-blue-800"
+                              title="Edit"
+                            >
+                              <Edit className="h-4 w-4" />
+                            </button>
+                            <button
+                              onClick={() => handleDelete(item.id)}
+                              className="p-1 text-red-600 hover:text-red-800"
+                              title="Delete"
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
             </div>
           </div>
         </div>
@@ -398,80 +394,3 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
-
-// "use client";
-// import React, { useState, useEffect } from "react";
-// import CentralOfficeData from "@/Helper/FetchCentralOfficeData";
-
-// export default function CentralCampus() {
-//   const [offices, setOffices] = useState([]);
-//   const [isLoading, setIsLoading] = useState(true);
-//   const [error, setError] = useState(null);
-
-//   // Fetch all offices
-//   const fetchOffices = async () => {
-//     setIsLoading(true);
-//     const response = await CentralOfficeData("GET");
-//     if (response.success) {
-//       setOffices(response.data);
-//     } else {
-//       setError(response.error);
-//     }
-//     setIsLoading(false);
-//   };
-
-//   // Add new office
-//   const addOffice = async (officeData) => {
-//     const response = await CentralOfficeData("POST", {
-//       NAME: officeData.name,
-//       ADDRESS: officeData.address,
-//     });
-//     if (response.success) {
-//       fetchOffices(); // Refresh the list
-//     }
-//     return response;
-//   };
-
-//   // Update office
-//   const updateOffice = async (officeData) => {
-//     const response = await CentralOfficeData("PUT", {
-//       ID: officeData.id,
-//       NAME: officeData.name,
-//       ADDRESS: officeData.address,
-//     });
-//     if (response.success) {
-//       fetchOffices(); // Refresh the list
-//     }
-//     return response;
-//   };
-
-//   // Delete office
-//   const deleteOffice = async (officeId) => {
-//     const response = await CentralOfficeData("DELETE", { ID: officeId });
-//     if (response.success) {
-//       fetchOffices(); // Refresh the list
-//     }
-//     return response;
-//   };
-
-//   useEffect(() => {
-//     fetchOffices();
-//   }, []);
-
-//   if (isLoading) return <div>Loading...</div>;
-//   if (error) return <div>Error: {error}</div>;
-
-//   return (
-//     <div>
-//       {offices.map((office) => (
-//         <div key={office.OFFICE_ID}>
-//           <h3>{office.NAME}</h3>
-//           <p>{office.ADDRESS}</p>
-//           <button onClick={() => deleteOffice(office.OFFICE_ID)}>Delete</button>
-//           {/* Add your update UI here */}
-//         </div>
-//       ))}
-//       {/* Add your create new office form here */}
-//     </div>
-//   );
-// }
