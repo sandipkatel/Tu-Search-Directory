@@ -76,7 +76,7 @@ export default function Footer() {
               <h4 className="font-semibold mb-4">Follow Us</h4>
               <div className="flex space-x-4">
                 <a
-                  href="https://twitter.com/tribhuvan_u"
+                  href="https://x.com/tu_information"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:underline ..."
@@ -84,7 +84,7 @@ export default function Footer() {
                   Twitter
                 </a>
                 <a
-                  href="https://www.linkedin.com/school/tribhuvan-university"
+                  href="https://www.linkedin.com/company/tribhuvan-university/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:underline ..."
@@ -92,7 +92,7 @@ export default function Footer() {
                   LinkedIn
                 </a>
                 <a
-                  href="https://www.facebook.com/tribhuvan.university"
+                  href="https://www.facebook.com/tribhuvan.viswavidyalaya/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:underline ..."
@@ -104,7 +104,7 @@ export default function Footer() {
           </div>
 
           {/* Copyright Section */}
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-200">
+          <div className="border-t border-gray-800 mt-8 pt-4 text-center text-gray-200">
             <p>
               &copy; {new Date().getFullYear()} Tribhuvan University. All rights
               reserved.
