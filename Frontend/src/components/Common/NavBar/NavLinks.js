@@ -13,15 +13,15 @@ function NavLinks() {
     },
     {
       title: "Institute/Faculties",
-      path: "/",
+      path: "/Faculties/",
     },
     {
       title: "Central Officies",
-      path: "/",
+      path: "/Centeral-Offices/",
     },
     {
       title: "Campuses/Departments",
-      path: "/",
+      path: "/Campuse-Departs/",
     },
     {
       authDependent: true,

@@ -22,22 +22,34 @@ export default function Footer() {
               <h4 className="font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-2 text-gray-200">
                 <li>
-                  <Link href="/about" className="transition delay-150 duration-300 ease-in-out hover:translate-x-1 hover:scale-110 hover:underline ...">
+                  <Link
+                    href="/about"
+                    className="transition delay-150 duration-300 ease-in-out hover:translate-x-1 hover:scale-110 hover:underline ..."
+                  >
                     About TU
                   </Link>
                 </li>
                 <li>
-                  <Link href="/departments" className="transition delay-150 duration-300 ease-in-out hover:translate-x-1 hover:scale-110 hover:underline ...">
+                  <Link
+                    href="/departments"
+                    className="transition delay-150 duration-300 ease-in-out hover:translate-x-1 hover:scale-110 hover:underline ..."
+                  >
                     Departments
                   </Link>
                 </li>
                 <li>
-                  <Link href="/admissions" className="transition delay-150 duration-300 ease-in-out hover:translate-x-1 hover:scale-110 hover:underline ...">
+                  <Link
+                    href="/admissions"
+                    className="transition delay-150 duration-300 ease-in-out hover:translate-x-1 hover:scale-110 hover:underline ..."
+                  >
                     Admissions
                   </Link>
                 </li>
                 <li>
-                  <Link href="/research" className="transition delay-150 duration-300 ease-in-out hover:translate-x-1 hover:scale-110 hover:underline ...">
+                  <Link
+                    href="/research"
+                    className="transition delay-150 duration-300 ease-in-out hover:translate-x-1 hover:scale-110 hover:underline ..."
+                  >
                     Research
                   </Link>
                 </li>
@@ -49,23 +61,39 @@ export default function Footer() {
               <h4 className="font-semibold mb-4">Resources</h4>
               <ul className="space-y-2 text-gray-200">
                 <li>
-                  <Link href="/library" className="transition delay-150 duration-300 ease-in-out hover:translate-x-1 hover:scale-110 hover:underline ...">
-                    Library
+                  <Link
+                    target="_blank"
+                    href="https://tu.edu.np/downloads"
+                    className="transition delay-150 duration-300 ease-in-out hover:translate-x-1 hover:scale-110 hover:underline ..."
+                  >
+                    Resources
                   </Link>
                 </li>
                 <li>
-                  <Link href="/events" className="transition delay-150 duration-300 ease-in-out hover:translate-x-1 hover:scale-110 hover:underline ...">
+                  <Link
+                    target="_blank"
+                    href="https://tu.edu.np/events"
+                    className="transition delay-150 duration-300 ease-in-out hover:translate-x-1 hover:scale-110 hover:underline ..."
+                  >
                     Events
                   </Link>
                 </li>
                 <li>
-                  <Link href="/news" className="transition delay-150 duration-300 ease-in-out hover:translate-x-1 hover:scale-110 hover:underline ...">
+                  <Link
+                    target="_blank"
+                    href="https://tu.edu.np/news"
+                    className="transition delay-150 duration-300 ease-in-out hover:translate-x-1 hover:scale-110 hover:underline ..."
+                  >
                     News
                   </Link>
                 </li>
                 <li>
-                  <Link href="/faq" className="transition delay-150 duration-300 ease-in-out hover:translate-x-1 hover:scale-110 hover:underline ...">
-                    FAQ
+                  <Link
+                    target="_blank"
+                    href="https://tu.edu.np/notices"
+                    className="transition delay-150 duration-300 ease-in-out hover:translate-x-1 hover:scale-110 hover:underline ..."
+                  >
+                    Notices
                   </Link>
                 </li>
               </ul>
