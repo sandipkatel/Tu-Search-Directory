@@ -23,14 +23,23 @@ git checkout main
 ```
 
 ### 2. Open the project directory.
-### 3. Change directory to Frontend/TU-Searchable-Directory.
+### 3. Change directory to Frontend/.
 ### 4. Open terminal/command prompt.
+
+## Run Frontend
 ### 5. Run ```npm install``` in your terminal to install all dependencies.
-### 6. Run ```ng serve``` to run the Angular frontend.
-### 7. Go back to main directory of project and open Backend.
-### 8. Run ```npm install``` in your terminal.
-### 9. Run ```npm start``` to run the Node backend.
-### 10. Finally, open your web browser and visit ```http://localhost:4200/ ``` to see the project in action. You can also open specified port while running frontend.
+### 6. Run ```npm run dev``` to run the NextJs frontend.
+
+## Create a databse server
+### 7. Install Postgresql
+### 8. Run queries in ```query_postgres.sql``` and ```query_postgres2.sql``` to create databse server.
+### 9. Finally run ```psql -U postgres``` to connect
+### If unable to create server run ```pg_ctl -D "C:\Program Files\PostgreSQL\17\data" start``` for version `17`.
+
+## Run Backend
+### 10. Go back to main directory of project and open Backend.
+### 11. Run ```nodemon index``` in your terminal to run the Node backend prerequesties to install nodemon.
+### 12. Finally, open your web browser and visit ```http://localhost:3000/ ``` to see the project in action.
 
 
 
