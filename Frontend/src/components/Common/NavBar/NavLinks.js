@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Link from "next/link";
+import { navigateTo } from "@/services/navigation"; // Import the navigate function
 import Dropdown from "./Dropdown";
 import { useAuth } from "@/context/auth";
 
@@ -32,6 +32,10 @@ function NavLinks() {
     },
   ];
 
+  const handleNavigation = (path) => {
+    navigateTo(path); // Use the navigate function for navigation
+  };
+
   return (
     <>
       {links.map((el, index) => (
@@ -41,19 +45,19 @@ function NavLinks() {
           ) : (
             <li className="m-1 transition duration-300 ease-in-out transform hover:scale-110">
               {el.authDependent && authUser && authUser?.isAdmin ? (
-                <Link
-                  href={el.Altpath}
+                <button
+                  onClick={() => handleNavigation(el.Altpath)}
                   className="font-bold text-white hover:underline px-2 bg-transparent"
                 >
                   {el.Alttitle}
-                </Link>
+                </button>
               ) : (
-                <Link
-                  href={el.path}
+                <button
+                  onClick={() => handleNavigation(el.path)}
                   className="font-bold text-white hover:underline px-2 bg-transparent"
                 >
                   {el.title}
-                </Link>
+                </button>
               )}
             </li>
           )}
