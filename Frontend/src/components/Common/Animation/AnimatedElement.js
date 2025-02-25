@@ -32,16 +32,14 @@ const AnimatedElement = ({
   delay = 0,
   duration = 500,
   threshold = 0.2,
-  once = true,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const { ref, inView } = useInView({
     threshold,
-    triggerOnce: once,
   });
 
   useEffect(() => {
-    if (!inView && !once) {
+    if (!inView) {
       setIsVisible(false);
     }
     if (inView && !isVisible) {
@@ -50,7 +48,7 @@ const AnimatedElement = ({
       }, delay);
       return () => clearTimeout(timer);
     }
-  }, [inView, isVisible, delay, once]);
+  }, [inView, isVisible, delay]);
 
   const animationVariant =
     ANIMATION_VARIANTS[variant] || ANIMATION_VARIANTS.fadeUp;

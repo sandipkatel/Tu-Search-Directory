@@ -22,7 +22,7 @@ export default function CarouselCompo() {
 
   return (
     <div className="relative flex flex-col h-full w-full">
-      <div className=" md:h-[calc(100vh*0.9)]">
+      <div className=" md:h-[calc(100vh*0.86)]">
         {CarouselImages && (
           <Carousel
             infiniteLoop
@@ -37,7 +37,7 @@ export default function CarouselCompo() {
             axis="vertical"
           >
             {CarouselImages.map((image, index) => (
-              <div key={index} className="relative h-[calc(100vh*0.9)] w-full">
+              <div key={index} className="relative h-[calc(100vh*0.86)] w-full">
                 <img
                   src={image.ImageLink}
                   alt="image"
