@@ -18,11 +18,11 @@ function Dropdown({ data }) {
             </button>
 
             {/* <!-- Dropdown menu --> */}
-            <div className={`${!DropDownOpen && 'hidden'}  absolute top-6  font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 `}>
-                <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLargeButton">
+            <div className={`${!DropDownOpen && 'hidden'} absolute top-6 font-normal bg-white divide-y divide-gray-100 rounded-lg w-50 shadow dark:bg-gray-700 dark:divide-gray-600 `}>
+                <ul className="py-2 text-xs text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLargeButton">
                     {data.links.map((el, index) => (
                         <li key={index}>
-                            <Link href={el.path} className="block px-4 py-2 font-bold text-blue-900 hover:underline bg-transparent transition duration-300 ease-in-out transform hover:scale-110">{el.title}</Link >
+                            <Link href={el.path} className="block px-2 py-2 font-bold text-blue-900 hover:underline bg-transparent transition duration-300 ease-in-out transform hover:scale-105">{el.title}</Link >
                         </li>
                     ))}
                 </ul>

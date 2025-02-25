@@ -58,7 +58,7 @@
 /* scroll Animation css */
 
 .scroll-watcher {
-  height: 4px;
+  height: 1px;
   position: fixed;
   top: 0;
   z-index: 1000;

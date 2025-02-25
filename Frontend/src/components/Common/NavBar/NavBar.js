@@ -36,7 +36,7 @@ export default function Navbar() {
           <div
             className={`items-center justify-center ${
               NavOpen ? "h-96 p-2" : "h-0"
-            } transition-transition-height duration-500 ease-in-out overflow-hidden md:overflow-visible md:h-full md:p-2 w-full md:flex bg-blue-700 md:order-1`}
+            } transition-transition-height duration-500 ease-in-out overflow-hidden md:overflow-visible md:h-full md:p-3 w-full md:flex bg-blue-700 md:order-1`}
           >
             {/* Mobile Search */}
             <div className="relative mt-3 md:hidden border-2 border-gray-300 rounded-lg">
@@ -57,15 +57,10 @@ export default function Navbar() {
                   />
                 </svg>
               </div>
-              <input
-                type="text"
-                className="text-white block w-full p-2 ps-10 text-md rounded-xl border-none bg-transparent"
-                placeholder="Search..."
-              />
             </div>
 
             {/* Nav Links */}
-            <ul className="flex  flex-col p-2 md:p-0 font-medium md:flex-row md:mt-0 md:border-0 dark:border-gray-700">
+            <ul className="flex flex-col p-2 md:p-0 font-medium md:flex-row md:mt-0 md:border-0 dark:border-gray-700">
               <NavLinks />
             </ul>
           </div>
