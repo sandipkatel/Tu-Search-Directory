@@ -3,6 +3,7 @@ import { Plus, Edit, Trash2, Search, X } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { navigateTo } from "@/services/navigation";
+import { jwtDecode } from "jwt-decode";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 
@@ -95,11 +96,21 @@ const AdminDashboard = () => {
       navigateTo("/login");
       return;
     }
+    const decodedToken = jwtDecode(token);
+    try {
+      if (decodedToken.isAdmin === false) {
+        navigateTo("/login");
+        return;
+      }
+    } catch (error) {
+      console.error("Invalid token:", error);
+      navigateTo("/login");
+      return;
+    }
     setIsLoading(true);
     setError(null);
     try {
       const response = await api.get(activeEntity);
-      console.log(response);
       setData((prev) => ({
         ...prev,
         [activeEntity]: response.data,

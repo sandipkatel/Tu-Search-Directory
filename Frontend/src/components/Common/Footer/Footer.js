@@ -8,7 +8,6 @@ export default function Footer() {
       <footer className="bg-blue-700 text-white py-5">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-            {/* About TU Section */}
             <div>
               <h3 className="text-xl font-bold mb-4">Tribhuvan University</h3>
               <p className="text-gray-200">
@@ -17,7 +16,6 @@ export default function Footer() {
               </p>
             </div>
 
-            {/* Quick Links Section */}
             <div>
               <h4 className="font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-2 text-gray-200">
@@ -56,7 +54,6 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Resources Section */}
             <div>
               <h4 className="font-semibold mb-4">Resources</h4>
               <ul className="space-y-2 text-gray-200">
@@ -99,7 +96,6 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Follow Us Section */}
             <div>
               <h4 className="font-semibold mb-4">Follow Us</h4>
               <div className="flex space-x-4">
@@ -131,7 +127,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Copyright Section */}
           <div className="border-t border-gray-800 mt-8 pt-4 text-center text-gray-200">
             <p>
               &copy; {new Date().getFullYear()} Tribhuvan University. All rights

@@ -61,13 +61,13 @@ const SignInForm = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ Email, Password }),
     });
-    console.log("ress", response);
     const data = await response.json();
 
     if (data.success) {
       alert(data.message);
       // After successful login/signup
-      localStorage.setItem("token", response.data);
+      localStorage.setItem("token", data.token);
+
       window.location.href = data.redirect; // Redirect to admin or dashboard
     } else {
       alert(data.message);

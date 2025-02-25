@@ -2,7 +2,6 @@
 const express = require("express");
 const router = express.Router();
 const pool = require("../utils/db"); // Your PostgreSQL connection config
-
 // Generic error handler
 const handleErrors = (res, error) => {
   console.error("Database error:", error);
