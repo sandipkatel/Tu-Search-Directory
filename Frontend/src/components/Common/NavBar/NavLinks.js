@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { navigateTo } from "@/services/navigation";
@@ -33,59 +32,65 @@ function NavLinks() {
     fetchData();
   }, [fetchData]);
 
-  const links = useMemo(() => [
-    {
-      title: "Home",
-      path: "/",
-    },
-    {
-      isDropdown: true,
-      title: "Institute/Faculties",
-      links: facultyData.map((faculty) => ({
-        title: faculty.name,
-        path: faculty.website,
-      })),
-    },
-    {
-      title: "Central Departments",
-      path: "/Centeral-Departments/",
-    },
-    {
-      title: "Campuses/Departments",
-      path: "/Campus-Departs/",
-    },
-    {
-      authDependent: true,
-      title: "LogIn",
-      path: "/login",
-      Alttitle: "Dashboard",
-      Altpath: "/admin/dashboard",
-    },
-  ], [facultyData]);
+  const links = useMemo(
+    () => [
+      {
+        title: "Home",
+        path: "/",
+      },
+      {
+        isDropdown: true,
+        title: "Institute/Faculties",
+        links: facultyData.map((faculty) => ({
+          title: faculty.name,
+          path: faculty.website,
+        })),
+      },
+      {
+        title: "Central Departments",
+        path: "/Centeral-Departments/",
+      },
+      {
+        title: "Campuses/Departments",
+        path: "/Campus-Departs/",
+      },
+      {
+        authDependent: true,
+        title: "Tree",
+        path: "/tree",
+        Alttitle: "Dashboard",
+        Altpath: "/admin/dashboard",
+      },
+    ],
+    [facultyData]
+  );
 
   const handleNavigation = useCallback((path) => {
     navigateTo(path);
   }, []);
 
-  const NavItem = useCallback(({ item }) => (
-    <li className="m-1 transition duration-300 ease-in-out transform hover:scale-110">
-      {item.authDependent && authUser && authUser?.isAdmin ? (
-        <button
-          onClick={() => handleNavigation(item.Altpath)}
-          className="font-bold text-white hover:underline px-2 bg-transparent"
-        >
-          {item.Alttitle}
-        </button>
-      ) : (
-        <button
-          onClick={() => handleNavigation(item.path)}
-          className="font-bold text-white hover:underline px-2 bg-transparent"
-        >
-          {item.title}
-        </button>
-      )}
-    </li>
-  ), [authUser, handleNavigation]);
+  const NavItem = useCallback(
+    ({ item }) => (
+      <li className="m-1 transition duration-300 ease-in-out transform hover:scale-110">
+        {item.authDependent && authUser && authUser?.isAdmin ? (
+          <button
+            onClick={() => handleNavigation(item.Altpath)}
+            className="font-bold text-white hover:underline px-2 bg-transparent"
+          >
+            {item.Alttitle}
+          </button>
+        ) : (
+          <button
+            onClick={() => handleNavigation(item.path)}
+            className="font-bold text-white hover:underline px-2 bg-transparent"
+          >
+            {item.title}
+          </button>
+        )}
+      </li>
+    ),
+    [authUser, handleNavigation]
+  );
 
   if (isLoading) {
     return <div className="flex gap-4">Loading...</div>;
@@ -95,11 +100,7 @@ function NavLinks() {
     <>
       {links.map((item, index) => (
         <React.Fragment key={index}>
-          {item.isDropdown ? (
-            <Dropdown data={item} />
-          ) : (
-            <NavItem item={item} />
-          )}
+          {item.isDropdown ? <Dropdown data={item} /> : <NavItem item={item} />}
         </React.Fragment>
       ))}
     </>

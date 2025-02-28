@@ -64,7 +64,7 @@ const SignInForm = () => {
     const data = await response.json();
 
     if (data.success) {
-      alert(data.message);
+      // alert(data.message);
       // After successful login/signup
       localStorage.setItem("token", data.token);
 
@@ -222,7 +222,7 @@ const SignInForm = () => {
               </>
             )}
 
-            <p className="text-sm text-gray-900 dark:text-gray-400">
+            {/* <p className="text-sm text-gray-900 dark:text-gray-400">
               {LogSign ? "Already have an account? " : "Dont have an account? "}
               <button
                 className="font-bold underline hover:text-green-700 dark:text-blue-500 text-blue-800"
@@ -232,7 +232,7 @@ const SignInForm = () => {
               >
                 {LogSign ? "Log In" : "Sign Up (create account)"}
               </button>
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

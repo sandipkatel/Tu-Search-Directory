@@ -53,7 +53,7 @@ export default function CarouselCompo() {
           <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             Welcome to Tribhuvan University Search Directory
           </h1>
-          <div className="relative">
+          <div className="relative w-full max-w-2xl">
             {/* <input
             type="text"
             id="search-navbar"

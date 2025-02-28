@@ -105,7 +105,6 @@ router.get("/", async (req, res) => {
         LIMIT 50;
 
         `;
-    console.log(query);
     const results = await pool.query(searchQuery, [`%${query}%`]);
     res.json({ results: results.rows });
   } catch (error) {

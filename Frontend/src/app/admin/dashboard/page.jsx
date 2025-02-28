@@ -89,6 +89,10 @@ const AdminDashboard = () => {
     program: "Programs",
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigateTo("/login");
+  };
   // Fetch data for the active entity
   const fetchData = async () => {
     const token = localStorage.getItem("token");
@@ -330,6 +334,14 @@ const AdminDashboard = () => {
                 >
                   <Plus className="h-4 w-4" />
                   Add New
+                </button>
+                <button
+                  onClick={() => {
+                    handleLogout();
+                  }}
+                  className="flex items-center gap-1 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                >
+                  LogOut
                 </button>
               </div>
             </div>

@@ -93,7 +93,7 @@ INSERT INTO PROGRAM (name ,about, director_id)
 VALUES 
 ('Bachelor of Education (B.Ed)' ,'Since 1996 Tribhuvan University (TU) has been implementing three-year Bachelor programs with an annual examination system...' ,NULL ),
 ('Master of Education (M.Ed)' ,'Master of Education is a two-year programme offered in constitutional and affiliated campuses under FoE scattered in different parts of the country...' ,NULL ),
-('LL.B (Bachelor of Laws)' ,'LL.B is a three-year programme for having bachelor\'s degree in any discipline...' ,NULL ),
+('LL.B (Bachelor of Laws)' ,'LL.B is a three-year programme for having bachelors degree in any discipline...' ,NULL ),
 ('BE in Computer Engineering' ,'Computer engineering is a discipline that integrates several fields of electrical engineering and computer science...' ,NULL ),
 ('BE in Electrical Engineering' ,'Electrical engineering is a field of engineering that generally deals with the study and application of electricity,electronics,and electromagnetism...' ,NULL ),
 ('BE in Civil Engineering' ,'Civil Engineering is a professional engineering discipline that deals with the design construction and maintenance of the physical and naturally built environment...' ,NULL ),
