@@ -168,10 +168,10 @@ const SearchPage = () => {
           <div className="mt-6 text-gray-600">
             <p>You can search for:</p>
             <ul className="mt-2">
-              <li>• Personnel by name or position</li>
-              <li>• Departments and central departments</li>
-              <li>• Campuses and faculties</li>
-              <li>• Programs and courses</li>
+              <li>Personnel by name or position</li>
+              <li>Departments and central departments</li>
+              <li>Campuses and faculties</li>
+              <li>Programs and courses</li>
             </ul>
           </div>
         </div>
