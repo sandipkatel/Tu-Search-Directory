@@ -2,7 +2,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "@/components/pages/HomePage";
-import SearchPage from "@/components/pages/SearchPage";
 
 // ==================== Home Page ====================
 export default function page() {

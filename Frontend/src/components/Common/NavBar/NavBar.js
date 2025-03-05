@@ -1,73 +1,106 @@
-"use client";
-// ======================== Imports ========================
-import "flowbite";
-import React, { useState } from "react";
-import NavLinks from "./NavLinks";
-import Link from "next/link";
-import HamburgerIcon from "./HamburgerIcon";
+"use client"
+import "flowbite"
+import { useState, useEffect } from "react"
+import NavLinks from "./NavLinks"
+import Link from "next/link"
+import { X, Menu, Search } from "lucide-react"
 
 export default function Navbar() {
-  const [NavOpen, setNavOpen] = useState(false);
+  const [NavOpen, setNavOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 1024) // Increased breakpoint
+    }
+
+    checkScreenSize()
+    window.addEventListener("resize", checkScreenSize)
+
+    return () => window.removeEventListener("resize", checkScreenSize)
+  }, [])
 
   return (
     <>
-      <div className="sticky bg-white bg-opacity-40 top-0 z-50 backdrop-blur-2xl transform transition-all duration-1000 ease-in-out">
-        <nav className="bg-transparent flex justify-evenly items-center">
-          <Link
-            href="/"
-            className="absolute inset-0 ps-5 flex items-center space-x-3 font-extrabold text-lg"
-          >
-            <img
-              src="/logo.png"
-              className="h-8 md:h-10 lg:h-12"
-              alt="TU Logo"
-            />
-            <span className="text-white">TU Search Directory</span>
-          </Link>
+      <nav className="sticky top-0 z-50 bg-blue-700 shadow-md">
+        <div className="w-full px-4">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo and Title */}
+            <Link href="/" className="flex items-center space-x-3 font-extrabold text-lg">
+              <img src="/logo.png" className="h-8 lg:h-10" alt="TU Logo" />
+              <span className="text-white">TU Search Directory</span>
+            </Link>
 
-          <button
-            className="md:hidden"
-            onClick={() => {
-              setNavOpen((prev) => !prev);
-            }}
-          >
-            <HamburgerIcon NavOpen={NavOpen} />
-          </button>
+            {/* Desktop Navigation */}
+            {!isMobile && (
+              <div className="flex-grow flex justify-center items-center">
+                <ul className="flex items-center space-x-2">
+                  <NavLinks />
+                </ul>
+              </div>
+            )}
+
+            {/* Mobile Menu Button */}
+            {isMobile && (
+              <button
+                className="text-white hover:bg-blue-600 p-2 rounded-lg transition-colors"
+                onClick={() => setNavOpen((prev) => !prev)}
+                aria-label="Toggle menu"
+              >
+                <Menu size={24} />
+              </button>
+            )}
+          </div>
+
+          {/* Mobile Navigation */}
           <div
-            className={`items-center justify-center ${
-              NavOpen ? "h-96 p-2" : "h-0"
-            } transition-transition-height duration-500 ease-in-out overflow-hidden md:overflow-visible md:h-full md:p-3 w-full md:flex bg-blue-700 md:order-1`}
+            className={`lg:hidden fixed inset-0 bg-blue-700 z-50 transition-transform duration-300 ease-in-out ${
+              NavOpen ? "translate-x-0" : "translate-x-full"
+            }`}
           >
-            {/* Mobile Search */}
-            <div className="relative mt-3 md:hidden border-2 border-gray-300 rounded-lg">
-              <div className="absolute pl-2 inset-y-0 start-0 flex items-center pointer-events-none">
-                <svg
-                  className="w-4 h-4 text-white"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 20 20"
+            <div className="flex flex-col h-full">
+              {/* Mobile Header */}
+              <div className="flex items-center justify-between p-4 border-b border-blue-600">
+                <Link href="/" className="flex items-center space-x-3">
+                  <img src="/logo.png" className="h-8" alt="TU Logo" />
+                  <span className="text-white font-extrabold text-lg">TU Search Directory</span>
+                </Link>
+                <button
+                  onClick={() => setNavOpen(false)}
+                  className="text-white hover:bg-blue-600 p-2 rounded-lg transition-colors"
                 >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  <X size={24} />
+                </button>
+              </div>
+
+              {/* Mobile Search */}
+              <div className="p-4 border-b border-blue-600">
+                <div className="relative">
+                  <input
+                    type="search"
+                    placeholder="Search..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full bg-blue-600 text-white placeholder-blue-300 rounded-lg pl-10 pr-4 py-2 outline-none focus:ring-2 focus:ring-white"
                   />
-                </svg>
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-300" size={18} />
+                </div>
+              </div>
+
+              {/* Mobile Nav Links */}
+              <div className="flex-1 overflow-y-auto">
+                <ul className="flex flex-col py-2">
+                  <NavLinks />
+                </ul>
               </div>
             </div>
-
-            {/* Nav Links */}
-            <ul className="flex flex-col p-2 md:p-0 font-medium md:flex-row md:mt-0 md:border-0 dark:border-gray-700">
-              <NavLinks />
-            </ul>
           </div>
-        </nav>
-      </div>
+        </div>
+      </nav>
 
       <div className="scroll-watcher"></div>
     </>
-  );
+  )
 }
+
