@@ -232,7 +232,7 @@ const SignInForm = () => {
               >
                 {LogSign ? "Log In" : "Sign Up (create account)"}
               </button>
-            </p> */}
+            </p>  */}
           </div>
         </div>
       </div>

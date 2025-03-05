@@ -1,54 +1,37 @@
-"use client";
-import React, { useState } from "react";
-import Link from "next/link";
+"use client"
+import { useState } from "react"
+import Link from "next/link"
+import { ChevronDown } from "lucide-react"
 
-function Dropdown({ data }) {
-  const [DropDownOpen, setDropDownOpen] = useState(false);
+function Dropdown({ data, isMobile }) {
+  const [DropDownOpen, setDropDownOpen] = useState(false)
 
   return (
-    <li
-      className="font-bold m-1 bg-transparent relative z-50"
-      onMouseEnter={() => {
-        setDropDownOpen(true);
-      }}
-      onMouseLeave={() => {
-        setDropDownOpen(false);
-      }}
-    >
-      <button className="flex items-center justify-between w-full font-bold text-white hover:underline px-2 bg-transparent transition duration-300 ease-in-out transform hover:scale-110">
+    <li className="relative">
+      <button
+        onClick={() => setDropDownOpen(!DropDownOpen)}
+        className={`w-full flex items-center justify-between font-medium text-white hover:bg-blue-600 px-4 py-3 transition-colors ${
+          isMobile ? "" : "rounded-lg"
+        }`}
+      >
         {data.title}
-        <svg
-          className="w-2.5 h-2.5 ms-2.5"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 10 6"
-        >
-          <path
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="m1 1 4 4 4-4"
-          />
-        </svg>
+        <ChevronDown size={18} className={`transition-transform duration-200 ${DropDownOpen ? "rotate-180" : ""}`} />
       </button>
 
-      {/* <!-- Dropdown menu --> */}
+      {/* Dropdown menu */}
       <div
-        className={`${
-          !DropDownOpen && "hidden"
-        } absolute top-6 font-normal bg-white divide-y divide-gray-100 rounded-lg w-50 shadow dark:bg-gray-700 dark:divide-gray-600 `}
+        className={`${!DropDownOpen ? "hidden" : "block"} ${
+          isMobile ? "bg-blue-600" : "absolute top-full left-0 bg-white rounded-lg shadow-lg"
+        } w-full lg:w-60`}
       >
-        <ul
-          className="py-2 text-xs text-gray-700 dark:text-gray-200"
-          aria-labelledby="dropdownLargeButton"
-        >
+        <ul className="py-1">
           {data.links.map((el, index) => (
             <li key={index}>
               <Link
                 href={el.path}
-                className="block px-2 py-2 font-bold text-blue-900 hover:underline bg-transparent transition duration-300 ease-in-out transform hover:scale-105"
+                className={`block px-4 py-2 ${
+                  isMobile ? "text-white hover:bg-blue-500" : "text-blue-900 hover:bg-blue-50"
+                } transition-colors`}
               >
                 {el.title}
               </Link>
@@ -57,7 +40,8 @@ function Dropdown({ data }) {
         </ul>
       </div>
     </li>
-  );
+  )
 }
 
-export default Dropdown;
+export default Dropdown
+

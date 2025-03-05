@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import CarouselCompo from "@/components/Home/Carousel/Carousel";
 import NoticeLine from "@/components/Home/NoticeLine/NoticeLine";
 import IntroToTU from "@/components/Home/Intro/intro";
-import Highlights from "@/components/Home/Highlights/HighLights";
+import Highlights from "@/components/Home/Highlights/Highlights";
 
 // ==================== Home Page ====================
 export default function HomePage() {
