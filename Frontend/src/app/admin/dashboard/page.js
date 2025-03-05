@@ -281,16 +281,23 @@ const AdminDashboard = () => {
           {error}
         </div>
       )}
-
+  
       <div className="max-w-8xl mx-auto bg-white rounded-lg shadow">
         {/* Header */}
-        <div className="p-6 border-b">
+        <div className="p-6 border-b flex justify-between items-center">
           <h1 className="text-2xl font-bold">Administrative Dashboard</h1>
+  
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-1 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          >
+            LogOut
+          </button>
         </div>
-
-        <div className="grid grid-cols-12 gap-4">
+  
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4">
           {/* Sidebar */}
-          <div className="col-span-3 border-r p-4">
+          <div className="col-span-1 md:col-span-3 lg:col-span-3 border-r p-4">
             <div className="space-y-2">
               {Object.entries(entityLabels).map(([key, label]) => (
                 <button
@@ -307,9 +314,9 @@ const AdminDashboard = () => {
               ))}
             </div>
           </div>
-
+  
           {/* Main Content */}
-          <div className="col-span-9 p-4">
+          <div className="col-span-1 md:col-span-2 lg:col-span-9 p-4">
             <div className="mb-4 flex justify-between items-center">
               <h2 className="text-xl font-semibold">
                 {entityLabels[activeEntity]}
@@ -335,17 +342,9 @@ const AdminDashboard = () => {
                   <Plus className="h-4 w-4" />
                   Add New
                 </button>
-                <button
-                  onClick={() => {
-                    handleLogout();
-                  }}
-                  className="flex items-center gap-1 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                >
-                  LogOut
-                </button>
               </div>
             </div>
-
+  
             {/* Data Table */}
             <div className="border rounded-lg overflow-x-auto">
               {isLoading ? (
@@ -410,10 +409,10 @@ const AdminDashboard = () => {
           </div>
         </div>
       </div>
-
+  
       {isModalOpen && <Modal />}
     </div>
   );
-};
+}  
 
 export default AdminDashboard;
