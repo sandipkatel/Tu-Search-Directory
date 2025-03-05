@@ -442,7 +442,7 @@ const SearchBar = () => {
     );
 
     return (
-      <div className="mt-4 overflow-scroll h-96 max-h-full rounded-lg bg-white p-6 shadow-lg">
+      <div className="mt-4 overflow-scroll max-h-96 rounded-lg bg-white p-6 shadow-lg">
         <h3 className="mb-6 border-b pb-2 text-xl font-semibold text-gray-800">
           Organizational Hierarchy
         </h3>
@@ -585,6 +585,11 @@ const SearchBar = () => {
                         {item.email && (
                           <div className="text-sm text-gray-600">
                             {item.email}
+                          </div>
+                        )}
+                        {item.about && (
+                          <div className="text-sm text-gray-600">
+                            {item.about}
                           </div>
                         )}
                       </div>
