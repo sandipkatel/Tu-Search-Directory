@@ -66,7 +66,6 @@ const createEntityRoutes = (entityName, tableName) => {
     }
   });
 
-  // POST new
   router.post(`/${entityName}`, async (req, res) => {
     try {
       const columns = Object.keys(req.body).join(", ");
@@ -106,7 +105,6 @@ const createEntityRoutes = (entityName, tableName) => {
       handleErrors(res, error);
     }
   });
-
   // DELETE
   router.delete(`/${entityName}/:id`, async (req, res) => {
     try {

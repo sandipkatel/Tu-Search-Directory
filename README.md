@@ -63,7 +63,7 @@ git checkout main
 
 ### Run `netstat -ano | findstr :5432` To start the server
 
-### And run `psql -h  Your_Public_Key -U postgres -d tu_search_directory`on different computer to access database remotely
+### And run `psql -h 2403:3800:3204:16e3:e917:6772:faba:fc5 -U postgres -d tu_search_directory`on different computer to access database remotely
 
 
 ## Authors
