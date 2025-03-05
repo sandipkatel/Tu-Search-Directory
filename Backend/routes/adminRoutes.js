@@ -66,15 +66,18 @@ const createEntityRoutes = (entityName, tableName) => {
     }
   });
 
-  // POST new
   router.post(`/${entityName}`, async (req, res) => {
     try {
       const columns = Object.keys(req.body).join(", ");
       const values = Object.keys(req.body)
         .map((_, i) => `$${i + 1}`)
         .join(", ");
+      console.log("column", Object.values(req.body));
+      const processedValues = Object.values(req.body).map((value) =>
+        value === "" ? null : value
+      );
       const query = `INSERT INTO ${tableName} (${columns}) VALUES (${values}) RETURNING *`;
-      const result = await pool.query(query, Object.values(req.body));
+      const result = await pool.query(query, processedValues);
       res.json(result.rows[0]);
     } catch (error) {
       handleErrors(res, error);
@@ -87,11 +90,14 @@ const createEntityRoutes = (entityName, tableName) => {
       const updates = Object.keys(req.body)
         .map((key, i) => `${key} = $${i + 1}`)
         .join(", ");
+      const processedValues = Object.values(req.body).map((value) =>
+        value === "" ? null : value
+      );
       const query = `UPDATE ${tableName} SET ${updates} WHERE id = $${
-        Object.keys(req.body).length + 1
+        processedValues.length + 1
       } RETURNING *`;
       const result = await pool.query(query, [
-        ...Object.values(req.body),
+        ...processedValues,
         req.params.id,
       ]);
       res.json(result.rows[0]);
@@ -99,7 +105,6 @@ const createEntityRoutes = (entityName, tableName) => {
       handleErrors(res, error);
     }
   });
-
   // DELETE
   router.delete(`/${entityName}/:id`, async (req, res) => {
     try {
