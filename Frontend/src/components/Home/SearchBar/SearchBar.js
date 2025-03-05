@@ -13,6 +13,7 @@ import {
   FaBookOpen,
   FaFilter,
 } from "react-icons/fa";
+import AnimatedElement from "@/components/Common/Animation/AnimatedElement";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
@@ -26,6 +27,7 @@ const SearchBar = () => {
   const [isLoadingHierarchy, setIsLoadingHierarchy] = useState(false);
   const [activeFilters, setActiveFilters] = useState([]);
   const [showFilterOptions, setShowFilterOptions] = useState(false);
+
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -213,6 +215,7 @@ const SearchBar = () => {
           name: result.name,
           position: result.position,
           email: result.email,
+          image: result.imageurl,
         },
       });
     } finally {
@@ -439,7 +442,7 @@ const SearchBar = () => {
     );
 
     return (
-      <div className="mt-4 overflow-hidden rounded-lg bg-white p-6 shadow-lg">
+      <div className="mt-4 overflow-scroll h-96 max-h-full rounded-lg bg-white p-6 shadow-lg">
         <h3 className="mb-6 border-b pb-2 text-xl font-semibold text-gray-800">
           Organizational Hierarchy
         </h3>
@@ -448,6 +451,7 @@ const SearchBar = () => {
         <div className="relative pl-8">
           {availableLevels.map((level, index) => {
             const item = hierarchyData[level];
+            console.log(item);
             const isLast = index === availableLevels.length - 1;
 
             return (
@@ -514,8 +518,9 @@ const SearchBar = () => {
                 )}
 
                 {/* Item box */}
-                <div
-                  className={`
+                <AnimatedElement duration={1200}>
+                  <div
+                    className={`
                   relative rounded-lg border p-4 shadow-sm
                   ${
                     index === 0
@@ -523,24 +528,35 @@ const SearchBar = () => {
                       : "border-gray-200 bg-white"
                   }
                 `}
-                >
-                  <div className="flex items-center">
-                    {/* Icon with appropriate background */}
-                    <div
-                      className={`
+                  >
+                    <div className="flex items-center">
+                    <AnimatedElement variant="scaleUp" delay={300} duration={2000}>
+                      {/* Icon with appropriate background */}
+                      {level === "personnel" && item.image ? (
+                        <div className="h-10 w-10 rounded-full overflow-hidden">
+                          <img
+                            src={item.image}
+                            alt={`${item.name}'s profile`}
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <div
+                          className={`
                       flex h-10 w-10 items-center justify-center rounded-full
                       ${index === 0 ? "bg-gray-200" : "bg-gray-100"}
                     `}
-                    >
-                      {getIconForType(level)}
-                    </div>
-
-                    <div className="ml-4 flex-grow">
-                      <div className="text-xs font-medium uppercase text-gray-500">
-                        {getLabelForType(level)}
-                      </div>
-                      <div
-                        className={`
+                        >
+                          {getIconForType(level)}
+                        </div>
+                      )}
+                      </AnimatedElement>
+                      <div className="ml-4 flex-grow">
+                        <div className="text-xs font-medium uppercase text-gray-500">
+                          {getLabelForType(level)}
+                        </div>
+                        <div
+                          className={`
                         font-medium 
                         ${
                           index === 0
@@ -548,32 +564,33 @@ const SearchBar = () => {
                             : "text-md text-gray-700"
                         }
                       `}
-                      >
-                        {item.name}
+                        >
+                          {item.name}
+                        </div>
+                        {item.position && (
+                          <div className="text-sm text-gray-600">
+                            {item.position}
+                          </div>
+                        )}
+                        {item.location && (
+                          <div className="text-sm text-gray-600">
+                            {item.location}
+                          </div>
+                        )}
+                        {item.contact && (
+                          <div className="text-sm text-gray-600">
+                            {item.contact}
+                          </div>
+                        )}
+                        {item.email && (
+                          <div className="text-sm text-gray-600">
+                            {item.email}
+                          </div>
+                        )}
                       </div>
-                      {item.position && (
-                        <div className="text-sm text-gray-600">
-                          {item.position}
-                        </div>
-                      )}
-                      {item.location && (
-                        <div className="text-sm text-gray-600">
-                          {item.location}
-                        </div>
-                      )}
-                      {item.contact && (
-                        <div className="text-sm text-gray-600">
-                          {item.contact}
-                        </div>
-                      )}
-                      {item.email && (
-                        <div className="text-sm text-gray-600">
-                          {item.email}
-                        </div>
-                      )}
                     </div>
                   </div>
-                </div>
+                </AnimatedElement>
               </div>
             );
           })}
@@ -717,7 +734,7 @@ const SearchBar = () => {
             Back to Search Results
           </button>
           <button
-            className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 shadow-sm transition duration-150 flex items-center"
+            className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 shadow-lg transition duration-150 flex items-center"
             onClick={() => navigateToDetailPage(selectedResult)}
           >
             <span className="flex items-center">

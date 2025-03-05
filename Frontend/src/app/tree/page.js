@@ -15,6 +15,7 @@ import {
   Info,
   X,
 } from "lucide-react";
+import AnimatedElement from "@/components/Common/Animation/AnimatedElement";
 
 export default function TreeViewPage() {
   const [treeData, setTreeData] = useState([]);
@@ -293,13 +294,15 @@ export default function TreeViewPage() {
                   <div className="max-h-[65vh] overflow-y-auto pr-2 border-r md:border-r-0">
                     {filteredOtherNodes.length > 0 ? (
                       filteredOtherNodes.map((rootNode) => (
-                        <TreeNode
-                          key={rootNode.id}
-                          node={rootNode}
-                          level={0}
-                          defaultOpen={expandAll}
-                          searchTerm={searchTerm}
-                        />
+                        <AnimatedElement>
+                          <TreeNode
+                            key={rootNode.id}
+                            node={rootNode}
+                            level={0}
+                            defaultOpen={expandAll}
+                            searchTerm={searchTerm}
+                          />
+                        </AnimatedElement>
                       ))
                     ) : (
                       <NoResultsMessage
@@ -326,13 +329,15 @@ export default function TreeViewPage() {
                   <div className="max-h-[65vh] overflow-y-auto pr-2">
                     {filteredCentralDepts.length > 0 ? (
                       filteredCentralDepts.map((rootNode) => (
-                        <TreeNode
-                          key={rootNode.id}
-                          node={rootNode}
-                          level={0}
-                          defaultOpen={expandAll}
-                          searchTerm={searchTerm}
-                        />
+                        <AnimatedElement>
+                          <TreeNode
+                            key={rootNode.id}
+                            node={rootNode}
+                            level={0}
+                            defaultOpen={expandAll}
+                            searchTerm={searchTerm}
+                          />
+                        </AnimatedElement>
                       ))
                     ) : (
                       <NoResultsMessage
@@ -587,13 +592,15 @@ const TreeNode = ({
       {isOpen && hasChildren && (
         <div className="transition-all">
           {node.children.map((child) => (
-            <TreeNode
-              key={child.id}
-              node={child}
-              level={level + 1}
-              defaultOpen={defaultOpen}
-              searchTerm={searchTerm}
-            />
+            <AnimatedElement>
+              <TreeNode
+                key={child.id}
+                node={child}
+                level={level + 1}
+                defaultOpen={defaultOpen}
+                searchTerm={searchTerm}
+              />
+            </AnimatedElement>
           ))}
         </div>
       )}
