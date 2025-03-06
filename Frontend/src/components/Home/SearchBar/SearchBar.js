@@ -530,26 +530,30 @@ const SearchBar = () => {
                 `}
                   >
                     <div className="flex items-center">
-                    <AnimatedElement variant="scaleUp" delay={300} duration={2000}>
-                      {/* Icon with appropriate background */}
-                      {level === "personnel" && item.image ? (
-                        <div className="h-10 w-10 rounded-full overflow-hidden">
-                          <img
-                            src={item.image}
-                            alt={`${item.name}'s profile`}
-                            className="h-full w-full object-cover"
-                          />
-                        </div>
-                      ) : (
-                        <div
-                          className={`
+                      <AnimatedElement
+                        variant="scaleUp"
+                        delay={300}
+                        duration={2000}
+                      >
+                        {/* Icon with appropriate background */}
+                        {level === "personnel" && item.image ? (
+                          <div className="h-10 w-10 rounded-full overflow-hidden">
+                            <img
+                              src={item.image}
+                              alt={`${item.name}'s profile`}
+                              className="h-full w-full object-cover"
+                            />
+                          </div>
+                        ) : (
+                          <div
+                            className={`
                       flex h-10 w-10 items-center justify-center rounded-full
                       ${index === 0 ? "bg-gray-200" : "bg-gray-100"}
                     `}
-                        >
-                          {getIconForType(level)}
-                        </div>
-                      )}
+                          >
+                            {getIconForType(level)}
+                          </div>
+                        )}
                       </AnimatedElement>
                       <div className="ml-4 flex-grow">
                         <div className="text-xs font-medium uppercase text-gray-500">
@@ -606,7 +610,8 @@ const SearchBar = () => {
 
   const renderFilterOptions = () => {
     return (
-      <div className="absolute z-50 mt-1 w-64 rounded-md bg-white shadow-lg border border-gray-100 p-2">
+      <div className="absolute z-50 left-full top-0 ml-2 w-64 rounded-md bg-white shadow-lg border border-gray-100 p-2">
+        {" "}
         <div className="flex justify-between items-center mb-2 border-b pb-2">
           <h4 className="font-medium text-gray-700">Filter by Type</h4>
           <button
