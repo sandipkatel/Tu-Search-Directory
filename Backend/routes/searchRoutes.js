@@ -105,8 +105,10 @@ router.get("/", async (req, res) => {
         LIMIT 50;
 
         `;
+
     const results = await pool.query(searchQuery, [`%${query}%`]);
     res.json({ results: results.rows });
+    console.log(results.rows);
   } catch (error) {
     console.error("Search error:", error);
     res.status(500).json({ error: "An error occurred during search" });
@@ -467,11 +469,11 @@ module.exports = router;
 //     // Create a comprehensive search query that searches across multiple tables
 //     const searchQuery = `
 //         WITH personnel_results AS (
-//           SELECT 
-//             p.id, 
-//             p.name, 
-//             p.email, 
-//             p.position, 
+//           SELECT
+//             p.id,
+//             p.name,
+//             p.email,
+//             p.position,
 //             p.imageUrl,
 //             'personnel' AS type,
 //             CASE
@@ -488,13 +490,13 @@ module.exports = router;
 //           LEFT JOIN campus c ON p.campus_id = c.id
 //           LEFT JOIN department d ON p.dept_id = d.id
 //           LEFT JOIN central_department cd ON p.c_dept_id = cd.id
-//           WHERE 
+//           WHERE
 //             p.name ILIKE $1 OR
 //             p.email ILIKE $1 OR
 //             p.position ILIKE $1
 //         ),
 //         department_results AS (
-//           SELECT 
+//           SELECT
 //             id,
 //             name,
 //             contact,
@@ -504,7 +506,7 @@ module.exports = router;
 //           WHERE name ILIKE $1 OR contact ILIKE $1
 //         ),
 //         central_dept_results AS (
-//           SELECT 
+//           SELECT
 //             id,
 //             name,
 //             contact,
@@ -515,7 +517,7 @@ module.exports = router;
 //           WHERE name ILIKE $1 OR contact ILIKE $1 OR website ILIKE $1
 //         ),
 //         campus_results AS (
-//           SELECT 
+//           SELECT
 //             id,
 //             name,
 //             location,
@@ -526,7 +528,7 @@ module.exports = router;
 //           WHERE name ILIKE $1 OR location ILIKE $1 OR website ILIKE $1
 //         ),
 //         faculty_results AS (
-//           SELECT 
+//           SELECT
 //             id,
 //             name,
 //             'faculty' AS type,
@@ -535,7 +537,7 @@ module.exports = router;
 //           WHERE name ILIKE $1
 //         ),
 //         program_results AS (
-//           SELECT 
+//           SELECT
 //             p.id,
 //             p.name,
 //             p.about,
@@ -581,24 +583,24 @@ module.exports = router;
 
 //     const getPersonnelHierarchy = async (id)  => {
 //       const personnelQuery = `
-//         SELECT 
+//         SELECT
 //           p.*,
-//           co.org_id as central_office_id, 
+//           co.org_id as central_office_id,
 //           co.name as central_office_name,
 //           co.address as central_office_address,
-          
+
 //           if.id as faculty_id,
 //           if.name as faculty_name,
-          
+
 //           cd.id as central_dept_id,
 //           cd.name as central_dept_name,
 //           cd.contact as central_dept_contact,
 //           cd.location as central_dept_location,
-          
+
 //           c.id as campus_id,
 //           c.name as campus_name,
 //           c.location as campus_location,
-          
+
 //           d.id as dept_id,
 //           d.name as dept_name,
 //           d.contact as dept_contact
@@ -655,15 +657,15 @@ module.exports = router;
 
 //     const getDepartmentHierarchy = async (id) => {
 //       const departmentQuery = `
-//           SELECT 
+//           SELECT
 //             d.*,
-//             c.id as campus_id, 
+//             c.id as campus_id,
 //             c.name as campus_name,
 //             c.location as campus_location,
-            
+
 //             if.id as faculty_id,
 //             if.name as faculty_name,
-            
+
 //             co.org_id as central_office_id,
 //             co.name as central_office_name
 //           FROM department d
@@ -703,7 +705,7 @@ module.exports = router;
 
 //     const getCentralDepartmentHierarchy= async (id) => {
 //       const centralDeptQuery = `
-//           SELECT 
+//           SELECT
 //             cd.*,
 //             co.org_id as central_office_id,
 //             co.name as central_office_name
@@ -734,11 +736,11 @@ module.exports = router;
 
 //     const getCampusHierarchy = async (id) => {
 //       const campusQuery = `
-//           SELECT 
+//           SELECT
 //             c.*,
 //             if.id as faculty_id,
 //             if.name as faculty_name,
-            
+
 //             co.org_id as central_office_id,
 //             co.name as central_office_name
 //           FROM campus c
@@ -772,7 +774,7 @@ module.exports = router;
 
 //     const getFacultyHierarchy = async (id) => {
 //       const facultyQuery = `
-//       SELECT 
+//       SELECT
 //         if.*,
 //         co.org_id as central_office_id,
 //         co.name as central_office_name
@@ -801,18 +803,18 @@ module.exports = router;
 
 //     const getProgramHierarchy = async (id) => {
 //       const programQuery = `
-//           SELECT 
+//           SELECT
 //             p.*,
 //             per.id as director_id,
 //             per.name as director_name,
 //             per.faculty_id,
 //             per.campus_id,
 //             per.dept_id,
-            
+
 //             f.name as faculty_name,
 //             c.name as campus_name,
 //             d.name as dept_name,
-            
+
 //             co.org_id as central_office_id,
 //             co.name as central_office_name
 //           FROM program p
