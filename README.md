@@ -66,6 +66,9 @@ git checkout main
 ### And run `psql -h 2403:3800:3204:16e3:e917:6772:faba:fc5 -U postgres -d tu_search_directory`on different computer to access database remotely
 
 
+## Glimps of Final Output
+![TU-Search-Directory](./Media/TU-Search-directory.mp4)
+
 ## Authors
 
 - [@Sandip Katel](https://github.com/sandipkatel)
