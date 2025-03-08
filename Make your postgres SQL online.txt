@@ -1,0 +1,18 @@
+#1. Open: C:\Program Files\PostgreSQL\17\data\postgresql.conf
+# Uncomment: 
+```listen_addresses = '*'```
+# Restart Server: pg_ctl -D "C:\Program Files\PostgreSQL\17\data" restart
+
+#2. Open: C:\Program Files\PostgreSQL\17\data\pg_hba.conf
+# Add:
+```host    all     all     0.0.0.0/0   md5
+host    all     all     ::/0        md5```
+#Save and again restart
+
+#3. Open Fire Wall run following in Powershell as administrator
+```New-NetFirewallRule -DisplayName "PostgreSQL" -Direction Inbound -Protocol TCP -LocalPort 5432 -Action Allow```
+
+#4. Check if PostgreSQL is Running
+```netstat -ano | findstr :5432```
+# Output should be Listening
+

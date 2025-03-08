@@ -4,6 +4,8 @@ import { useState, useEffect } from "react"
 import NavLinks from "./NavLinks"
 import Link from "next/link"
 import { X, Menu, Search } from "lucide-react"
+import { navigateTo } from "@/services/navigation"
+
 
 export default function Navbar() {
   const [NavOpen, setNavOpen] = useState(false)
@@ -25,12 +27,12 @@ export default function Navbar() {
     <>
       <nav className="sticky top-0 z-50 bg-blue-700 shadow-md">
         <div className="w-full px-4">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-16 cursor-pointer">
             {/* Logo and Title */}
-            <Link href="/" className="flex items-center space-x-3 font-extrabold text-lg">
+            <div onClick={()=>navigateTo("/")} className="flex items-center space-x-3 font-extrabold text-lg">
               <img src="/logo.png" className="h-8 lg:h-10" alt="TU Logo" />
               <span className="text-white">TU Search Directory</span>
-            </Link>
+            </div>
 
             {/* Desktop Navigation */}
             {!isMobile && (
@@ -61,11 +63,11 @@ export default function Navbar() {
           >
             <div className="flex flex-col h-full">
               {/* Mobile Header */}
-              <div className="flex items-center justify-between p-4 border-b border-blue-600">
-                <Link href="/" className="flex items-center space-x-3">
+              <div className="flex items-center justify-between p-4 border-b border-blue-600 cursor-pointer">
+                <div onClick={()=> navigateTo('/')} className="flex items-center space-x-3">
                   <img src="/logo.png" className="h-8" alt="TU Logo" />
                   <span className="text-white font-extrabold text-lg">TU Search Directory</span>
-                </Link>
+                </div>
                 <button
                   onClick={() => setNavOpen(false)}
                   className="text-white hover:bg-blue-600 p-2 rounded-lg transition-colors"
@@ -74,19 +76,7 @@ export default function Navbar() {
                 </button>
               </div>
 
-              {/* Mobile Search */}
-              <div className="p-4 border-b border-blue-600">
-                <div className="relative">
-                  <input
-                    type="search"
-                    placeholder="Search..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full bg-blue-600 text-white placeholder-blue-300 rounded-lg pl-10 pr-4 py-2 outline-none focus:ring-2 focus:ring-white"
-                  />
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-300" size={18} />
-                </div>
-              </div>
+              
 
               {/* Mobile Nav Links */}
               <div className="flex-1 overflow-y-auto">
