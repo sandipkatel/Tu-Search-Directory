@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react"
 import { navigateTo } from "@/services/navigation"
 import Dropdown from "./Dropdown"
-import { useAuth } from "@/context/auth"
 import axios from "axios"
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api"
@@ -12,7 +11,6 @@ const api = axios.create({
 })
 
 function NavLinks() {
-  const { authUser } = useAuth()
   const [facultyData, setFacultyData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
@@ -67,9 +65,8 @@ function NavLinks() {
         path: "/Campus-Departs/",
       },
       {
-        authDependent: true,
         title: "Directory Structure",
-        path: "/tree",
+        path: "/Hierarchical-Tree/",
       },
     ],
     [facultyData],
@@ -82,7 +79,7 @@ function NavLinks() {
   const NavItem = useCallback(
     ({ item }) => (
       <li>
-        {item.authDependent && authUser && authUser?.isAdmin ? (
+        {item.authDependent ? (
           <button
             onClick={() => handleNavigation(item.Altpath)}
             className={`w-full text-left font-medium text-white hover:bg-blue-600 px-4 py-1 transition-colors ${
@@ -103,7 +100,7 @@ function NavLinks() {
         )}
       </li>
     ),
-    [authUser, handleNavigation, isMobile],
+    [handleNavigation, isMobile],
   )
 
   if (isLoading) {

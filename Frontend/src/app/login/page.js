@@ -1,9 +1,6 @@
 "use client";
 import React from "react";
 import { useState, useEffect } from "react";
-import { AdminLogIn } from "@/Helper/AdminLogIn";
-import { AdminSignUp } from "@/Helper/AdminSignUp";
-import ColorRingLoader from "@/components/Common/Others/ColorRingLoader";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/auth";
 
@@ -14,14 +11,10 @@ const SignInForm = () => {
   const [Email, setEmail] = useState("@gmail.com");
   const [Contact, setContact] = useState("");
   const [Password, setPassword] = useState("");
-  const [ConfirmPassword, setConfirmPassword] = useState("");
-  const [ProfilePicURL, setProfilePicURL] = useState("");
   const [message, setMessage] = useState("");
   const [ShowMessage, setShowMessage] = useState("");
   const [LogSign, setLogSign] = useState(false);
   const [PassRememberMe, setPassRememberMe] = useState(false);
-  const [PassResetLoading, setPassResetLoading] = useState(false);
-  const [RingLoad, setRingLoad] = useState(false);
 
   const nav = useRouter();
 
@@ -194,9 +187,6 @@ const SignInForm = () => {
 
             <p className="font-bold text-red-600">{ShowMessage}</p>
 
-            {RingLoad ? (
-              <ColorRingLoader />
-            ) : (
               <>
                 {Password && Email && (
                   <>
@@ -220,7 +210,6 @@ const SignInForm = () => {
                   </>
                 )}
               </>
-            )}
 
             <p className="text-sm text-gray-900 dark:text-gray-400">
               {LogSign ? "Already have an account? " : "Dont have an account? "}

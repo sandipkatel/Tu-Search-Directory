@@ -1,13 +1,13 @@
-const Pool = require("pg").Pool;
-const pool = new Pool({
-  user: "postgres",
-  password: "8910",
-  host: "localhost",
-  port: "5432",
-  database: "tu_search_directory",
-});
+// const Pool = require("pg").Pool;
+// const pool = new Pool({
+//   user: "postgres",
+//   password: "8910",
+//   host: "localhost",
+//   port: "5432",
+//   database: "tu_search_directory",
+// });
 
-module.exports = pool;
+// module.exports = pool;
 
 // const Pool = require("pg").Pool;
 // const pool = new Pool({
@@ -20,3 +20,13 @@ module.exports = pool;
 // });
 
 // module.exports = pool;
+
+const Pool = require("pg").Pool;
+const pool = new Pool({
+  connectionString: process.env.DBMS_URL,
+    ssl: {
+    rejectUnauthorized: true
+  }
+});
+
+module.exports = pool;

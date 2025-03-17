@@ -1,10 +1,13 @@
+// Code: Home Page
 "use client";
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "@/components/pages/HomePage";
+import CarouselCompo from "@/components/Home/Carousel/Carousel";
+import NoticeLine from "@/components/Home/NoticeLine/NoticeLine";
+import IntroToTU from "@/components/Home/Intro/intro";
+import Highlights from "@/components/Home/Highlights/Highlights";
 
 // ==================== Home Page ====================
-export default function page() {
+export default function HomePage() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.scrollTo({
@@ -16,22 +19,11 @@ export default function page() {
   }, []);
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/search" element={<HomePage />} />
-        {/* <Route
-          path="/personnel/:id"
-          element={<div>Personnel Detail Page</div>}
-        />
-        <Route
-          path="/department/:id"
-          element={<div>Department Detail Page</div>}
-        />
-        <Route path="/campus/:id" element={<div>Campus Detail Page</div>} />
-        <Route path="/faculty/:id" element={<div>Faculty Detail Page</div>} />
-        <Route path="/program/:id" element={<div>Program Detail Page</div>} /> */}
-      </Routes>
-    </Router>
+    <div>
+      <CarouselCompo />
+      <NoticeLine />
+      <IntroToTU />
+      <Highlights />
+    </div>
   );
 }

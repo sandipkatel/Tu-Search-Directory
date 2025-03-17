@@ -2,9 +2,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Common/Footer/Footer";
 import Navbar from "@/components/Common/NavBar/NavBar";
-import FirstLoadPage from "@/components/Common/Others/FirstLoadPage";
 import NextTopLoader from "nextjs-toploader";
-import { AuthUserProvider } from "@/context/auth";
+// import { AuthUserProvider } from "@/context/auth";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -80,7 +79,7 @@ export default function RootLayout({ children }) {
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
       <body className={`${inter.className} min-h-screen `}>
-        <AuthUserProvider>
+        {/* <AuthUserProvider> */}
           <div className=" h-screen w-full fixed top-0 left-0 -z-50 bg-gradient-to-b from-white to-blue-100"></div>
           <NextTopLoader
             color="#050447"
@@ -98,7 +97,7 @@ export default function RootLayout({ children }) {
           {/* <FirstLoadPage children={children} /> */}
             <div className=" min-h-screen overflow-x-hidden">{children}</div>
             <Footer />
-        </AuthUserProvider>
+        {/* </AuthUserProvider> */}
       </body>
     </html>
   );
