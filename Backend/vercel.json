@@ -1,0 +1,26 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "index.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "/index.js"
+      }
+    ],
+    "functions": {
+      "index.js": {
+        "runtime": "nodejs18.x",
+        "memory": 512,
+        "maxDuration": 10
+      }
+    },
+    "env": {
+      "DBMS_URL": "@dbms_url"
+    }
+  }
+  
