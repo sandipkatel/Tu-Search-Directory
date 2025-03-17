@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useEffect, useCallback, useMemo } from "react"
 import { navigateTo } from "@/services/navigation"
+import Link from "next/link"
 import Dropdown from "./Dropdown"
 import axios from "axios"
 
@@ -72,35 +73,20 @@ function NavLinks() {
     [facultyData],
   )
 
-  const handleNavigation = useCallback((path) => {
-    navigateTo(path)
-  }, [])
-
   const NavItem = useCallback(
     ({ item }) => (
       <li>
-        {item.authDependent ? (
-          <button
-            onClick={() => handleNavigation(item.Altpath)}
-            className={`w-full text-left font-medium text-white hover:bg-blue-600 px-4 py-1 transition-colors ${
-              isMobile ? "" : "rounded-lg"
-            }`}
-          >
-            {item.Alttitle}
-          </button>
-        ) : (
-          <button
-            onClick={() => handleNavigation(item.path)}
+          <Link
+            href = {item.path}
             className={`w-full text-left font-medium text-white hover:bg-blue-600 px-4 py-1 transition-colors ${
               isMobile ? "" : "rounded-lg"
             }`}
           >
             {item.title}
-          </button>
-        )}
+          </Link>
       </li>
     ),
-    [handleNavigation, isMobile],
+    [ isMobile],
   )
 
   if (isLoading) {

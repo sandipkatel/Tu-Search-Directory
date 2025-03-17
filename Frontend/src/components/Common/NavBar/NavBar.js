@@ -3,13 +3,12 @@ import "flowbite"
 import { useState, useEffect } from "react"
 import NavLinks from "./NavLinks"
 import Link from "next/link"
-import { X, Menu, Search } from "lucide-react"
+import { X, Menu } from "lucide-react"
 import { navigateTo } from "@/services/navigation"
 
 
 export default function Navbar() {
   const [NavOpen, setNavOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState("")
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
@@ -29,10 +28,14 @@ export default function Navbar() {
         <div className="w-full px-4">
           <div className="flex items-center justify-between h-16 cursor-pointer">
             {/* Logo and Title */}
-            <div onClick={()=>navigateTo("/")} className="flex items-center space-x-3 font-extrabold text-lg">
+            {/* <div onClick={()=>navigateTo("/")} className="flex items-center space-x-3 font-extrabold text-lg">
               <img src="/logo.png" className="h-8 lg:h-10" alt="TU Logo" />
               <span className="text-white">TU Search Directory</span>
-            </div>
+            </div> */}
+            <Link href="/" className="flex items-center space-x-3 font-extrabold text-lg">
+              <img src="/logo.png" className="h-8 lg:h-10" alt="TU Logo" />
+              <span className="text-white">TU Search Directory</span>
+            </Link>
 
             {/* Desktop Navigation */}
             {!isMobile && (
