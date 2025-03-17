@@ -15,6 +15,8 @@ import {
 } from "react-icons/fa";
 import AnimatedElement from "@/components/Common/Animation/AnimatedElement";
 
+const BASE_URL = "http://localhost:5000/";
+
 const SearchBar = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
@@ -98,7 +100,10 @@ const SearchBar = () => {
     setIsSearching(true);
     try {
       // Add filters to the search query if there are any active filters
-      let url = `http://localhost:5000/search?query=${encodeURIComponent(
+      // let url = `http://localhost:5000/search?query=${encodeURIComponent(
+      //   searchTerm
+      // )}`;
+      let url = `${BASE_URL}/search?query=${encodeURIComponent(
         searchTerm
       )}`;
       if (activeFilters.length > 0) {
@@ -156,8 +161,11 @@ const SearchBar = () => {
 
     try {
       // Fetch hierarchy data
+      // const response = await fetch(
+      //   `http://localhost:5000/search/hierarchy?type=${result.type}&id=${result.id}`
+      // );
       const response = await fetch(
-        `http://localhost:5000/search/hierarchy?type=${result.type}&id=${result.id}`
+        `${BASE_URL}/search/hierarchy?type=${result.type}&id=${result.id}`
       );
       const data = await response.json();
 
@@ -165,8 +173,11 @@ const SearchBar = () => {
       if (result.type === "personnel") {
         try {
           // Request complete hierarchy for personnel
+          // const fullHierarchyResponse = await fetch(
+          //   `http://localhost:5000/search/full-hierarchy?type=${result.type}&id=${result.id}`
+          // );
           const fullHierarchyResponse = await fetch(
-            `http://localhost:5000/search/full-hierarchy?type=${result.type}&id=${result.id}`
+            `${BASE_URL}/search/full-hierarchy?type=${result.type}&id=${result.id}`
           );
           const fullData = await fullHierarchyResponse.json();
 

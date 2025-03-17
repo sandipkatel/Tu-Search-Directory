@@ -5,7 +5,7 @@ import axios from "axios";
 import { navigateTo } from "@/services/navigation";
 import { jwtDecode } from "jwt-decode";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000/api";
 
 const api = {
   get: (endpoint) => axios.get(`${BASE_URL}/${endpoint}`),

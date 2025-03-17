@@ -11,11 +11,13 @@ import {
   Briefcase,
   Search,
   RefreshCw,
-  Filter,
   Info,
   X,
 } from "lucide-react";
 import AnimatedElement from "@/components/Common/Animation/AnimatedElement";
+
+const BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000/api";
 
 export default function TreeViewPage() {
   const [treeData, setTreeData] = useState([]);
@@ -32,8 +34,10 @@ export default function TreeViewPage() {
     const fetchTreeData = async () => {
       try {
         setLoading(true);
-        // Change this URL to match your API endpoint
-        const response = await fetch("http://localhost:5000/tree", {
+        // const response = await fetch("http://localhost:5000/tree", {
+        //   method: "GET",
+        // });
+        const response = await fetch(`${BASE_URL}/tree`, {
           method: "GET",
         });
 

@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/auth";
 
+const BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000/api";
+
 const SignInForm = () => {
   const { authUser, IsLoading, setAuthUser } = useAuth();
   const [Name, setName] = useState("");
@@ -30,11 +33,17 @@ const SignInForm = () => {
       return;
     }
 
-    const response = await fetch("http://localhost:5000/auth/signup", {
+    // const response = await fetch("http://localhost:5000/auth/signup", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({ Email: Email, Password: Password }),
+    // });
+    const response = await fetch(`${BASE_URL}/auth/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ Email: Email, Password: Password }),
     });
+    
 
     const data = await response.json();
 

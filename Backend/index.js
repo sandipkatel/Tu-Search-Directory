@@ -14,12 +14,27 @@ const treeRoutes = require("./routes/treeRoutes");
 app.use(cors());
 app.use(express.json());
 
+// Route for the root path
+app.get('/', (req, res) => {
+  res.send('TU Search Directory API is running');
+});
+
 //routes
 app.use("/search", searchRoutes);
 app.use("/auth", authRoutes);
 app.use("/api", adminRoutes);
 app.use("/navigate", navigateRoutes);
 app.use("/tree", treeRoutes);
-app.listen(5000, () => {
-  console.log("Server started on port 5000");
-});
+
+
+// Start server (works for both local and Vercel)
+const PORT = process.env.PORT || 5000;
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`);
+  });
+}
+
+
+// Export for Vercel Production Server
+module.exports = app;
