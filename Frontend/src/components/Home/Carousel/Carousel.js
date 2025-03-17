@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import FetchCarouselImages from "@/Helper/FetchCarouselImages";
+import { Suspense } from "react";
 import SearchBar from "@/components/Home/SearchBar/SearchBar";
 
 export default function CarouselCompo() {
@@ -53,9 +54,12 @@ export default function CarouselCompo() {
           <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             Welcome to Tribhuvan University Search Directory
           </h1>
-          <div className="relative w-full max-w-2xl">
+          {/* <div className="relative w-full max-w-2xl">
             <SearchBar />
-          </div>
+          </div> */}
+          <Suspense fallback={<div>Loading...</div>}>
+            <SearchBar />
+          </Suspense>
         </div>
       </div>
     </div>

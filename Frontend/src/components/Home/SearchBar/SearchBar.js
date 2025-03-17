@@ -76,7 +76,7 @@ const SearchBar = () => {
       setQuery(urlQuery);
       performSearch(urlQuery);
     }
-  }, [searchParams]);
+  }, [searchParams?.toString()]);
 
   const handleSearch = (e) => {
     const searchTerm = e.target.value;
@@ -650,7 +650,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="relative max-w-6xl mx-auto">
+    <div className="relative w-full max-w-2xl mx-auto">
       <div className="relative mb-4">
         <div className="relative flex items-center">
           <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
