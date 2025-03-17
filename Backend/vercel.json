@@ -11,8 +11,5 @@
         "src": "/api/(.*)",
         "dest": "/index.js"
       }
-    ],
-    "env": {
-      "DBMS_URL": "@dbms_url"
-    }
+    ]
   }
