@@ -6,7 +6,7 @@ import axios from "axios";
 import AnimatedElement from "@/components/Common/Animation/AnimatedElement";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api` || "http://localhost:5000/api";
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000/api";
 
 const api = {
   get: (endpoint) => axios.get(`${BASE_URL}/${endpoint}`),

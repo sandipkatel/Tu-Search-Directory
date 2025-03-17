@@ -16,9 +16,9 @@ import {
 } from "lucide-react";
 import AnimatedElement from "@/components/Common/Animation/AnimatedElement";
 
-// const BASE_URL = "httpa://localhost:5000";
+// const BASE_URL = "httpa://localhost:5000/api";
 const BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000";
+  process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000/api";
 
 export default function TreeViewPage() {
   const [treeData, setTreeData] = useState([]);
