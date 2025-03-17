@@ -3,13 +3,12 @@ import "./globals.css";
 import Footer from "@/components/Common/Footer/Footer";
 import Navbar from "@/components/Common/NavBar/NavBar";
 import NextTopLoader from "nextjs-toploader";
-// import { AuthUserProvider } from "@/context/auth";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_BASEURL || "http://localhost:3000"
+    "https://TU-Search-Directory.vercel.app" || "http://localhost:3000"
   ),
   title: "TU Search Directory",
   description:
@@ -31,11 +30,11 @@ export const metadata = {
     { name: "Sandip Katel" },
     {
       name: "Sandp Katel",
-      url: "https://TU-Search-Directory-website.vercel.app",
+      url: "https://TU-Search-Directory.vercel.app",
     },
   ],
   creator: "Sandip Katel",
-  publisher: "Byte Brahma",
+  publisher: "Bramhas",
 
   icons: {
     icon: "/logo.png",
@@ -80,24 +79,21 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${inter.className} min-h-screen `}>
         {/* <AuthUserProvider> */}
-          <div className=" h-screen w-full fixed top-0 left-0 -z-50 bg-gradient-to-b from-white to-blue-100"></div>
-          <NextTopLoader
-            color="#050447"
-            initialPosition={0.08}
-            crawlSpeed={200}
-            height={3}
-            crawl={true}
-            showSpinner={true}
-            easing="ease"
-            speed={200}
-            shadow="0 0 10px #050447,0 0 5px #050447"
-          />
-          <Navbar />
-
-          {/* <FirstLoadPage children={children} /> */}
-            <div className=" min-h-screen overflow-x-hidden">{children}</div>
-            <Footer />
-        {/* </AuthUserProvider> */}
+        <div className=" h-screen w-full fixed top-0 left-0 -z-50 bg-gradient-to-b from-white to-blue-100"></div>
+        <NextTopLoader
+          color="#050447"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={true}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #050447,0 0 5px #050447"
+        />
+        <Navbar />
+        <div className=" min-h-screen overflow-x-hidden">{children}</div>
+        <Footer />
       </body>
     </html>
   );
