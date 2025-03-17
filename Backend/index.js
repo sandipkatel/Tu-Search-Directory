@@ -20,11 +20,11 @@ app.get('/', (req, res) => {
 });
 
 //routes
-app.use("/search", searchRoutes);
-app.use("/auth", authRoutes);
+app.use("/api/search", searchRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/api", adminRoutes);
-app.use("/navigate", navigateRoutes);
-app.use("/tree", treeRoutes);
+app.use("/api/navigate", navigateRoutes);
+app.use("/api/tree", treeRoutes);
 
 
 // Start server (works for both local and Vercel)

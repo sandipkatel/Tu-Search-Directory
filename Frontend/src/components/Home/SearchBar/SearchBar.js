@@ -15,7 +15,8 @@ import {
 } from "react-icons/fa";
 import AnimatedElement from "@/components/Common/Animation/AnimatedElement";
 
-const BASE_URL = "http://localhost:5000/";
+const BASE_URL = "http://localhost:5000/api";
+// const BASE_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api` || "http://localhost:5000/api";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
