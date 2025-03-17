@@ -2,8 +2,10 @@
 import axios from "axios";
 import { navigationHandler } from "./navigation";
 
+const BASE_URL = process.env.NEXT_PUBLIC_FRONTEND_URL || "http://localhost:3000";
+
 const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: BASE_URL,
 });
 
 // Response interceptor to handle redirects
