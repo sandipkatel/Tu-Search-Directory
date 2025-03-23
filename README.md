@@ -1,6 +1,6 @@
 # TU Searchable Directory
 
-Deployed at : http://nqbjqywexniaccq.bct.itclub.pp.ua/
+Deployed at : [ti-search-directory.vercel.app](https://tu-search-directory.vercel.app/)
 
 Think of the TU Searchable Directory as a super helpful website. It’s like
 an online book that has all the details about the colleges and schools under Tribhuvan
